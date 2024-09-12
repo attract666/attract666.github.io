@@ -2,7 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://attract666.github.io/categories/</loc>
+    <lastmod>2024-09-09T15:58:57+08:00</lastmod>
+  </url><url>
+    <loc>https://attract666.github.io/categories/cv/</loc>
+    <lastmod>2024-09-09T15:58:57+08:00</lastmod>
+  </url><url>
     <loc>https://attract666.github.io/posts/ddpm/</loc>
+    <lastmod>2024-09-09T15:58:57+08:00</lastmod>
+  </url><url>
+    <loc>https://attract666.github.io/tags/generative-model/</loc>
+    <lastmod>2024-09-09T15:58:57+08:00</lastmod>
+  </url><url>
+    <loc>https://attract666.github.io/tags/image-generation/</loc>
     <lastmod>2024-09-09T15:58:57+08:00</lastmod>
   </url><url>
     <loc>https://attract666.github.io/</loc>
@@ -14,14 +26,10 @@
     <loc>https://attract666.github.io/tags/</loc>
     <lastmod>2024-09-09T15:58:57+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/</loc>
-    <lastmod>2024-09-09T15:58:57+08:00</lastmod>
-  </url><url>
-    <loc>https://attract666.github.io/tags/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90/</loc>
-    <lastmod>2024-09-09T15:58:57+08:00</lastmod>
-  </url><url>
     <loc>https://attract666.github.io/archives/</loc>
   </url><url>
     <loc>https://attract666.github.io/search/</loc>
+  </url><url>
+    <loc>https://attract666.github.io/about/</loc>
   </url>
 </urlset>

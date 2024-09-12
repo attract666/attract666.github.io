@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on JiaHe&#39;s blog</title>
+    <title>Tags on JiaHe&#39;s Blog</title>
     <link>https://attract666.github.io/tags/</link>
-    <description>Recent content in Tags on JiaHe&#39;s blog</description>
+    <description>Recent content in Tags on JiaHe&#39;s Blog</description>
     <generator>Hugo -- 0.134.0</generator>
     <language>zh</language>
     <lastBuildDate>Mon, 09 Sep 2024 15:58:57 +0800</lastBuildDate>
     <atom:link href="https://attract666.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>生成模型</title>
-      <link>https://attract666.github.io/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/</link>
+      <title>Generative-Model</title>
+      <link>https://attract666.github.io/tags/generative-model/</link>
       <pubDate>Mon, 09 Sep 2024 15:58:57 +0800</pubDate>
-      <guid>https://attract666.github.io/tags/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/</guid>
+      <guid>https://attract666.github.io/tags/generative-model/</guid>
       <description></description>
     </item>
     <item>
-      <title>图像生成</title>
-      <link>https://attract666.github.io/tags/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90/</link>
+      <title>Image-Generation</title>
+      <link>https://attract666.github.io/tags/image-generation/</link>
       <pubDate>Mon, 09 Sep 2024 15:58:57 +0800</pubDate>
-      <guid>https://attract666.github.io/tags/%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90/</guid>
+      <guid>https://attract666.github.io/tags/image-generation/</guid>
       <description></description>
     </item>
   </channel>
