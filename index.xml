@@ -14,9 +14,10 @@
       <pubDate>Mon, 09 Sep 2024 15:58:57 +0800</pubDate>
       <guid>https://attract666.github.io/posts/ddpm/</guid>
       <description>&lt;p&gt;Diffusion models的灵感来自非平衡热力学。它们定义了一个马尔科夫链扩散步骤，以缓慢地向数据添加随机噪声，然后学习逆扩散过程以从噪声中构建所需的数据样本。与VAE或Flow-based models不同，diffusion models是通过固定程序学习的，并且潜变量具有高纬度（与原始数据相同）。&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/DDPM/diffusion.png&#34; width=&#34;100%&#34; titile=&#34;&#34; /&gt;&lt;/center&gt;
+&lt;center&gt;Diffusion Process.(Image source:&lt;a href=&#34;https://speech.ee.ntu.edu.tw/~hylee/ml/ml2023-course-data/DDPM%20(v7).pdf&#34;&gt;Hung-yi Lee&lt;/a&gt;)&lt;/center&gt;
 &lt;h1 id=&#34;什么是diffusion-models&#34;&gt;什么是Diffusion models？&lt;/h1&gt;
-&lt;p&gt;根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在&lt;!-- raw HTML omitted --&gt;denoising diffusion probabilistic models&lt;!-- raw HTML omitted --&gt;（&lt;!-- raw HTML omitted --&gt;DDPM;&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;Ho et al.2020&lt;!-- raw HTML omitted --&gt;）中的算法并不这么简单&lt;/p&gt;</description>
+&lt;p&gt;根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在&lt;em&gt;denoising diffusion probabilistic models&lt;/em&gt;（&lt;strong&gt;DDPM;&lt;/strong&gt;&lt;a href=&#34;https://arxiv.org/abs/2006.11239&#34;&gt;Ho et al.2020&lt;/a&gt;）中的算法并不这么简单&lt;/p&gt;</description>
     </item>
     <item>
       <title>关于</title>
