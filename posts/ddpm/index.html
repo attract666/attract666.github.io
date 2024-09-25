@@ -5,9 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>DDPM | JiaHe&#39;s Blog</title>
+<title>Diffusion Models | JiaHe&#39;s Blog</title>
 <meta name="keywords" content="generative-model, image-generation">
-<meta name="description" content="DDPM - JiaHe&#39;s Blog">
+<meta name="description" content="Diffusion models的灵感来自非平衡热力学。它们定义了一个马尔科夫链扩散步骤，以缓慢地向数据添加随机噪声，然后学习逆扩散过程以从噪声中构建所需的数据样本。与VAE或Flow-based models不同，diffusion models是通过固定程序学习的，并且潜变量具有高纬度（与原始数据相同）。
+
+什么是Diffusion models？
+根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在denoising diffusion probabilistic models（DDPM;Ho et al.2020）中的算法并不这么简单">
 <meta name="author" content="">
 <link rel="canonical" href="https://attract666.github.io/posts/ddpm/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
@@ -55,16 +58,22 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="DDPM" />
-<meta property="og:description" content="" />
+</noscript><meta property="og:title" content="Diffusion Models" />
+<meta property="og:description" content="Diffusion models的灵感来自非平衡热力学。它们定义了一个马尔科夫链扩散步骤，以缓慢地向数据添加随机噪声，然后学习逆扩散过程以从噪声中构建所需的数据样本。与VAE或Flow-based models不同，diffusion models是通过固定程序学习的，并且潜变量具有高纬度（与原始数据相同）。
+
+什么是Diffusion models？
+根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在denoising diffusion probabilistic models（DDPM;Ho et al.2020）中的算法并不这么简单" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://attract666.github.io/posts/ddpm/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-09-09T15:58:57+08:00" />
 <meta property="article:modified_time" content="2024-09-09T15:58:57+08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="DDPM"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Diffusion Models"/>
+<meta name="twitter:description" content="Diffusion models的灵感来自非平衡热力学。它们定义了一个马尔科夫链扩散步骤，以缓慢地向数据添加随机噪声，然后学习逆扩散过程以从噪声中构建所需的数据样本。与VAE或Flow-based models不同，diffusion models是通过固定程序学习的，并且潜变量具有高纬度（与原始数据相同）。
+
+什么是Diffusion models？
+根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在denoising diffusion probabilistic models（DDPM;Ho et al.2020）中的算法并不这么简单"/>
 
 
 <script type="application/ld+json">
@@ -81,7 +90,7 @@
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "DDPM",
+      "name": "Diffusion Models",
       "item": "https://attract666.github.io/posts/ddpm/"
     }
   ]
@@ -91,14 +100,14 @@
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "DDPM",
-  "name": "DDPM",
-  "description": "",
+  "headline": "Diffusion Models",
+  "name": "Diffusion Models",
+  "description": "Diffusion models的灵感来自非平衡热力学。它们定义了一个马尔科夫链扩散步骤，以缓慢地向数据添加随机噪声，然后学习逆扩散过程以从噪声中构建所需的数据样本。与VAE或Flow-based models不同，diffusion models是通过固定程序学习的，并且潜变量具有高纬度（与原始数据相同）。\n什么是Diffusion models？ 根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在denoising diffusion probabilistic models（DDPM;Ho et al.2020）中的算法并不这么简单\n",
   "keywords": [
     "generative-model", "image-generation"
   ],
-  "articleBody": "",
-  "wordCount" : "0",
+  "articleBody": "Diffusion models的灵感来自非平衡热力学。它们定义了一个马尔科夫链扩散步骤，以缓慢地向数据添加随机噪声，然后学习逆扩散过程以从噪声中构建所需的数据样本。与VAE或Flow-based models不同，diffusion models是通过固定程序学习的，并且潜变量具有高纬度（与原始数据相同）。\n什么是Diffusion models？ 根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在denoising diffusion probabilistic models（DDPM;Ho et al.2020）中的算法并不这么简单\n",
+  "wordCount" : "12",
   "inLanguage": "zh",
   "datePublished": "2024-09-09T15:58:57+08:00",
   "dateModified": "2024-09-09T15:58:57+08:00",
@@ -197,12 +206,19 @@
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      DDPM
+      Diffusion Models
     </h1>
     <div class="post-meta"><span title='2024-09-09 15:58:57 +0800 CST'>九月 9, 2024</span>
 
 </div>
   </header> 
+  <div class="post-content"><p>Diffusion models的灵感来自非平衡热力学。它们定义了一个马尔科夫链扩散步骤，以缓慢地向数据添加随机噪声，然后学习逆扩散过程以从噪声中构建所需的数据样本。与VAE或Flow-based models不同，diffusion models是通过固定程序学习的，并且潜变量具有高纬度（与原始数据相同）。</p>
+<!-- raw HTML omitted -->
+<h1 id="什么是diffusion-models">什么是Diffusion models？<a hidden class="anchor" aria-hidden="true" href="#什么是diffusion-models">#</a></h1>
+<p>根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在<!-- raw HTML omitted -->denoising diffusion probabilistic models<!-- raw HTML omitted -->（<!-- raw HTML omitted -->DDPM;<!-- raw HTML omitted --><!-- raw HTML omitted -->Ho et al.2020<!-- raw HTML omitted -->）中的算法并不这么简单</p>
+
+
+  </div>
 
   <footer class="post-footer">
     <ul class="post-tags">
