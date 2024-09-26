@@ -58,7 +58,50 @@
         }
 
     </style>
-</noscript><meta property="og:title" content="JiaHe&#39;s Blog" />
+</noscript>
+<script type="text/javascript" async
+    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
+                processEscapes: true,
+                processEnvironments: true,
+                skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+                TeX: {
+                    equationNumbers: { autoNumber: "AMS" },
+                    extensions: ["AMSmath.js", "AMSsymbols.js"]
+                }
+            },
+            "HTML-CSS": {
+                availableFonts: ["Arial", "TeX"],
+                preferredFont: "TeX",
+                webFont: "TeX"
+            }
+        });
+
+        MathJax.Hub.Queue(function () {
+            
+            
+            
+            var all = MathJax.Hub.getAllJax(), i;
+            for (i = 0; i < all.length; i += 1) {
+                all[i].SourceElement().parentNode.className += ' has-jax';
+            }
+        });
+    </script>
+
+<style>
+    code.has-jax {
+        font: inherit;
+        font-size: 100%;
+        background: inherit;
+        border: inherit;
+        color: #515151;
+    }
+</style>
+
+<meta property="og:title" content="JiaHe&#39;s Blog" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://attract666.github.io/" />
@@ -165,9 +208,14 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>Diffusion models的灵感来自非平衡热力学。它们定义了一个马尔科夫链扩散步骤，以缓慢地向数据添加随机噪声，然后学习逆扩散过程以从噪声中构建所需的数据样本。与VAE或Flow-based models不同，diffusion models是通过固定程序学习的，并且潜变量具有高纬度（与原始数据相同）。
-Diffusion Process.(Image source:Hung-yi Lee) 什么是Diffusion models？ 根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在denoising diffusion probabilistic models（DDPM;Ho et al.2020）中的算法并不这么简单
-</p>
+    <p>什么是Generative Model? 我们可以看到的现实中的各种图片，视为已经观察到的数据，那么理论上必然存在一个分布$p(x)$可以描述它们。如果我们想要生成一张图片，很自然的想法就是从这个分布$p(x)$中采样一个点。也就是说，如果我们可以通过某种方法学习到对真实数据映射的数据分布$p(x)$，那么我们就可以通过这个分布生成新的样本。但是现实生活中，这个分布$p(x)$是复杂的，我们很难真的完全建模出来，因此有时我们也使用学习到的模型来评估观察到的货采样数据的可能性。
+在现有的Generative Model有以下几个大方向。GAN对复杂分布的采样过程进行建模，并以对抗方式学习。likelihood-based旨在学习为观察到的数据样本分配高可能性的模型，这包括自回归模型和VAE。energy-based将分布学习为任意灵活的能量函数，然后将其归一化。
+AE &amp; VAE 我们所观察到的数据可以被视为一些更高层次的表示的函数所生成的，我们可以近似的描述我们观察到的数据的潜在表示，用随机变量$z$表示，也称之为潜变量（latent variable）。在生成建模中，我们通常寻求学习较低维度的潜在表示。这是因为如果没有强大的先验知识，试图学习比观察更高维的表示是徒劳的。另一方面，学习低维潜变量也可以被视为一种压缩形式，并且可以潜在揭示描述观察结果的语义上有意义的结构。
+Autoencoder.(Image source:Lilian Weng) 这就是Autoencoder(AE)的想法，AE包含编码器$g(.)$和解码器$f(.)$，输入$x$的低维压缩表示是$z = g_{\phi}(x)$，重构后的输出是$x’ = f_{\theta}(g_{\phi}(x))$。参数$(\theta, \phi)$的学习目标是输入与输出尽可能相似，即$x \approx x’$，这个损失函数我们也称之为重构损失。
+Variational Autoencoder（VAE）的思想实际上与AE不太相似。在VAE中，我们不想将输入映射到固定向量中，而是将其映射到分布中。我们将此分布记为$p_{\theta}$
+什么是Diffusion Models？ Diffusion models的灵感来自非平衡热力学。它们定义了一个马尔科夫链扩散步骤，以缓慢地向数据添加随机噪声，然后学习逆扩散过程以从噪声中构建所需的数据样本。与VAE或Flow-based models不同，diffusion models是通过固定程序学习的，并且潜变量具有高纬度（与原始数据相同）。
+Diffusion Process.(Image source:Hung-yi Lee) 根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在denoising diffusion probabilistic models（DDPM;Ho et al.2020）中的算法并不这么简单。
+Training Training.(Image source:DDPM)</p>
   </div>
   <footer class="entry-footer"><span title='2024-09-09 15:58:57 +0800 CST'>九月 9, 2024</span></footer>
   <a class="entry-link" aria-label="post link to Diffusion Models" href="https://attract666.github.io/posts/ddpm/"></a>

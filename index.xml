@@ -13,11 +13,23 @@
       <link>https://attract666.github.io/posts/ddpm/</link>
       <pubDate>Mon, 09 Sep 2024 15:58:57 +0800</pubDate>
       <guid>https://attract666.github.io/posts/ddpm/</guid>
-      <description>&lt;p&gt;Diffusion models的灵感来自非平衡热力学。它们定义了一个马尔科夫链扩散步骤，以缓慢地向数据添加随机噪声，然后学习逆扩散过程以从噪声中构建所需的数据样本。与VAE或Flow-based models不同，diffusion models是通过固定程序学习的，并且潜变量具有高纬度（与原始数据相同）。&lt;/p&gt;
-&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/DDPM/diffusion.png&#34; width=&#34;100%&#34; titile=&#34;&#34; /&gt;&lt;/center&gt;
-&lt;center&gt;Diffusion Process.(Image source:&lt;a href=&#34;https://speech.ee.ntu.edu.tw/~hylee/ml/ml2023-course-data/DDPM%20(v7).pdf&#34;&gt;Hung-yi Lee&lt;/a&gt;)&lt;/center&gt;
-&lt;h1 id=&#34;什么是diffusion-models&#34;&gt;什么是Diffusion models？&lt;/h1&gt;
-&lt;p&gt;根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在&lt;em&gt;denoising diffusion probabilistic models&lt;/em&gt;（&lt;strong&gt;DDPM;&lt;/strong&gt;&lt;a href=&#34;https://arxiv.org/abs/2006.11239&#34;&gt;Ho et al.2020&lt;/a&gt;）中的算法并不这么简单&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;什么是generative-model&#34;&gt;什么是Generative Model?&lt;/h1&gt;
+&lt;p&gt;我们可以看到的现实中的各种图片，视为已经观察到的数据，那么理论上必然存在一个分布$p(x)$可以描述它们。如果我们想要生成一张图片，很自然的想法就是从这个分布$p(x)$中采样一个点。也就是说，如果我们可以通过某种方法学习到对真实数据映射的数据分布$p(x)$，那么我们就可以通过这个分布生成新的样本。但是现实生活中，这个分布$p(x)$是复杂的，我们很难真的完全建模出来，因此有时我们也使用学习到的模型来评估观察到的货采样数据的可能性。&lt;/p&gt;
+&lt;p&gt;在现有的Generative Model有以下几个大方向。GAN对复杂分布的采样过程进行建模，并以对抗方式学习。likelihood-based旨在学习为观察到的数据样本分配高可能性的模型，这包括自回归模型和VAE。energy-based将分布学习为任意灵活的能量函数，然后将其归一化。&lt;/p&gt;
+&lt;h2 id=&#34;ae--vae&#34;&gt;AE &amp;amp; VAE&lt;/h2&gt;
+&lt;p&gt;我们所观察到的数据可以被视为一些更高层次的表示的函数所生成的，我们可以近似的描述我们观察到的数据的潜在表示，用随机变量$z$表示，也称之为潜变量（latent variable）。在生成建模中，我们通常寻求学习较低维度的潜在表示。这是因为如果没有强大的先验知识，试图学习比观察更高维的表示是徒劳的。另一方面，学习低维潜变量也可以被视为一种压缩形式，并且可以潜在揭示描述观察结果的语义上有意义的结构。&lt;/p&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/DDPM/AE.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
+&lt;center&gt;Autoencoder.(Image source:&lt;a href=&#34;https://lilianweng.github.io/posts/2018-08-12-vae/&#34;&gt;Lilian Weng&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;
+&lt;p&gt;这就是&lt;strong&gt;Autoencoder(AE)&lt;/strong&gt;的想法，&lt;strong&gt;AE&lt;/strong&gt;包含编码器$g(.)$和解码器$f(.)$，输入$x$的低维压缩表示是$z = g_{\phi}(x)$，重构后的输出是$x&amp;rsquo; = f_{\theta}(g_{\phi}(x))$。参数$(\theta, \phi)$的学习目标是输入与输出尽可能相似，即$x \approx x&amp;rsquo;$，这个损失函数我们也称之为重构损失。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Variational Autoencoder（VAE）&lt;/strong&gt;的思想实际上与&lt;strong&gt;AE&lt;/strong&gt;不太相似。在&lt;strong&gt;VAE&lt;/strong&gt;中，我们不想将输入映射到固定向量中，而是将其映射到分布中。我们将此分布记为$p_{\theta}$&lt;/p&gt;
+&lt;h1 id=&#34;什么是diffusion-models&#34;&gt;什么是Diffusion Models？&lt;/h1&gt;
+&lt;p&gt;Diffusion models的灵感来自非平衡热力学。它们定义了一个马尔科夫链扩散步骤，以缓慢地向数据添加随机噪声，然后学习逆扩散过程以从噪声中构建所需的数据样本。与VAE或Flow-based models不同，diffusion models是通过固定程序学习的，并且潜变量具有高纬度（与原始数据相同）。&lt;/p&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/DDPM/diffusion.png&#34; width=&#34;80%&#34; titile=&#34;&#34; /&gt;&lt;/center&gt;
+&lt;center&gt;Diffusion Process.(Image source:&lt;a href=&#34;https://speech.ee.ntu.edu.tw/~hylee/ml/ml2023-course-data/DDPM%20(v7).pdf&#34;&gt;Hung-yi Lee&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;
+&lt;p&gt;根据上面的描述，我们脑海中可以很自然的将扩散过程表示出来。但是在&lt;em&gt;denoising diffusion probabilistic models&lt;/em&gt;（&lt;strong&gt;DDPM;&lt;/strong&gt;&lt;a href=&#34;https://arxiv.org/abs/2006.11239&#34;&gt;Ho et al.2020&lt;/a&gt;）中的算法并不这么简单。&lt;/p&gt;
+&lt;h2 id=&#34;training&#34;&gt;Training&lt;/h2&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/DDPM/training.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
+&lt;center&gt;Training.(Image source:&lt;a href=&#34;https://arxiv.org/abs/2006.11239&#34;&gt;DDPM&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;</description>
     </item>
     <item>
       <title>关于</title>
