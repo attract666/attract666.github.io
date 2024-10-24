@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Vision-Language-Models on JiaHe&#39;s Blog</title>
+    <link>https://attract666.github.io/tags/vision-language-models/</link>
+    <description>Recent content in Vision-Language-Models on JiaHe&#39;s Blog</description>
+    <generator>Hugo -- 0.134.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 23 Oct 2024 19:09:20 +0800</lastBuildDate>
+    <atom:link href="https://attract666.github.io/tags/vision-language-models/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>从零开始学LLaVA 01</title>
+      <link>https://attract666.github.io/posts/llava_01/</link>
+      <pubDate>Wed, 23 Oct 2024 19:09:20 +0800</pubDate>
+      <guid>https://attract666.github.io/posts/llava_01/</guid>
+      <description>&lt;h1 id=&#34;从llava论文开始&#34;&gt;从LLaVA论文开始&lt;/h1&gt;
+&lt;p&gt;LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)&lt;/p&gt;
+&lt;p&gt;Paper link: &lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;&lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;https://arxiv.org/abs/2304.08485&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Github: &lt;a href=&#34;https://github.com/haotian-liu/LLaVA&#34;&gt;&lt;a href=&#34;https://github.com/haotian-liu/LLaVA&#34;&gt;https://github.com/haotian-liu/LLaVA&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;论文亮点&#34;&gt;论文亮点&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;多模态 instruction-following data：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类&lt;/li&gt;
+&lt;li&gt;多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;网络架构&#34;&gt;网络架构&lt;/h2&gt;
+&lt;p&gt;结构上vision encoder使用的是CLIP-L/14（&lt;strong&gt;使用倒数第二层得到的特征，实验证明效果会更好，作者分析认为是因为最后一层聚焦图像的全局信息，倒数第二层更关注局部特征&lt;/strong&gt;）进行编码，之后使用一个投影层（&lt;strong&gt;全连接层&lt;/strong&gt;）对齐到word embedding，输入的文本经过embedding模型得到word embedding，两个embedding拼接后一起输入给llama。&lt;/p&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/LLaVA_01/LLaVA.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
+&lt;center&gt;LLaVA Architecture.(Image source:&lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;LLaVA&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;
+&lt;h2 id=&#34;数据集构成及数据收集细节&#34;&gt;数据集构成及数据收集细节&lt;/h2&gt;
+&lt;p&gt;训练分为两个阶段，第一个阶段只更新投影层，使用的是一个简单视觉问答的数据集（CC3M中过滤出595K）；第二个阶段训练llama和投影层，数据集使用的是COCO数据集（158K）和ScienceQA微调出了两个版本。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;预训练数据集（CC3M过滤）&lt;/strong&gt;：使用Spacy（NLP库）为CC3M上的每个caption提取名词短语，并计算每个唯一名词短语的频率。忽略掉频率小于3的名词短语，对于频率大于100的名词短语随机选择一个数量为100的子集。最终产生595K个图像-文本对。&lt;/p&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/LLaVA_01/cc3m_filtered.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
+&lt;center&gt;CC3M Filtered.(Image source:&lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;LLaVA&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;
+&lt;p&gt;将图像文本对采用简单的指令构造，用下图所示的问题提示GPT-4，生成对应的答案。&lt;/p&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/LLaVA_01/cc3m_prompt.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
+&lt;center&gt;CC3M image description.(Image source:&lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;LLaVA&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;
+&lt;p&gt;指令格式如下：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

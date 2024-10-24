@@ -119,7 +119,7 @@
   "description": "",
   "thumbnailUrl": "https://attract666.github.io/favicon.ico",
   "sameAs": [
-      
+      "https://github.com/attract666"
   ]
 }
 </script>
@@ -166,11 +166,6 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="https://attract666.github.io/" title="Home">
-                    <span class="active">Home</span>
-                </a>
-            </li>
-            <li>
                 <a href="https://attract666.github.io/posts/" title="All posts">
                     <span>All posts</span>
                 </a>
@@ -198,29 +193,43 @@
         </ul>
     </nav>
 </header>
-<main class="main"> 
+<main class="main"><div class="profile">
+    <div class="profile_inner">
+        <img draggable="false" src="https://attract666.github.io/img/profile.png" alt="profile image" title=""
+            height="240" width="240" />
+        <h1>JiaHe&rsquo;s Blog</h1>
+        <span></span><div class="social-icons" >
+    <a href="https://github.com/attract666" target="_blank" rel="noopener noreferrer me"
+        title="Github">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+    stroke-linecap="round" stroke-linejoin="round">
+    <path
+        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+    </path>
+</svg>
+    </a>
+</div>
 
+        <div class="buttons">
+            <a class="button" href="/posts" rel="noopener" title="All posts">
+                <span class="button-inner">
+                    All posts
+                </span>
+            </a>
+            <a class="button" href="/categories" rel="noopener" title="Categories">
+                <span class="button-inner">
+                    Categories
+                </span>
+            </a>
+            <a class="button" href="/tags" rel="noopener" title="Tags">
+                <span class="button-inner">
+                    Tags
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
 
-
-<article class="first-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Diffusion Models
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>什么是Generative Model? 我们可以看到的现实中的各种图片，视为已经观察到的数据，那么理论上必然存在一个分布$p(x)$可以描述它们。如果我们想要生成一张图片，很自然的想法就是从这个分布$p(x)$中采样一个点。也就是说，如果我们可以通过某种方法学习到对真实数据映射的数据分布$p(x)$，那么我们就可以通过这个分布生成新的样本。但是现实生活中，这个分布$p(x)$是复杂的，我们很难真的完全建模出来，因此有时我们也使用学习到的模型来评估观察到的货采样数据的可能性。
-在现有的Generative Model有以下几个大方向。GAN对复杂分布的采样过程进行建模，并以对抗方式学习。likelihood-based旨在学习为观察到的数据样本分配高可能性的模型，这包括自回归模型和VAE。energy-based将分布学习为任意灵活的能量函数，然后将其归一化。
-AE &amp; VAE 我们所观察到的数据可以被视为一些更高层次的表示的函数所生成的，我们可以近似的描述我们观察到的数据的潜在表示，用随机变量$z$表示，也称之为潜变量（latent variable）。在生成建模中，我们通常寻求学习较低维度的潜在表示。这是因为如果没有强大的先验知识，试图学习比观察更高维的表示是徒劳的。另一方面，学习低维潜变量也可以被视为一种压缩形式，并且可以潜在揭示描述观察结果的语义上有意义的结构。
-Autoencoder.(Image source:Lilian Weng) 这就是Autoencoder(AE)的想法，AE包含编码器$g(.)$和解码器$f(.)$，输入$x$的低维压缩表示是$z = g_{\phi}(x)$，重构后的输出是$x’ = f_{\theta}(g_{\phi}(x))$。参数$(\theta, \phi)$的学习目标是输入与输出尽可能相似，即$x \approx x’$，这个损失函数我们也称之为重构损失。
-Variational Autoencoder（VAE）的思想实际上与AE不太相似。在VAE中，我们不想将输入映射到固定向量中，而是将其映射到分布中。我们将此分布记为$p_{\theta}$，参数为$\theta$，于是我们可以有如下定义：
-先验概率$p_{\theta}(z)$ 似然性$p_{\theta}(x | z)$ 后验概率$p_{\theta}(z | x)$ 假设我们知道这个分布的真实参数$\theta^{*}$，为了使得我们的生成模型生成看起来更像真实数据的样本$x^{(i)}$，我们可以：
-先从已知的分布$p_{\theta^{*}}(z)$中采样$z^{(i)}$ 然后从条件分布$p_{\theta^{*}}(x | z = z^{(i)})$中采样一个$x^{(i)}$ 那么这个分布我们似乎就可以写出来了:
-pθ∗(x(i))=∫pθ∗(x(i)|z)pθ∗(z)dz
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2024-09-09 15:58:57 +0800 CST'>九月 9, 2024</span></footer>
-  <a class="entry-link" aria-label="post link to Diffusion Models" href="https://attract666.github.io/posts/ddpm/"></a>
-</article>
     </main>
     
 <footer class="footer">

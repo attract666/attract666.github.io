@@ -262,11 +262,6 @@ pθ∗(x(i))=∫pθ∗(x(i)|z)pθ∗(z)dz"/>
         </div>
         <ul id="menu">
             <li>
-                <a href="https://attract666.github.io/" title="Home">
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
                 <a href="https://attract666.github.io/posts/" title="All posts">
                     <span>All posts</span>
                 </a>
@@ -305,31 +300,92 @@ pθ∗(x(i))=∫pθ∗(x(i)|z)pθ∗(z)dz"/>
     <div class="post-meta"><span title='2024-09-09 15:58:57 +0800 CST'>九月 9, 2024</span>
 
 </div>
-  </header> <div class="toc">
-    <details  open>
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">目录</span>
-        </summary>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">目录</span>
+            </summary>
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#%e4%bb%80%e4%b9%88%e6%98%afgenerative-model" aria-label="什么是Generative Model?">什么是Generative Model?</a><ul>
-                        
-                <li>
-                    <a href="#ae--vae" aria-label="AE &amp; VAE">AE &amp; VAE</a></li></ul>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e4%bb%80%e4%b9%88%e6%98%afgenerative-model" aria-label="什么是Generative Model?">什么是Generative Model?</a><ul>
+                            
+                    <li>
+                        <a href="#ae--vae" aria-label="AE &amp; VAE">AE &amp; VAE</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%bb%80%e4%b9%88%e6%98%afdiffusion-models" aria-label="什么是Diffusion Models？">什么是Diffusion Models？</a><ul>
+                            
+                    <li>
+                        <a href="#training" aria-label="Training">Training</a>
+                    </li>
+                </ul>
                 </li>
-                <li>
-                    <a href="#%e4%bb%80%e4%b9%88%e6%98%afdiffusion-models" aria-label="什么是Diffusion Models？">什么是Diffusion Models？</a><ul>
-                        
-                <li>
-                    <a href="#training" aria-label="Training">Training</a>
-                </li>
-            </ul>
-            </li>
-            </ul>
-        </div>
-    </details>
-</div>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
 
   <div class="post-content"><h1 id="什么是generative-model">什么是Generative Model?<a hidden class="anchor" aria-hidden="true" href="#什么是generative-model">#</a></h1>
 <p>我们可以看到的现实中的各种图片，视为已经观察到的数据，那么理论上必然存在一个分布$p(x)$可以描述它们。如果我们想要生成一张图片，很自然的想法就是从这个分布$p(x)$中采样一个点。也就是说，如果我们可以通过某种方法学习到对真实数据映射的数据分布$p(x)$，那么我们就可以通过这个分布生成新的样本。但是现实生活中，这个分布$p(x)$是复杂的，我们很难真的完全建模出来，因此有时我们也使用学习到的模型来评估观察到的货采样数据的可能性。</p>
@@ -446,6 +502,53 @@ pθ∗(x(i))=∫pθ∗(x(i)|z)pθ∗(z)dz"/>
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 
