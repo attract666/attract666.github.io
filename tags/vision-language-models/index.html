@@ -195,10 +195,10 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>从LLaVA论文开始 LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)
+    <p>从LLaVA-1.0论文开始 LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)
 Paper link: https://arxiv.org/abs/2304.08485
 Github: https://github.com/haotian-liu/LLaVA
-论文亮点 多模态 instruction-following data：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类 多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space 网络架构 结构上vision encoder使用的是CLIP-L/14（使用倒数第二层得到的特征，实验证明效果会更好，作者分析认为是因为最后一层聚焦图像的全局信息，倒数第二层更关注局部特征）进行编码，之后使用一个投影层（全连接层）对齐到word embedding，输入的文本经过embedding模型得到word embedding，两个embedding拼接后一起输入给llama。
+论文亮点 多模态 instruction-following 数据：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类 多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space 网络架构 结构上vision encoder使用的是CLIP-L/14（使用倒数第二层得到的特征，实验证明效果会更好，作者分析认为是因为最后一层聚焦图像的全局信息，倒数第二层更关注局部特征）进行编码，之后使用一个投影层（全连接层）对齐到word embedding，输入的文本经过embedding模型得到word embedding，两个embedding拼接后一起输入给llama。
 LLaVA Architecture.(Image source:LLaVA)数据集构成及数据收集细节 训练分为两个阶段，第一个阶段只更新投影层，使用的是一个简单视觉问答的数据集（CC3M中过滤出595K）；第二个阶段训练llama和投影层，数据集使用的是COCO数据集（158K）和ScienceQA微调出了两个版本。
 预训练数据集（CC3M过滤）：使用Spacy（NLP库）为CC3M上的每个caption提取名词短语，并计算每个唯一名词短语的频率。忽略掉频率小于3的名词短语，对于频率大于100的名词短语随机选择一个数量为100的子集。最终产生595K个图像-文本对。
 CC3M Filtered.(Image source:LLaVA)将图像文本对采用简单的指令构造，用下图所示的问题提示GPT-4，生成对应的答案。

@@ -13,13 +13,13 @@
       <link>https://attract666.github.io/posts/llava_01/</link>
       <pubDate>Wed, 23 Oct 2024 19:09:20 +0800</pubDate>
       <guid>https://attract666.github.io/posts/llava_01/</guid>
-      <description>&lt;h1 id=&#34;从llava论文开始&#34;&gt;从LLaVA论文开始&lt;/h1&gt;
+      <description>&lt;h1 id=&#34;从llava-10论文开始&#34;&gt;从LLaVA-1.0论文开始&lt;/h1&gt;
 &lt;p&gt;LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)&lt;/p&gt;
 &lt;p&gt;Paper link: &lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;&lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;https://arxiv.org/abs/2304.08485&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Github: &lt;a href=&#34;https://github.com/haotian-liu/LLaVA&#34;&gt;&lt;a href=&#34;https://github.com/haotian-liu/LLaVA&#34;&gt;https://github.com/haotian-liu/LLaVA&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;论文亮点&#34;&gt;论文亮点&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;多模态 instruction-following data：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类&lt;/li&gt;
+&lt;li&gt;多模态 instruction-following 数据：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类&lt;/li&gt;
 &lt;li&gt;多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;网络架构&#34;&gt;网络架构&lt;/h2&gt;

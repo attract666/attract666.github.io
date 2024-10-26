@@ -7,13 +7,13 @@
 <meta name="robots" content="index, follow">
 <title>从零开始学LLaVA 01 | JiaHe&#39;s Blog</title>
 <meta name="keywords" content="vision-language-models">
-<meta name="description" content="从LLaVA论文开始
+<meta name="description" content="从LLaVA-1.0论文开始
 LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)
 Paper link: https://arxiv.org/abs/2304.08485
 Github: https://github.com/haotian-liu/LLaVA
 论文亮点
 
-多模态 instruction-following data：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类
+多模态 instruction-following 数据：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类
 多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space
 
 网络架构
@@ -120,13 +120,13 @@ CC3M image description.(Image source:LLaVA)
 </style>
 
 <meta property="og:title" content="从零开始学LLaVA 01" />
-<meta property="og:description" content="从LLaVA论文开始
+<meta property="og:description" content="从LLaVA-1.0论文开始
 LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)
 Paper link: https://arxiv.org/abs/2304.08485
 Github: https://github.com/haotian-liu/LLaVA
 论文亮点
 
-多模态 instruction-following data：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类
+多模态 instruction-following 数据：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类
 多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space
 
 网络架构
@@ -149,13 +149,13 @@ CC3M image description.(Image source:LLaVA)
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="从零开始学LLaVA 01"/>
-<meta name="twitter:description" content="从LLaVA论文开始
+<meta name="twitter:description" content="从LLaVA-1.0论文开始
 LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)
 Paper link: https://arxiv.org/abs/2304.08485
 Github: https://github.com/haotian-liu/LLaVA
 论文亮点
 
-多模态 instruction-following data：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类
+多模态 instruction-following 数据：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类
 多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space
 
 网络架构
@@ -199,12 +199,12 @@ CC3M image description.(Image source:LLaVA)
   "@type": "BlogPosting",
   "headline": "从零开始学LLaVA 01",
   "name": "从零开始学LLaVA 01",
-  "description": "从LLaVA论文开始 LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)\nPaper link: https://arxiv.org/abs/2304.08485\nGithub: https://github.com/haotian-liu/LLaVA\n论文亮点 多模态 instruction-following data：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类 多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space 网络架构 结构上vision encoder使用的是CLIP-L/14（使用倒数第二层得到的特征，实验证明效果会更好，作者分析认为是因为最后一层聚焦图像的全局信息，倒数第二层更关注局部特征）进行编码，之后使用一个投影层（全连接层）对齐到word embedding，输入的文本经过embedding模型得到word embedding，两个embedding拼接后一起输入给llama。\nLLaVA Architecture.(Image source:LLaVA)\r数据集构成及数据收集细节 训练分为两个阶段，第一个阶段只更新投影层，使用的是一个简单视觉问答的数据集（CC3M中过滤出595K）；第二个阶段训练llama和投影层，数据集使用的是COCO数据集（158K）和ScienceQA微调出了两个版本。\n预训练数据集（CC3M过滤）：使用Spacy（NLP库）为CC3M上的每个caption提取名词短语，并计算每个唯一名词短语的频率。忽略掉频率小于3的名词短语，对于频率大于100的名词短语随机选择一个数量为100的子集。最终产生595K个图像-文本对。\nCC3M Filtered.(Image source:LLaVA)\r将图像文本对采用简单的指令构造，用下图所示的问题提示GPT-4，生成对应的答案。\nCC3M image description.(Image source:LLaVA)\r指令格式如下：\n",
+  "description": "从LLaVA-1.0论文开始 LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)\nPaper link: https://arxiv.org/abs/2304.08485\nGithub: https://github.com/haotian-liu/LLaVA\n论文亮点 多模态 instruction-following 数据：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类 多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space 网络架构 结构上vision encoder使用的是CLIP-L/14（使用倒数第二层得到的特征，实验证明效果会更好，作者分析认为是因为最后一层聚焦图像的全局信息，倒数第二层更关注局部特征）进行编码，之后使用一个投影层（全连接层）对齐到word embedding，输入的文本经过embedding模型得到word embedding，两个embedding拼接后一起输入给llama。\nLLaVA Architecture.(Image source:LLaVA)\r数据集构成及数据收集细节 训练分为两个阶段，第一个阶段只更新投影层，使用的是一个简单视觉问答的数据集（CC3M中过滤出595K）；第二个阶段训练llama和投影层，数据集使用的是COCO数据集（158K）和ScienceQA微调出了两个版本。\n预训练数据集（CC3M过滤）：使用Spacy（NLP库）为CC3M上的每个caption提取名词短语，并计算每个唯一名词短语的频率。忽略掉频率小于3的名词短语，对于频率大于100的名词短语随机选择一个数量为100的子集。最终产生595K个图像-文本对。\nCC3M Filtered.(Image source:LLaVA)\r将图像文本对采用简单的指令构造，用下图所示的问题提示GPT-4，生成对应的答案。\nCC3M image description.(Image source:LLaVA)\r指令格式如下：\n",
   "keywords": [
     "vision-language-models"
   ],
-  "articleBody": "从LLaVA论文开始 LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)\nPaper link: https://arxiv.org/abs/2304.08485\nGithub: https://github.com/haotian-liu/LLaVA\n论文亮点 多模态 instruction-following data：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类 多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space 网络架构 结构上vision encoder使用的是CLIP-L/14（使用倒数第二层得到的特征，实验证明效果会更好，作者分析认为是因为最后一层聚焦图像的全局信息，倒数第二层更关注局部特征）进行编码，之后使用一个投影层（全连接层）对齐到word embedding，输入的文本经过embedding模型得到word embedding，两个embedding拼接后一起输入给llama。\nLLaVA Architecture.(Image source:LLaVA)\r数据集构成及数据收集细节 训练分为两个阶段，第一个阶段只更新投影层，使用的是一个简单视觉问答的数据集（CC3M中过滤出595K）；第二个阶段训练llama和投影层，数据集使用的是COCO数据集（158K）和ScienceQA微调出了两个版本。\n预训练数据集（CC3M过滤）：使用Spacy（NLP库）为CC3M上的每个caption提取名词短语，并计算每个唯一名词短语的频率。忽略掉频率小于3的名词短语，对于频率大于100的名词短语随机选择一个数量为100的子集。最终产生595K个图像-文本对。\nCC3M Filtered.(Image source:LLaVA)\r将图像文本对采用简单的指令构造，用下图所示的问题提示GPT-4，生成对应的答案。\nCC3M image description.(Image source:LLaVA)\r指令格式如下：\nCC3M instructions.(Image source:LLaVA)\r指令微调数据集：使用COCO数据集，将图像描述、bbox、类别等信息输入给GPT4-text-only生成对话、细节描述和复杂推理三种类型instruction-following数据。最终生成58K对话、23K细节描述和77K复杂推理\nimport torch import pandas ",
-  "wordCount" : "49",
+  "articleBody": "从LLaVA-1.0论文开始 LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)\nPaper link: https://arxiv.org/abs/2304.08485\nGithub: https://github.com/haotian-liu/LLaVA\n论文亮点 多模态 instruction-following 数据：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类 多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space 网络架构 结构上vision encoder使用的是CLIP-L/14（使用倒数第二层得到的特征，实验证明效果会更好，作者分析认为是因为最后一层聚焦图像的全局信息，倒数第二层更关注局部特征）进行编码，之后使用一个投影层（全连接层）对齐到word embedding，输入的文本经过embedding模型得到word embedding，两个embedding拼接后一起输入给llama。\nLLaVA Architecture.(Image source:LLaVA)\r数据集构成及数据收集细节 训练分为两个阶段，第一个阶段只更新投影层，使用的是一个简单视觉问答的数据集（CC3M中过滤出595K）；第二个阶段训练llama和投影层，数据集使用的是COCO数据集（158K）和ScienceQA微调出了两个版本。\n预训练数据集（CC3M过滤）：使用Spacy（NLP库）为CC3M上的每个caption提取名词短语，并计算每个唯一名词短语的频率。忽略掉频率小于3的名词短语，对于频率大于100的名词短语随机选择一个数量为100的子集。最终产生595K个图像-文本对。\nCC3M Filtered.(Image source:LLaVA)\r将图像文本对采用简单的指令构造，用下图所示的问题提示GPT-4，生成对应的答案。\nCC3M image description.(Image source:LLaVA)\r指令格式如下：\nCC3M instructions.(Image source:LLaVA)\r指令微调数据集：使用COCO数据集，将图像描述、bbox、类别等信息输入给GPT4-text-only生成对话、细节描述和复杂推理三种类型instruction-following数据。最终生成58K对话、23K细节描述和77K复杂推理。\n对话：对图像内容进行多轮回答，且只考虑有明确答案的问题，通过这样的方式保证答案的质量 细节描述：使用另外一些描述的提示，随机让GPT4-text-only生成详细描述 复杂推理：上面都是视觉本身内容，设计了一些需要深度推理的问题，答案要有严格的逻辑 训练方式 训练的目标就是最大化似然概率\nTrain traget.(Image source:LLaVA)\r其中\nInstruction.(Image source:LLaVA)\r在计算自回归模型的loss时，只考虑回答$X_a$和的tokens\nInput sequence.(Image source:LLaVA)\r推理 在我们阅读完LLaVA论文后，想要获得自己的LLaVA，第一件要做的事很自然是先跑通LLaVA的推理脚本。这里我考虑的是直接跑LLaVA仓库的代码，加载官方给出的模型，而不是huggingface集成好的模型。推理的入口函数是eval_model()。\n它的实现如下：\n# llava/eval/run_llava.py def eval_model(args): # Model # 将linear层和layernorm层的reset_parameters方法用空lambda函数代替，达到禁用pytorch默认初始化 disable_torch_init() # 初始化模型 model_name = get_model_name_from_path(args.model_path) tokenizer, model, image_processor, context_len = load_pretrained_model( args.model_path, args.model_base, model_name ) # 数据预处理 qs = args.query image_token_se = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN if IMAGE_PLACEHOLDER in qs: if model.config.mm_use_im_start_end: qs = re.sub(IMAGE_PLACEHOLDER, image_token_se, qs) else: qs = re.sub(IMAGE_PLACEHOLDER, DEFAULT_IMAGE_TOKEN, qs) else: if model.config.mm_use_im_start_end: qs = image_token_se + \"\\n\" + qs else: qs = DEFAULT_IMAGE_TOKEN + \"\\n\" + qs if \"llama-2\" in model_name.lower(): conv_mode = \"llava_llama_2\" ... else: conv_mode = \"llava_v0\" if args.conv_mode is not None and conv_mode != args.conv_mode: print( \"[WARNING] the auto inferred conversation mode is {}, while `--conv-mode` is {}, using {}\".format( conv_mode, args.conv_mode, args.conv_mode ) ) else: args.conv_mode = conv_mode conv = conv_templates[args.conv_mode].copy() conv.append_message(conv.roles[0], qs) conv.append_message(conv.roles[1], None) prompt = conv.get_prompt() image_files = image_parser(args) images = load_images(image_files) image_sizes = [x.size for x in images] images_tensor = process_images( images, image_processor, model.config ).to(model.device, dtype=torch.float16) input_ids = ( tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors=\"pt\") .unsqueeze(0) .cuda() ) # 推理 with torch.inference_mode(): output_ids = model.generate( input_ids, images=images_tensor, image_sizes=image_sizes, do_sample=True if args.temperature \u003e 0 else False, temperature=args.temperature, top_p=args.top_p, num_beams=args.num_beams, max_new_tokens=args.max_new_tokens, use_cache=True, ) # 解码 outputs = tokenizer.batch_decode(output_ids, skip_special_tokens=True)[0].strip() print(outputs) 整块函数的实现框架是：\n初始化模型：通过disable_torch_init()来加速模型加载 数据预处理：拼接caption和image token 推理：接受input_ids和images作为输入，输出output_ids 解码 之后具体来看看各个部分的实现\n初始化模型 初始化模型主要有两个函数get_model_name_from_path()和load_pretrained_model()。\nget_model_name_from_path()的实现比较简单，就是把模型路径名去除首尾\"/“后，在将字符串按”/“分割成一个列表，之后根据列表最后一个元素是否已\"checkpoint-“开头，返回model_name。\nload_pretrained_model()的实现则比较长，但并不复杂。\n# llava/model/builder.py def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, load_4bit=False, device_map=\"auto\", device=\"cuda\", use_flash_attn=False, **kwargs): ... # 前面主要是一些关于device、量化参数和flash_attention的设置 # Load LLaVA model if 'llava' in model.name.lower(): if 'lora' in model_name.lower() and model_base is None: # model_name要包含lora，同时提供model_base ... if 'lora' in model_name.lower() and model_base is not None: # 使用LlavaConfig从model_path中加载lora配置 ... # 通过参数model_base加载tokenizer tokenizer = AutoTokenizer.from_pretrained(model_base, use_fast=False) # 从base model中加载LLaVA，确保 token_num, token_dim = lm_head.out_features, lm_head.in_features model = LlavaLlamaForCausalLM.from_pretrained(model_base, low_cpu_mem_usage=True, config=lora_cfg_pretrained, **kwargs) ... # 加载LLaVA额外权重，检查是否存在non_lora_trainables文件，没有就假定从HF hub下载 ... # 加载lora权重 model = PeftModel.from_pretrained(model, model_path) # 合并lora权重 model = model.merge_and_unload() elif model_base is not None: ... else: if 'mpt' in model_name.lower(): ... elif 'mistral' in model_name.lower(): ... else: tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False) model = LlavaLlamaForCausalLM.from_pretrained( model_path, low_cpu_mem_usage=True, **kwargs ) else: # Load language model ... image_processor = None if 'llava' in model_name.lower(): # 从模型的config中获取start和end token，如果不存在则默认为false。获取patch token，不存在默认为True mm_use_im_start_end = getattr(model.config, \"mm_use_im_start_end\", False) mm_use_im_patch_token = getattr(model.config, \"mm_use_im_patch_token\", True) if mm_use_im_patch_token: tokenizer.add_tokens([DEFAULT_IMAGE_PATCH_TOKEN], special_tokens=True) if mm_use_im_start_end: tokenizer.add_tokens([DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN], special_tokens=True) model.resize_token_embeddings(len(tokenizer)) # 加载vision tower vision_tower = model.get_vision_tower() if not vision_tower.is_loaded: vision_tower.load_model(device_map=device_map) if device_map != 'auto': vision_tower.to(device=device_map, dtype=torch.float16) image_processor = vision_tower.image_processor # 检查最大输入序列长度 if hasattr(model.config, \"max_sequence_length\"): context_len = model.config.max_sequence_length else: context_len = 2048 return tokenizer, model, image_processor, context_len load_pretrained_model()的实现逻辑是：\n初始化tokenizer、`model`` 从model中加载vision_tower的image_processor 数据预处理 接下来是，是数据预处理的实现\n# llava/eval/run_llava.py def eval_model(args): ... # 加载query和定义image token qs = args.query image_token_se = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN # 如果query中存在图片占位符 if IMAGE_PLACEHOLDER in qs: if model.config.mm_use_im_start_end: qs = re.sub(IMAGE_PLACEHOLDER, image_token_se, qs) else: qs = re.sub(IMAGE_PLACEHOLDER, DEFAULT_IMAGE_TOKEN, qs) else: if model.config.mm_use_im_start_end: qs = image_token_se + \"\\n\" + qs else: qs = DEFAULT_IMAGE_TOKEN + \"\\n\" + qs # 获取对话模板并拼接成prompt if \"llama-2\" in model_name.lower(): ... conv = conv_templates[args.conv_mode].copy() conv.append_message(conv.roles[0], qs) conv.append_message(conv.roles[1], None) prompt = conv.get_prompt() # 加载图片并处理图片 image_files = image_parser(args) images = load_images(image_files) image_sizes = [x.size for x in images] images_tensor = process_images( images, image_processor, model.config ).to(model.device, dtype=torch.float16) # tokenize prompt input_ids = ( tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors=\"pt\") .unsqueeze(0) .cuda() ) 我们可以简单画一张图来表示数据预处理流程：\n",
+  "wordCount" : "559",
   "inLanguage": "zh",
   "datePublished": "2024-10-23T19:09:20+08:00",
   "dateModified": "2024-10-23T19:09:20+08:00",
@@ -312,14 +312,24 @@ CC3M image description.(Image source:LLaVA)
 
             <div class="inner"><ul>
                     <li>
-                        <a href="#%e4%bb%8ellava%e8%ae%ba%e6%96%87%e5%bc%80%e5%a7%8b" aria-label="从LLaVA论文开始">从LLaVA论文开始</a><ul>
+                        <a href="#%e4%bb%8ellava-10%e8%ae%ba%e6%96%87%e5%bc%80%e5%a7%8b" aria-label="从LLaVA-1.0论文开始">从LLaVA-1.0论文开始</a><ul>
                             
                     <li>
                         <a href="#%e8%ae%ba%e6%96%87%e4%ba%ae%e7%82%b9" aria-label="论文亮点">论文亮点</a></li>
                     <li>
                         <a href="#%e7%bd%91%e7%bb%9c%e6%9e%b6%e6%9e%84" aria-label="网络架构">网络架构</a></li>
                     <li>
-                        <a href="#%e6%95%b0%e6%8d%ae%e9%9b%86%e6%9e%84%e6%88%90%e5%8f%8a%e6%95%b0%e6%8d%ae%e6%94%b6%e9%9b%86%e7%bb%86%e8%8a%82" aria-label="数据集构成及数据收集细节">数据集构成及数据收集细节</a>
+                        <a href="#%e6%95%b0%e6%8d%ae%e9%9b%86%e6%9e%84%e6%88%90%e5%8f%8a%e6%95%b0%e6%8d%ae%e6%94%b6%e9%9b%86%e7%bb%86%e8%8a%82" aria-label="数据集构成及数据收集细节">数据集构成及数据收集细节</a></li>
+                    <li>
+                        <a href="#%e8%ae%ad%e7%bb%83%e6%96%b9%e5%bc%8f" aria-label="训练方式">训练方式</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%8e%a8%e7%90%86" aria-label="推理">推理</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%88%9d%e5%a7%8b%e5%8c%96%e6%a8%a1%e5%9e%8b" aria-label="初始化模型">初始化模型</a></li>
+                    <li>
+                        <a href="#%e6%95%b0%e6%8d%ae%e9%a2%84%e5%a4%84%e7%90%86" aria-label="数据预处理">数据预处理</a>
                     </li>
                 </ul>
                 </li>
@@ -388,13 +398,13 @@ CC3M image description.(Image source:LLaVA)
     }
 </script>
 
-  <div class="post-content"><h1 id="从llava论文开始">从LLaVA论文开始<a hidden class="anchor" aria-hidden="true" href="#从llava论文开始">#</a></h1>
+  <div class="post-content"><h1 id="从llava-10论文开始">从LLaVA-1.0论文开始<a hidden class="anchor" aria-hidden="true" href="#从llava-10论文开始">#</a></h1>
 <p>LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)</p>
 <p>Paper link: <a href="https://arxiv.org/abs/2304.08485"><a href="https://arxiv.org/abs/2304.08485">https://arxiv.org/abs/2304.08485</a></a></p>
 <p>Github: <a href="https://github.com/haotian-liu/LLaVA"><a href="https://github.com/haotian-liu/LLaVA">https://github.com/haotian-liu/LLaVA</a></a></p>
 <h2 id="论文亮点">论文亮点<a hidden class="anchor" aria-hidden="true" href="#论文亮点">#</a></h2>
 <ul>
-<li>多模态 instruction-following data：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类</li>
+<li>多模态 instruction-following 数据：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类</li>
 <li>多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space</li>
 </ul>
 <h2 id="网络架构">网络架构<a hidden class="anchor" aria-hidden="true" href="#网络架构">#</a></h2>
@@ -412,10 +422,237 @@ CC3M image description.(Image source:LLaVA)
 <p>指令格式如下：</p>
 <center><img src="/img/LLaVA_01/cc3m_instruction.png" width="70%" title=""></center>
 <center>CC3M instructions.(Image source:<a href="https://arxiv.org/abs/2304.08485">LLaVA</a>)</center><br/>
-<p><strong>指令微调数据集</strong>：使用COCO数据集，将图像描述、bbox、类别等信息输入给GPT4-text-only生成对话、细节描述和复杂推理三种类型instruction-following数据。最终生成58K对话、23K细节描述和77K复杂推理</p>
-<div class="highlight"><pre tabindex="0" style="color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#5bc4bf">import</span> <span style="color:#fec418">torch</span>
-</span></span><span style="display:flex;"><span><span style="color:#5bc4bf">import</span> <span style="color:#fec418">pandas</span>
-</span></span></code></pre></div>
+<p><strong>指令微调数据集</strong>：使用COCO数据集，将图像描述、bbox、类别等信息输入给GPT4-text-only生成对话、细节描述和复杂推理三种类型instruction-following数据。最终生成58K对话、23K细节描述和77K复杂推理。</p>
+<ul>
+<li>对话：对图像内容进行多轮回答，<strong>且只考虑有明确答案的问题</strong>，通过这样的方式保证答案的质量</li>
+<li>细节描述：使用另外一些描述的提示，随机让GPT4-text-only生成详细描述</li>
+<li>复杂推理：上面都是视觉本身内容，设计了一些需要深度推理的问题，答案要有严格的逻辑</li>
+</ul>
+<h2 id="训练方式">训练方式<a hidden class="anchor" aria-hidden="true" href="#训练方式">#</a></h2>
+<p>训练的目标就是最大化似然概率</p>
+<center><img src="/img/LLaVA_01/train_target.png" width="70%" title=""></center>
+<center>Train traget.(Image source:<a href="https://arxiv.org/abs/2304.08485">LLaVA</a>)</center><br/>
+<p>其中</p>
+<center><img src="/img/LLaVA_01/x_instruct.png" width="70%" title=""></center>
+<center>Instruction.(Image source:<a href="https://arxiv.org/abs/2304.08485">LLaVA</a>)</center><br/>
+<p>在计算自回归模型的loss时，只考虑回答$X_a$和<code>&lt;STOP&gt;</code>的tokens</p>
+<center><img src="/img/LLaVA_01/input_sequence.png" width="70%" title=""></center>
+<center>Input sequence.(Image source:<a href="https://arxiv.org/abs/2304.08485">LLaVA</a>)</center><br/>
+<hr>
+<h1 id="推理">推理<a hidden class="anchor" aria-hidden="true" href="#推理">#</a></h1>
+<p>在我们阅读完LLaVA论文后，想要获得自己的LLaVA，第一件要做的事很自然是先跑通LLaVA的推理脚本。这里我考虑的是直接跑LLaVA仓库的代码，加载官方给出的模型，而不是huggingface集成好的模型。推理的入口函数是<code>eval_model()</code>。</p>
+<p>它的实现如下：</p>
+<div class="highlight"><pre tabindex="0" style="color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8d8687"># llava/eval/run_llava.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#815ba4">def</span> <span style="color:#06b6ef">eval_model</span>(args):
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># Model</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># 将linear层和layernorm层的reset_parameters方法用空lambda函数代替，达到禁用pytorch默认初始化</span>
+</span></span><span style="display:flex;"><span>    disable_torch_init()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># 初始化模型</span>
+</span></span><span style="display:flex;"><span>    model_name <span style="color:#5bc4bf">=</span> get_model_name_from_path(args<span style="color:#5bc4bf">.</span>model_path)
+</span></span><span style="display:flex;"><span>    tokenizer, model, image_processor, context_len <span style="color:#5bc4bf">=</span> load_pretrained_model(
+</span></span><span style="display:flex;"><span>        args<span style="color:#5bc4bf">.</span>model_path, args<span style="color:#5bc4bf">.</span>model_base, model_name
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># 数据预处理</span>
+</span></span><span style="display:flex;"><span>    qs <span style="color:#5bc4bf">=</span> args<span style="color:#5bc4bf">.</span>query
+</span></span><span style="display:flex;"><span>    image_token_se <span style="color:#5bc4bf">=</span> DEFAULT_IM_START_TOKEN <span style="color:#5bc4bf">+</span> DEFAULT_IMAGE_TOKEN <span style="color:#5bc4bf">+</span> DEFAULT_IM_END_TOKEN
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">if</span> IMAGE_PLACEHOLDER <span style="color:#5bc4bf">in</span> qs:
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">if</span> model<span style="color:#5bc4bf">.</span>config<span style="color:#5bc4bf">.</span>mm_use_im_start_end:
+</span></span><span style="display:flex;"><span>            qs <span style="color:#5bc4bf">=</span> re<span style="color:#5bc4bf">.</span>sub(IMAGE_PLACEHOLDER, image_token_se, qs)
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>            qs <span style="color:#5bc4bf">=</span> re<span style="color:#5bc4bf">.</span>sub(IMAGE_PLACEHOLDER, DEFAULT_IMAGE_TOKEN, qs)
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">if</span> model<span style="color:#5bc4bf">.</span>config<span style="color:#5bc4bf">.</span>mm_use_im_start_end:
+</span></span><span style="display:flex;"><span>            qs <span style="color:#5bc4bf">=</span> image_token_se <span style="color:#5bc4bf">+</span> <span style="color:#48b685">&#34;</span><span style="color:#f99b15">\n</span><span style="color:#48b685">&#34;</span> <span style="color:#5bc4bf">+</span> qs
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>            qs <span style="color:#5bc4bf">=</span> DEFAULT_IMAGE_TOKEN <span style="color:#5bc4bf">+</span> <span style="color:#48b685">&#34;</span><span style="color:#f99b15">\n</span><span style="color:#48b685">&#34;</span> <span style="color:#5bc4bf">+</span> qs
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">if</span> <span style="color:#48b685">&#34;llama-2&#34;</span> <span style="color:#5bc4bf">in</span> model_name<span style="color:#5bc4bf">.</span>lower():
+</span></span><span style="display:flex;"><span>        conv_mode <span style="color:#5bc4bf">=</span> <span style="color:#48b685">&#34;llava_llama_2&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>        conv_mode <span style="color:#5bc4bf">=</span> <span style="color:#48b685">&#34;llava_v0&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">if</span> args<span style="color:#5bc4bf">.</span>conv_mode <span style="color:#5bc4bf">is</span> <span style="color:#5bc4bf">not</span> <span style="color:#815ba4">None</span> <span style="color:#5bc4bf">and</span> conv_mode <span style="color:#5bc4bf">!=</span> args<span style="color:#5bc4bf">.</span>conv_mode:
+</span></span><span style="display:flex;"><span>        print(
+</span></span><span style="display:flex;"><span>            <span style="color:#48b685">&#34;[WARNING] the auto inferred conversation mode is </span><span style="color:#f99b15">{}</span><span style="color:#48b685">, while `--conv-mode` is </span><span style="color:#f99b15">{}</span><span style="color:#48b685">, using </span><span style="color:#f99b15">{}</span><span style="color:#48b685">&#34;</span><span style="color:#5bc4bf">.</span>format(
+</span></span><span style="display:flex;"><span>                conv_mode, args<span style="color:#5bc4bf">.</span>conv_mode, args<span style="color:#5bc4bf">.</span>conv_mode
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>        args<span style="color:#5bc4bf">.</span>conv_mode <span style="color:#5bc4bf">=</span> conv_mode
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    conv <span style="color:#5bc4bf">=</span> conv_templates[args<span style="color:#5bc4bf">.</span>conv_mode]<span style="color:#5bc4bf">.</span>copy()
+</span></span><span style="display:flex;"><span>    conv<span style="color:#5bc4bf">.</span>append_message(conv<span style="color:#5bc4bf">.</span>roles[<span style="color:#f99b15">0</span>], qs)
+</span></span><span style="display:flex;"><span>    conv<span style="color:#5bc4bf">.</span>append_message(conv<span style="color:#5bc4bf">.</span>roles[<span style="color:#f99b15">1</span>], <span style="color:#815ba4">None</span>)
+</span></span><span style="display:flex;"><span>    prompt <span style="color:#5bc4bf">=</span> conv<span style="color:#5bc4bf">.</span>get_prompt()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    image_files <span style="color:#5bc4bf">=</span> image_parser(args)
+</span></span><span style="display:flex;"><span>    images <span style="color:#5bc4bf">=</span> load_images(image_files)
+</span></span><span style="display:flex;"><span>    image_sizes <span style="color:#5bc4bf">=</span> [x<span style="color:#5bc4bf">.</span>size <span style="color:#815ba4">for</span> x <span style="color:#5bc4bf">in</span> images]
+</span></span><span style="display:flex;"><span>    images_tensor <span style="color:#5bc4bf">=</span> process_images(
+</span></span><span style="display:flex;"><span>        images,
+</span></span><span style="display:flex;"><span>        image_processor,
+</span></span><span style="display:flex;"><span>        model<span style="color:#5bc4bf">.</span>config
+</span></span><span style="display:flex;"><span>    )<span style="color:#5bc4bf">.</span>to(model<span style="color:#5bc4bf">.</span>device, dtype<span style="color:#5bc4bf">=</span>torch<span style="color:#5bc4bf">.</span>float16)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    input_ids <span style="color:#5bc4bf">=</span> (
+</span></span><span style="display:flex;"><span>        tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors<span style="color:#5bc4bf">=</span><span style="color:#48b685">&#34;pt&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#5bc4bf">.</span>unsqueeze(<span style="color:#f99b15">0</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#5bc4bf">.</span>cuda()
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># 推理</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">with</span> torch<span style="color:#5bc4bf">.</span>inference_mode():
+</span></span><span style="display:flex;"><span>        output_ids <span style="color:#5bc4bf">=</span> model<span style="color:#5bc4bf">.</span>generate(
+</span></span><span style="display:flex;"><span>            input_ids,
+</span></span><span style="display:flex;"><span>            images<span style="color:#5bc4bf">=</span>images_tensor,
+</span></span><span style="display:flex;"><span>            image_sizes<span style="color:#5bc4bf">=</span>image_sizes,
+</span></span><span style="display:flex;"><span>            do_sample<span style="color:#5bc4bf">=</span><span style="color:#815ba4">True</span> <span style="color:#815ba4">if</span> args<span style="color:#5bc4bf">.</span>temperature <span style="color:#5bc4bf">&gt;</span> <span style="color:#f99b15">0</span> <span style="color:#815ba4">else</span> <span style="color:#815ba4">False</span>,
+</span></span><span style="display:flex;"><span>            temperature<span style="color:#5bc4bf">=</span>args<span style="color:#5bc4bf">.</span>temperature,
+</span></span><span style="display:flex;"><span>            top_p<span style="color:#5bc4bf">=</span>args<span style="color:#5bc4bf">.</span>top_p,
+</span></span><span style="display:flex;"><span>            num_beams<span style="color:#5bc4bf">=</span>args<span style="color:#5bc4bf">.</span>num_beams,
+</span></span><span style="display:flex;"><span>            max_new_tokens<span style="color:#5bc4bf">=</span>args<span style="color:#5bc4bf">.</span>max_new_tokens,
+</span></span><span style="display:flex;"><span>            use_cache<span style="color:#5bc4bf">=</span><span style="color:#815ba4">True</span>,
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># 解码</span>
+</span></span><span style="display:flex;"><span>    outputs <span style="color:#5bc4bf">=</span> tokenizer<span style="color:#5bc4bf">.</span>batch_decode(output_ids, skip_special_tokens<span style="color:#5bc4bf">=</span><span style="color:#815ba4">True</span>)[<span style="color:#f99b15">0</span>]<span style="color:#5bc4bf">.</span>strip()
+</span></span><span style="display:flex;"><span>    print(outputs)
+</span></span></code></pre></div><p>整块函数的实现框架是：</p>
+<ul>
+<li>初始化模型：通过<code>disable_torch_init()</code>来加速模型加载</li>
+<li>数据预处理：拼接caption和image token</li>
+<li>推理：接受<code>input_ids</code>和<code>images</code>作为输入，输出<code>output_ids</code></li>
+<li>解码</li>
+</ul>
+<p>之后具体来看看各个部分的实现</p>
+<h2 id="初始化模型">初始化模型<a hidden class="anchor" aria-hidden="true" href="#初始化模型">#</a></h2>
+<p>初始化模型主要有两个函数<code>get_model_name_from_path()</code>和<code>load_pretrained_model()</code>。</p>
+<p><code>get_model_name_from_path()</code>的实现比较简单，就是把模型路径名去除首尾&quot;/&ldquo;后，在将字符串按&rdquo;/&ldquo;分割成一个列表，之后根据列表最后一个元素是否已&quot;checkpoint-&ldquo;开头，返回<code>model_name</code>。</p>
+<p><code>load_pretrained_model()</code>的实现则比较长，但并不复杂。</p>
+<div class="highlight"><pre tabindex="0" style="color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8d8687"># llava/model/builder.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#815ba4">def</span> <span style="color:#06b6ef">load_pretrained_model</span>(model_path, model_base, model_name, load_8bit<span style="color:#5bc4bf">=</span><span style="color:#815ba4">False</span>, load_4bit<span style="color:#5bc4bf">=</span><span style="color:#815ba4">False</span>, device_map<span style="color:#5bc4bf">=</span><span style="color:#48b685">&#34;auto&#34;</span>, device<span style="color:#5bc4bf">=</span><span style="color:#48b685">&#34;cuda&#34;</span>, use_flash_attn<span style="color:#5bc4bf">=</span><span style="color:#815ba4">False</span>, <span style="color:#5bc4bf">**</span>kwargs):
+</span></span><span style="display:flex;"><span>    <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># 前面主要是一些关于device、量化参数和flash_attention的设置</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># Load LLaVA model</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">if</span> <span style="color:#48b685">&#39;llava&#39;</span> <span style="color:#5bc4bf">in</span> model<span style="color:#5bc4bf">.</span>name<span style="color:#5bc4bf">.</span>lower():
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">if</span> <span style="color:#48b685">&#39;lora&#39;</span> <span style="color:#5bc4bf">in</span> model_name<span style="color:#5bc4bf">.</span>lower() <span style="color:#5bc4bf">and</span> model_base <span style="color:#5bc4bf">is</span> <span style="color:#815ba4">None</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#8d8687"># model_name要包含lora，同时提供model_base</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">if</span> <span style="color:#48b685">&#39;lora&#39;</span> <span style="color:#5bc4bf">in</span> model_name<span style="color:#5bc4bf">.</span>lower() <span style="color:#5bc4bf">and</span> model_base <span style="color:#5bc4bf">is</span> <span style="color:#5bc4bf">not</span> <span style="color:#815ba4">None</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#8d8687"># 使用LlavaConfig从model_path中加载lora配置</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8d8687"># 通过参数model_base加载tokenizer</span>
+</span></span><span style="display:flex;"><span>            tokenizer <span style="color:#5bc4bf">=</span> AutoTokenizer<span style="color:#5bc4bf">.</span>from_pretrained(model_base, use_fast<span style="color:#5bc4bf">=</span><span style="color:#815ba4">False</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#8d8687"># 从base model中加载LLaVA，确保 token_num, token_dim = lm_head.out_features, lm_head.in_features</span>
+</span></span><span style="display:flex;"><span>            model <span style="color:#5bc4bf">=</span> LlavaLlamaForCausalLM<span style="color:#5bc4bf">.</span>from_pretrained(model_base, low_cpu_mem_usage<span style="color:#5bc4bf">=</span><span style="color:#815ba4">True</span>, config<span style="color:#5bc4bf">=</span>lora_cfg_pretrained, <span style="color:#5bc4bf">**</span>kwargs)
+</span></span><span style="display:flex;"><span>            <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8d8687"># 加载LLaVA额外权重，检查是否存在non_lora_trainables文件，没有就假定从HF hub下载</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8d8687"># 加载lora权重</span>
+</span></span><span style="display:flex;"><span>            model <span style="color:#5bc4bf">=</span> PeftModel<span style="color:#5bc4bf">.</span>from_pretrained(model, model_path)
+</span></span><span style="display:flex;"><span>            <span style="color:#8d8687"># 合并lora权重</span>
+</span></span><span style="display:flex;"><span>            model <span style="color:#5bc4bf">=</span> model<span style="color:#5bc4bf">.</span>merge_and_unload()
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">elif</span> model_base <span style="color:#5bc4bf">is</span> <span style="color:#5bc4bf">not</span> <span style="color:#815ba4">None</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#815ba4">if</span> <span style="color:#48b685">&#39;mpt&#39;</span> <span style="color:#5bc4bf">in</span> model_name<span style="color:#5bc4bf">.</span>lower():
+</span></span><span style="display:flex;"><span>                <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#815ba4">elif</span> <span style="color:#48b685">&#39;mistral&#39;</span> <span style="color:#5bc4bf">in</span> model_name<span style="color:#5bc4bf">.</span>lower():
+</span></span><span style="display:flex;"><span>                <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>                tokenizer <span style="color:#5bc4bf">=</span> AutoTokenizer<span style="color:#5bc4bf">.</span>from_pretrained(model_path, use_fast<span style="color:#5bc4bf">=</span><span style="color:#815ba4">False</span>)
+</span></span><span style="display:flex;"><span>                model <span style="color:#5bc4bf">=</span> LlavaLlamaForCausalLM<span style="color:#5bc4bf">.</span>from_pretrained(
+</span></span><span style="display:flex;"><span>                    model_path,
+</span></span><span style="display:flex;"><span>                    low_cpu_mem_usage<span style="color:#5bc4bf">=</span><span style="color:#815ba4">True</span>,
+</span></span><span style="display:flex;"><span>                    <span style="color:#5bc4bf">**</span>kwargs
+</span></span><span style="display:flex;"><span>                )
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#8d8687"># Load language model</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    image_processor <span style="color:#5bc4bf">=</span> <span style="color:#815ba4">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">if</span> <span style="color:#48b685">&#39;llava&#39;</span> <span style="color:#5bc4bf">in</span> model_name<span style="color:#5bc4bf">.</span>lower():
+</span></span><span style="display:flex;"><span>        <span style="color:#8d8687"># 从模型的config中获取start和end token，如果不存在则默认为false。获取patch token，不存在默认为True</span>
+</span></span><span style="display:flex;"><span>        mm_use_im_start_end <span style="color:#5bc4bf">=</span> getattr(model<span style="color:#5bc4bf">.</span>config, <span style="color:#48b685">&#34;mm_use_im_start_end&#34;</span>, <span style="color:#815ba4">False</span>)
+</span></span><span style="display:flex;"><span>        mm_use_im_patch_token <span style="color:#5bc4bf">=</span> getattr(model<span style="color:#5bc4bf">.</span>config, <span style="color:#48b685">&#34;mm_use_im_patch_token&#34;</span>, <span style="color:#815ba4">True</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">if</span> mm_use_im_patch_token:
+</span></span><span style="display:flex;"><span>            tokenizer<span style="color:#5bc4bf">.</span>add_tokens([DEFAULT_IMAGE_PATCH_TOKEN], special_tokens<span style="color:#5bc4bf">=</span><span style="color:#815ba4">True</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">if</span> mm_use_im_start_end:
+</span></span><span style="display:flex;"><span>            tokenizer<span style="color:#5bc4bf">.</span>add_tokens([DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN], special_tokens<span style="color:#5bc4bf">=</span><span style="color:#815ba4">True</span>)
+</span></span><span style="display:flex;"><span>        model<span style="color:#5bc4bf">.</span>resize_token_embeddings(len(tokenizer))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#8d8687"># 加载vision tower</span>
+</span></span><span style="display:flex;"><span>        vision_tower <span style="color:#5bc4bf">=</span> model<span style="color:#5bc4bf">.</span>get_vision_tower()
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">if</span> <span style="color:#5bc4bf">not</span> vision_tower<span style="color:#5bc4bf">.</span>is_loaded:
+</span></span><span style="display:flex;"><span>            vision_tower<span style="color:#5bc4bf">.</span>load_model(device_map<span style="color:#5bc4bf">=</span>device_map)
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">if</span> device_map <span style="color:#5bc4bf">!=</span> <span style="color:#48b685">&#39;auto&#39;</span>:
+</span></span><span style="display:flex;"><span>            vision_tower<span style="color:#5bc4bf">.</span>to(device<span style="color:#5bc4bf">=</span>device_map, dtype<span style="color:#5bc4bf">=</span>torch<span style="color:#5bc4bf">.</span>float16)
+</span></span><span style="display:flex;"><span>        image_processor <span style="color:#5bc4bf">=</span> vision_tower<span style="color:#5bc4bf">.</span>image_processor
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># 检查最大输入序列长度</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">if</span> hasattr(model<span style="color:#5bc4bf">.</span>config, <span style="color:#48b685">&#34;max_sequence_length&#34;</span>):
+</span></span><span style="display:flex;"><span>        context_len <span style="color:#5bc4bf">=</span> model<span style="color:#5bc4bf">.</span>config<span style="color:#5bc4bf">.</span>max_sequence_length
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>        context_len <span style="color:#5bc4bf">=</span> <span style="color:#f99b15">2048</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">return</span> tokenizer, model, image_processor, context_len
+</span></span></code></pre></div><p><code>load_pretrained_model()</code>的实现逻辑是：</p>
+<ul>
+<li>初始化<code>tokenizer</code>、`model``</li>
+<li>从<code>model</code>中加载<code>vision_tower</code>的<code>image_processor</code></li>
+</ul>
+<h2 id="数据预处理">数据预处理<a hidden class="anchor" aria-hidden="true" href="#数据预处理">#</a></h2>
+<p>接下来是，是数据预处理的实现</p>
+<div class="highlight"><pre tabindex="0" style="color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#8d8687"># llava/eval/run_llava.py</span>
+</span></span><span style="display:flex;"><span><span style="color:#815ba4">def</span> <span style="color:#06b6ef">eval_model</span>(args):
+</span></span><span style="display:flex;"><span>    <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># 加载query和定义image token</span>
+</span></span><span style="display:flex;"><span>    qs <span style="color:#5bc4bf">=</span> args<span style="color:#5bc4bf">.</span>query
+</span></span><span style="display:flex;"><span>    image_token_se <span style="color:#5bc4bf">=</span> DEFAULT_IM_START_TOKEN <span style="color:#5bc4bf">+</span> DEFAULT_IMAGE_TOKEN <span style="color:#5bc4bf">+</span> DEFAULT_IM_END_TOKEN
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># 如果query中存在图片占位符</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">if</span> IMAGE_PLACEHOLDER <span style="color:#5bc4bf">in</span> qs:
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">if</span> model<span style="color:#5bc4bf">.</span>config<span style="color:#5bc4bf">.</span>mm_use_im_start_end:
+</span></span><span style="display:flex;"><span>            qs <span style="color:#5bc4bf">=</span> re<span style="color:#5bc4bf">.</span>sub(IMAGE_PLACEHOLDER, image_token_se, qs)
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>            qs <span style="color:#5bc4bf">=</span> re<span style="color:#5bc4bf">.</span>sub(IMAGE_PLACEHOLDER, DEFAULT_IMAGE_TOKEN, qs)
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">if</span> model<span style="color:#5bc4bf">.</span>config<span style="color:#5bc4bf">.</span>mm_use_im_start_end:
+</span></span><span style="display:flex;"><span>            qs <span style="color:#5bc4bf">=</span> image_token_se <span style="color:#5bc4bf">+</span> <span style="color:#48b685">&#34;</span><span style="color:#f99b15">\n</span><span style="color:#48b685">&#34;</span> <span style="color:#5bc4bf">+</span> qs
+</span></span><span style="display:flex;"><span>        <span style="color:#815ba4">else</span>:
+</span></span><span style="display:flex;"><span>            qs <span style="color:#5bc4bf">=</span> DEFAULT_IMAGE_TOKEN <span style="color:#5bc4bf">+</span> <span style="color:#48b685">&#34;</span><span style="color:#f99b15">\n</span><span style="color:#48b685">&#34;</span> <span style="color:#5bc4bf">+</span> qs
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># 获取对话模板并拼接成prompt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">if</span> <span style="color:#48b685">&#34;llama-2&#34;</span> <span style="color:#5bc4bf">in</span> model_name<span style="color:#5bc4bf">.</span>lower():
+</span></span><span style="display:flex;"><span>        <span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    conv <span style="color:#5bc4bf">=</span> conv_templates[args<span style="color:#5bc4bf">.</span>conv_mode]<span style="color:#5bc4bf">.</span>copy()
+</span></span><span style="display:flex;"><span>    conv<span style="color:#5bc4bf">.</span>append_message(conv<span style="color:#5bc4bf">.</span>roles[<span style="color:#f99b15">0</span>], qs)
+</span></span><span style="display:flex;"><span>    conv<span style="color:#5bc4bf">.</span>append_message(conv<span style="color:#5bc4bf">.</span>roles[<span style="color:#f99b15">1</span>], <span style="color:#815ba4">None</span>)
+</span></span><span style="display:flex;"><span>    prompt <span style="color:#5bc4bf">=</span> conv<span style="color:#5bc4bf">.</span>get_prompt()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># 加载图片并处理图片</span>
+</span></span><span style="display:flex;"><span>    image_files <span style="color:#5bc4bf">=</span> image_parser(args)
+</span></span><span style="display:flex;"><span>    images <span style="color:#5bc4bf">=</span> load_images(image_files)
+</span></span><span style="display:flex;"><span>    image_sizes <span style="color:#5bc4bf">=</span> [x<span style="color:#5bc4bf">.</span>size <span style="color:#815ba4">for</span> x <span style="color:#5bc4bf">in</span> images]
+</span></span><span style="display:flex;"><span>    images_tensor <span style="color:#5bc4bf">=</span> process_images(
+</span></span><span style="display:flex;"><span>        images,
+</span></span><span style="display:flex;"><span>        image_processor,
+</span></span><span style="display:flex;"><span>        model<span style="color:#5bc4bf">.</span>config
+</span></span><span style="display:flex;"><span>    )<span style="color:#5bc4bf">.</span>to(model<span style="color:#5bc4bf">.</span>device, dtype<span style="color:#5bc4bf">=</span>torch<span style="color:#5bc4bf">.</span>float16)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8d8687"># tokenize prompt</span>
+</span></span><span style="display:flex;"><span>    input_ids <span style="color:#5bc4bf">=</span> (
+</span></span><span style="display:flex;"><span>        tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors<span style="color:#5bc4bf">=</span><span style="color:#48b685">&#34;pt&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#5bc4bf">.</span>unsqueeze(<span style="color:#f99b15">0</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#5bc4bf">.</span>cuda()
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    
+</span></span></code></pre></div><p>我们可以简单画一张图来表示数据预处理流程：</p>
+
 
   </div>
 
