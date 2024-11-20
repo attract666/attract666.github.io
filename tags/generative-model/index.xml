@@ -24,7 +24,7 @@
 &lt;p&gt;&lt;strong&gt;Variational Autoencoder（VAE）&lt;/strong&gt;的思想实际上与&lt;strong&gt;AE&lt;/strong&gt;不太相似。在&lt;strong&gt;VAE&lt;/strong&gt;中，我们不想将输入映射到固定向量中，而是将其映射到分布中。我们将此分布记为$p_{\theta}$，参数为$\theta$，于是我们可以有如下定义：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;先验概率$p_{\theta}(z)$&lt;/li&gt;
-&lt;li&gt;似然性$p_{\theta}(x | z)$&lt;/li&gt;
+&lt;li&gt;似然性（likelihood）$p_{\theta}(x | z)$&lt;/li&gt;
 &lt;li&gt;后验概率$p_{\theta}(z | x)$&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;假设我们知道这个分布的真实参数$\theta^{*}$，为了使得我们的生成模型生成看起来更像真实数据的样本$x^{(i)}$，我们可以：&lt;/p&gt;
