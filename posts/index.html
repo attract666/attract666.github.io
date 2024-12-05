@@ -209,12 +209,26 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">从零开始学LLaVA 04
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>本文参考官方教程介绍如何训练LLaVA v1.5 多模态模型。值得注意的是本文将使用LLama3-8B-Instruct代替LLaVA v1.5中的Vicuna。如果还不熟悉LLaVA，请先阅读前面三篇文章：从零开始学LLaVA 01，从零开始学LLaVA 02和从零开始学LLaVA 03
+</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-05 14:49:36 +0800 CST'>十二月 5, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to 从零开始学LLaVA 04" href="https://attract666.github.io/posts/llava_04/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">从零开始学LLaVA 03
     </h2>
   </header>
   <div class="entry-content">
     <p>本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。
-数据部分</p>
+模型部分 在LLaVA/llava/train/train.py的第827行会出现初始化模型的代码
+model = LlavaLlamaForCausalLM.from_pretrained( model_args.model_name_or_path, cache_dir=training_args.cache_dir, attn_implementation=attn_implementation, torch_dtype=(torch.bfloat16 if training_args.bf16 else None), **bnb_model_from_pretrained_args) ...</p>
   </div>
   <footer class="entry-footer"><span title='2024-12-02 11:27:27 +0800 CST'>十二月 2, 2024</span></footer>
   <a class="entry-link" aria-label="post link to 从零开始学LLaVA 03" href="https://attract666.github.io/posts/llava_03/"></a>

@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Categories | JiaHe&#39;s Blog</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
+<title>从零开始学LLaVA 04 | JiaHe&#39;s Blog</title>
+<meta name="keywords" content="vision-language-models, LLaVA">
+<meta name="description" content="本文参考官方教程介绍如何训练LLaVA v1.5 多模态模型。值得注意的是本文将使用LLama3-8B-Instruct代替LLaVA v1.5中的Vicuna。如果还不熟悉LLaVA，请先阅读前面三篇文章：从零开始学LLaVA 01，从零开始学LLaVA 02和从零开始学LLaVA 03">
 <meta name="author" content="">
-<link rel="canonical" href="https://attract666.github.io/categories/">
+<link rel="canonical" href="https://attract666.github.io/posts/llava_04/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://attract666.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://attract666.github.io/favicon-16x16.png">
@@ -18,8 +18,7 @@
 <link rel="mask-icon" href="https://attract666.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://attract666.github.io/categories/index.xml">
-<link rel="alternate" hreflang="zh" href="https://attract666.github.io/categories/">
+<link rel="alternate" hreflang="zh" href="https://attract666.github.io/posts/llava_04/">
 <noscript>
     <style>
         #theme-toggle,
@@ -99,18 +98,70 @@
     }
 </style>
 
-<meta property="og:title" content="Categories" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://attract666.github.io/categories/" />
+<meta property="og:title" content="从零开始学LLaVA 04" />
+<meta property="og:description" content="本文参考官方教程介绍如何训练LLaVA v1.5 多模态模型。值得注意的是本文将使用LLama3-8B-Instruct代替LLaVA v1.5中的Vicuna。如果还不熟悉LLaVA，请先阅读前面三篇文章：从零开始学LLaVA 01，从零开始学LLaVA 02和从零开始学LLaVA 03" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://attract666.github.io/posts/llava_04/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-12-05T14:49:36+08:00" />
+<meta property="article:modified_time" content="2024-12-05T14:49:36+08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Categories"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="从零开始学LLaVA 04"/>
+<meta name="twitter:description" content="本文参考官方教程介绍如何训练LLaVA v1.5 多模态模型。值得注意的是本文将使用LLama3-8B-Instruct代替LLaVA v1.5中的Vicuna。如果还不熟悉LLaVA，请先阅读前面三篇文章：从零开始学LLaVA 01，从零开始学LLaVA 02和从零开始学LLaVA 03"/>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://attract666.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "从零开始学LLaVA 04",
+      "item": "https://attract666.github.io/posts/llava_04/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "从零开始学LLaVA 04",
+  "name": "从零开始学LLaVA 04",
+  "description": "本文参考官方教程介绍如何训练LLaVA v1.5 多模态模型。值得注意的是本文将使用LLama3-8B-Instruct代替LLaVA v1.5中的Vicuna。如果还不熟悉LLaVA，请先阅读前面三篇文章：从零开始学LLaVA 01，从零开始学LLaVA 02和从零开始学LLaVA 03\n",
+  "keywords": [
+    "vision-language-models", "LLaVA"
+  ],
+  "articleBody": "本文参考官方教程介绍如何训练LLaVA v1.5 多模态模型。值得注意的是本文将使用LLama3-8B-Instruct代替LLaVA v1.5中的Vicuna。如果还不熟悉LLaVA，请先阅读前面三篇文章：从零开始学LLaVA 01，从零开始学LLaVA 02和从零开始学LLaVA 03\n",
+  "wordCount" : "7",
+  "inLanguage": "zh",
+  "datePublished": "2024-12-05T14:49:36+08:00",
+  "dateModified": "2024-12-05T14:49:36+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://attract666.github.io/posts/llava_04/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "JiaHe's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://attract666.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
-<body class="list" id="top">
+<body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
         document.body.classList.add('dark');
@@ -162,7 +213,7 @@
             </li>
             <li>
                 <a href="https://attract666.github.io/categories/" title="Categories">
-                    <span class="active">Categories</span>
+                    <span>Categories</span>
                 </a>
             </li>
             <li>
@@ -179,102 +230,30 @@
     </nav>
 </header>
 <main class="main">
-<div class="container">
-  <h1 class="title">All categories</h1>
-  <div class="categories-grid">
+
+<article class="post-single">
+  <header class="post-header">
     
-    <div class="category-card">
-      <h2 class="category-title">
-        <a href="/categories/cv">cv</a>
-        <span class="post-count">5</span>
-      </h2>
-      <ul class="category-posts">
-        
-        <li><a href="https://attract666.github.io/posts/llava_04/">从零开始学LLaVA 04</a></li>
-        
-        <li><a href="https://attract666.github.io/posts/llava_03/">从零开始学LLaVA 03</a></li>
-        
-        <li><a href="https://attract666.github.io/posts/llava_02/">从零开始学LLaVA 02</a></li>
-        
-        <li><a href="https://attract666.github.io/posts/llava_01/">从零开始学LLaVA 01</a></li>
-        
-        <li><a href="https://attract666.github.io/posts/ddpm/">Diffusion Models</a></li>
-        
-      </ul>
-      
-    </div>
-    
-  </div>
+    <h1 class="post-title entry-hint-parent">
+      从零开始学LLaVA 04
+    </h1>
+    <div class="post-meta"><span title='2024-12-05 14:49:36 +0800 CST'>十二月 5, 2024</span>
+
 </div>
+  </header> 
 
-<style>
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+  <div class="post-content"><p>本文参考<a href="https://github.com/haotian-liu/LLaVA?tab=readme-ov-file#train">官方教程</a>介绍如何训练LLaVA v1.5 多模态模型。值得注意的是本文将使用LLama3-8B-Instruct代替LLaVA v1.5中的Vicuna。如果还不熟悉LLaVA，请先阅读前面三篇文章：<a href="https://attract666.github.io/posts/llava_01/">从零开始学LLaVA 01</a>，<a href="https://attract666.github.io/posts/llava_02/">从零开始学LLaVA 02</a>和<a href="https://attract666.github.io/posts/llava_03/">从零开始学LLaVA 03</a></p>
 
-  .title {
-    text-align: center;
-    margin-bottom: 30px;
-  }
 
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
+  </div>
 
-  .category-card {
-    background-color: #f7f7f7;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-
-  .category-title {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    position: relative;
-    display: inline-block;
-  }
-
-  .post-count {
-    font-size: 0.6em;
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    color: #888;  
-  }
-
-  .category-posts {
-    list-style: none;
-    padding: 0;
-  }
-
-  .category-posts li {
-    margin-bottom: 10px;
-  }
-
-  .category-posts a {
-    text-decoration: none;
-    color: #007acc;
-  }
-
-  .more-link {
-    display: block;
-    margin-top: 10px;
-    text-align: right;
-    color: #007acc;
-    text-decoration: none;
-  }
-
-  .more-link:hover {
-    text-decoration: underline;
-  }
-</style>
-
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://attract666.github.io/tags/vision-language-models/">Vision-Language-Models</a></li>
+      <li><a href="https://attract666.github.io/tags/llava/">LLaVA</a></li>
+    </ul>
+  </footer>
+</article>
     </main>
     
 <footer class="footer">
@@ -345,6 +324,53 @@
         }
     })
 
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = '复制';
+
+        function copyingDone() {
+            copybutton.innerHTML = '已复制！';
+            setTimeout(() => {
+                copybutton.innerHTML = '复制';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
 </script>
 </body>
 

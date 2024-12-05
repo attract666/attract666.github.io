@@ -8,7 +8,15 @@
 <title>从零开始学LLaVA 03 | JiaHe&#39;s Blog</title>
 <meta name="keywords" content="vision-language-models, LLaVA">
 <meta name="description" content="本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。
-数据部分">
+模型部分
+在LLaVA/llava/train/train.py的第827行会出现初始化模型的代码
+model = LlavaLlamaForCausalLM.from_pretrained(
+                model_args.model_name_or_path,
+                cache_dir=training_args.cache_dir,
+                attn_implementation=attn_implementation,
+                torch_dtype=(torch.bfloat16 if training_args.bf16 else None),
+                **bnb_model_from_pretrained_args)
+">
 <meta name="author" content="">
 <link rel="canonical" href="https://attract666.github.io/posts/llava_03/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
@@ -101,7 +109,15 @@
 
 <meta property="og:title" content="从零开始学LLaVA 03" />
 <meta property="og:description" content="本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。
-数据部分" />
+模型部分
+在LLaVA/llava/train/train.py的第827行会出现初始化模型的代码
+model = LlavaLlamaForCausalLM.from_pretrained(
+                model_args.model_name_or_path,
+                cache_dir=training_args.cache_dir,
+                attn_implementation=attn_implementation,
+                torch_dtype=(torch.bfloat16 if training_args.bf16 else None),
+                **bnb_model_from_pretrained_args)
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://attract666.github.io/posts/llava_03/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2024-12-02T11:27:27+08:00" />
@@ -110,7 +126,15 @@
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="从零开始学LLaVA 03"/>
 <meta name="twitter:description" content="本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。
-数据部分"/>
+模型部分
+在LLaVA/llava/train/train.py的第827行会出现初始化模型的代码
+model = LlavaLlamaForCausalLM.from_pretrained(
+                model_args.model_name_or_path,
+                cache_dir=training_args.cache_dir,
+                attn_implementation=attn_implementation,
+                torch_dtype=(torch.bfloat16 if training_args.bf16 else None),
+                **bnb_model_from_pretrained_args)
+"/>
 
 
 <script type="application/ld+json">
@@ -139,12 +163,12 @@
   "@type": "BlogPosting",
   "headline": "从零开始学LLaVA 03",
   "name": "从零开始学LLaVA 03",
-  "description": "本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。\n数据部分",
+  "description": "本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。\n模型部分 在LLaVA/llava/train/train.py的第827行会出现初始化模型的代码\nmodel = LlavaLlamaForCausalLM.from_pretrained( model_args.model_name_or_path, cache_dir=training_args.cache_dir, attn_implementation=attn_implementation, torch_dtype=(torch.bfloat16 if training_args.bf16 else None), **bnb_model_from_pretrained_args) ",
   "keywords": [
     "vision-language-models", "LLaVA"
   ],
-  "articleBody": "本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。\n数据部分 ",
-  "wordCount" : "3",
+  "articleBody": "本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。\n模型部分 在LLaVA/llava/train/train.py的第827行会出现初始化模型的代码\nmodel = LlavaLlamaForCausalLM.from_pretrained( model_args.model_name_or_path, cache_dir=training_args.cache_dir, attn_implementation=attn_implementation, torch_dtype=(torch.bfloat16 if training_args.bf16 else None), **bnb_model_from_pretrained_args) 根据模型路径加载模型。LlavaLlamaForCausalLM类在我们介绍推理时也曾遇见过，当时我们是直接分析它的generate()方法，现在让我们再详细分析下这个类。\n首先，LlavaLlamaForCausalLM继承了LlamaForCausalLM和LlavaMetaForCausalLM两个类。其中LlamaForCausalLM就是transformers中的实现，而LlavaMetaForCausalLM就是我们之前在推理过程中分析的那个。成员变量中包括了用于处理输入提取特征的model和用于预测输出token的lm_head。由于输入中添加了图像，所以重写了LlamaForCausalLM中的forward()和generate()方法 其中用于输入提取的特征提取器是LLavaLlamaModel的实例。LlavaLlamaModel是一个抽象的组合类，继承了LlavaMetaModel和LlamaModel。组合文本和图像在进入llm之前的特征处理过程。LlavaMetaModel控制vision branch功能函数来完成细节的图像特征提取，而LlamaModel就是正常的LLM的通用功能 总的说来LlavaLlamaForCausalLM用于负责总体逻辑统筹，具体的文本侧和视觉侧则交给LlamaModel和LlavaMetaModel 其中比较关键的在于需要自己实现的LlavaMetaModel和LlavaMetaForCausalLM LlavaMetaForCausalLM 这个是我们的老朋友了，在第二章的推理部分我们也分析过它的prepare_inputs_labels_for_multimodal()方法。\nclass LlavaMetaForCausalLM(ABC): @abstractmethod def get_model(self):... def get_vision_tower(self):... def encode_images(self, images):... def prepare_inputs_labels_for_multimodal( self, input_ids, position_ids, attention_mask, past_key_values, labels, images, image_size=None):... def initialize_vision_tokenizer(self, model_args, tokenizer):... 首先第一个方法是get_model()，这是一个抽象方法，子类实现了该抽象方法才能被实例化，基类不能实例化。所以可以在LlavaLlamaForCausalLM类中可以看到重新实现了get_model()，就是返回模型。\n之后是get_vision_tower()，也很简单，返回model的visual encoder。\nencode_images()就是提取图像特征，这里的图像特征是经过visual encoder和投影层之后的特征。\nprepare_inputs_labels_for_multimodal()由于之前介绍过推理时的逻辑，所以这里暂时不展开说，在后面的前向推理时，我们会重新看到它作为训练时的逻辑。\n最后一个方法是initialize_vision_tokenizer()，主要用于初始化视觉模型的tokenizer。\nLlavaMetaModel class LlavaMetaModel: def __init__(self, config):... def get_vision_tower(self):... def initialize_vision_modules(self, model_args, fsdp=None):... 先看初始化__init__()很简单，就是构建visual encoder和projector，值得注意的是，在训练时我们的脚本文件是没有显式指定参数mm_vision_tower的，所以visual encoder和projecto并不是在一开始就初始化好的，而是在LLaVA/llava/train/train.py的第911行通过调用第三个方法进行构建的。\nget_vision_tower()就是返回visual encoder。\ninitialize_vision_modules()才是训练阶段真正构建visual encoder和projector的地方。在这里才添加了参数mm_vision_tower。这里的参数mm_vision_select_layer是-1也就是默认选择最后一层，当然在官方提供的脚本文件中是指定为-2了。\n具体的visual encoder和projector的实现对应于LLaVA/llava/model/multimodal_encoder/builder.py和LLaVA/llava/model/multimodal_projector/builder.py中，对应于其中调用的类。如果想要更换LLaVA的visual encoder和projector可以去对应builder.py文件下import对应的class以及实例化，并在相应的文件夹下实现对应的class\n数据部分 在LLaVA/llava/train/train.py的第959行会出现关于数据集调用的语句\ndata_module = make_surpervised_data_module(tokenizer=tokenizer, data_args=data_args) make_surpervised_data_module()方法在LLaVA/llava/train/train.py的第776行\ndef make_supervised_data_module(tokenizer: transformers.PreTrainedTokenizer, data_args) -\u003e Dict: \"\"\"Make dataset and collator for supervised fine-tuning.\"\"\" train_dataset = LazySupervisedDataset(tokenizer=tokenizer, data_path=data_args.data_path, data_args=data_args) data_collator = DataCollatorForSupervisedDataset(tokenizer=tokenizer) return dict(train_dataset=train_dataset, eval_dataset=None, data_collator=data_collator) 这里分别数据集和整理器，我们一一来看\ndataset class LazySupervisedDataset(Dataset): def __init__(self, data_path: str, tokenizer: transformers.PreTrainedTokenizer, data_args: DataArguments):... def __len__(self):... @property def lengths(self):... @property def modality_lengths(self):... def __getitem__(self, i) -\u003e Dict[str, torch.Tensor]:... 首先作为一个Dataset类，老三样一定少不了。__init__()就是一些初始化，这里也可以看到LLaVA训练过程中用到的是json格式的数据。__len__()就是返回数据的长度。\n关键在于这个__getitem__()，它负责从data_list中按照data_sampler采样，得到样本序号，取出数据并进行处理，以得到模型需要的输入。可以看到稍后返回的是一个字典样式的数据。\n首先判断当前数据项sources[0]中是否包含image 读取图片并对图片进行预处理 ",
+  "wordCount" : "139",
   "inLanguage": "zh",
   "datePublished": "2024-12-02T11:27:27+08:00",
   "dateModified": "2024-12-02T11:27:27+08:00",
@@ -252,8 +276,23 @@
 
             <div class="inner"><ul>
                     <li>
-                        <a href="#%e6%95%b0%e6%8d%ae%e9%83%a8%e5%88%86" aria-label="数据部分">数据部分</a>
+                        <a href="#%e6%a8%a1%e5%9e%8b%e9%83%a8%e5%88%86" aria-label="模型部分">模型部分</a><ul>
+                            
+                    <li>
+                        <a href="#llavametaforcausallm" aria-label="LlavaMetaForCausalLM">LlavaMetaForCausalLM</a></li>
+                    <li>
+                        <a href="#llavametamodel" aria-label="LlavaMetaModel">LlavaMetaModel</a></li></ul>
                     </li>
+                    <li>
+                        <a href="#%e6%95%b0%e6%8d%ae%e9%83%a8%e5%88%86" aria-label="数据部分">数据部分</a><ul>
+                            
+                    <li>
+                        <a href="#dataset" aria-label="dataset">dataset</a></li>
+                    <li>
+                        <a href="#%e8%af%bb%e5%8f%96%e5%9b%be%e7%89%87%e5%b9%b6%e5%af%b9%e5%9b%be%e7%89%87%e8%bf%9b%e8%a1%8c%e9%a2%84%e5%a4%84%e7%90%86" aria-label="读取图片并对图片进行预处理">读取图片并对图片进行预处理</a>
+                    </li>
+                </ul>
+                </li>
                 </ul>
             </div>
         </details>
@@ -320,7 +359,92 @@
 </script>
 
   <div class="post-content"><p>本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在<code>LLaVA/scripts/v1_5/pretrain.sh</code>，视觉指令微调启动的脚本在<code>LLaVA/scripts/v1_5/finetune.sh</code>。两个脚本文件执行的都是<code>LLaVA/llava/train/train_mem.py</code>，在<code>LLaVA/llava/train</code>目录下还有一个<code>train.py</code>，这个才是真正的总体路口，不同点在于是否使用<code>flash_attention_2</code>。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。</p>
+<h1 id="模型部分">模型部分<a hidden class="anchor" aria-hidden="true" href="#模型部分">#</a></h1>
+<p>在<code>LLaVA/llava/train/train.py</code>的第827行会出现初始化模型的代码</p>
+<div class="highlight"><pre tabindex="0" style="color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model <span style="color:#5bc4bf">=</span> LlavaLlamaForCausalLM<span style="color:#5bc4bf">.</span>from_pretrained(
+</span></span><span style="display:flex;"><span>                model_args<span style="color:#5bc4bf">.</span>model_name_or_path,
+</span></span><span style="display:flex;"><span>                cache_dir<span style="color:#5bc4bf">=</span>training_args<span style="color:#5bc4bf">.</span>cache_dir,
+</span></span><span style="display:flex;"><span>                attn_implementation<span style="color:#5bc4bf">=</span>attn_implementation,
+</span></span><span style="display:flex;"><span>                torch_dtype<span style="color:#5bc4bf">=</span>(torch<span style="color:#5bc4bf">.</span>bfloat16 <span style="color:#815ba4">if</span> training_args<span style="color:#5bc4bf">.</span>bf16 <span style="color:#815ba4">else</span> <span style="color:#815ba4">None</span>),
+</span></span><span style="display:flex;"><span>                <span style="color:#5bc4bf">**</span>bnb_model_from_pretrained_args)
+</span></span></code></pre></div><p>根据模型路径加载模型。<code>LlavaLlamaForCausalLM</code>类在我们介绍推理时也曾遇见过，当时我们是直接分析它的<code>generate()</code>方法，现在让我们再详细分析下这个类。</p>
+<ul>
+<li>首先，<code>LlavaLlamaForCausalLM</code>继承了<code>LlamaForCausalLM</code>和<code>LlavaMetaForCausalLM</code>两个类。其中<code>LlamaForCausalLM</code>就是transformers中的实现，而<code>LlavaMetaForCausalLM</code>就是我们之前在推理过程中分析的那个。成员变量中包括了用于处理输入提取特征的<code>model</code>和用于预测输出token的<code>lm_head</code>。由于输入中添加了图像，所以重写了<code>LlamaForCausalLM</code>中的<code>forward()</code>和<code>generate()</code>方法</li>
+<li>其中用于输入提取的特征提取器是<code>LLavaLlamaModel</code>的实例。<code>LlavaLlamaModel</code>是一个抽象的组合类，继承了<code>LlavaMetaModel</code>和<code>LlamaModel</code>。组合文本和图像在进入llm之前的特征处理过程。<code>LlavaMetaModel</code>控制vision branch功能函数来完成细节的图像特征提取，而<code>LlamaModel</code>就是正常的LLM的通用功能</li>
+<li>总的说来<code>LlavaLlamaForCausalLM</code>用于负责总体逻辑统筹，具体的文本侧和视觉侧则交给<code>LlamaModel</code>和<code>LlavaMetaModel</code></li>
+<li>其中比较关键的在于需要自己实现的<code>LlavaMetaModel</code>和<code>LlavaMetaForCausalLM</code></li>
+</ul>
+<h2 id="llavametaforcausallm">LlavaMetaForCausalLM<a hidden class="anchor" aria-hidden="true" href="#llavametaforcausallm">#</a></h2>
+<p>这个是我们的老朋友了，在第二章的推理部分我们也分析过它的<code>prepare_inputs_labels_for_multimodal()</code>方法。</p>
+<div class="highlight"><pre tabindex="0" style="color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#815ba4">class</span> <span style="color:#fec418">LlavaMetaForCausalLM</span>(ABC):
+</span></span><span style="display:flex;"><span>    <span style="color:#5bc4bf">@abstractmethod</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> <span style="color:#06b6ef">get_model</span>(self):<span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> <span style="color:#06b6ef">get_vision_tower</span>(self):<span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> <span style="color:#06b6ef">encode_images</span>(self, images):<span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> <span style="color:#06b6ef">prepare_inputs_labels_for_multimodal</span>(
+</span></span><span style="display:flex;"><span>        self, input_ids, position_ids, attention_mask, past_key_values, labels,
+</span></span><span style="display:flex;"><span>        images, image_size<span style="color:#5bc4bf">=</span><span style="color:#815ba4">None</span>):<span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> <span style="color:#06b6ef">initialize_vision_tokenizer</span>(self, model_args, tokenizer):<span style="color:#5bc4bf">...</span>
+</span></span></code></pre></div><p>首先第一个方法是<code>get_model()</code>，这是一个抽象方法，子类实现了该抽象方法才能被实例化，基类不能实例化。所以可以在<code>LlavaLlamaForCausalLM</code>类中可以看到重新实现了<code>get_model()</code>，就是返回模型。</p>
+<p>之后是<code>get_vision_tower()</code>，也很简单，返回<code>model</code>的visual encoder。</p>
+<p><code>encode_images()</code>就是提取图像特征，这里的图像特征是经过visual encoder和投影层之后的特征。</p>
+<p><code>prepare_inputs_labels_for_multimodal()</code>由于之前介绍过推理时的逻辑，所以这里暂时不展开说，在后面的前向推理时，我们会重新看到它作为训练时的逻辑。</p>
+<p>最后一个方法是<code>initialize_vision_tokenizer()</code>，主要用于初始化视觉模型的tokenizer。</p>
+<h2 id="llavametamodel">LlavaMetaModel<a hidden class="anchor" aria-hidden="true" href="#llavametamodel">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#815ba4">class</span> <span style="color:#fec418">LlavaMetaModel</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> __init__(self, config):<span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> <span style="color:#06b6ef">get_vision_tower</span>(self):<span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> <span style="color:#06b6ef">initialize_vision_modules</span>(self, model_args, fsdp<span style="color:#5bc4bf">=</span><span style="color:#815ba4">None</span>):<span style="color:#5bc4bf">...</span>
+</span></span></code></pre></div><p>先看初始化<code>__init__()</code>很简单，就是构建visual encoder和projector，值得注意的是，在训练时我们的脚本文件是没有显式指定参数<code>mm_vision_tower</code>的，所以visual encoder和projecto并不是在一开始就初始化好的，而是在<code>LLaVA/llava/train/train.py</code>的第911行通过调用第三个方法进行构建的。</p>
+<p><code>get_vision_tower()</code>就是返回visual encoder。</p>
+<p><code>initialize_vision_modules()</code>才是训练阶段真正构建visual encoder和projector的地方。在这里才添加了参数<code>mm_vision_tower</code>。这里的参数<code>mm_vision_select_layer</code>是<code>-1</code>也就是默认选择最后一层，当然在官方提供的脚本文件中是指定为<code>-2</code>了。</p>
+<p>具体的visual encoder和projector的实现对应于<code>LLaVA/llava/model/multimodal_encoder/builder.py</code>和<code>LLaVA/llava/model/multimodal_projector/builder.py</code>中，对应于其中调用的类。<strong>如果想要更换LLaVA的visual encoder和projector可以去对应<code>builder.py</code>文件下import对应的class以及实例化，并在相应的文件夹下实现对应的class</strong></p>
+<hr>
 <h1 id="数据部分">数据部分<a hidden class="anchor" aria-hidden="true" href="#数据部分">#</a></h1>
+<p>在<code>LLaVA/llava/train/train.py</code>的第959行会出现关于数据集调用的语句</p>
+<div class="highlight"><pre tabindex="0" style="color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data_module <span style="color:#5bc4bf">=</span> make_surpervised_data_module(tokenizer<span style="color:#5bc4bf">=</span>tokenizer,
+</span></span><span style="display:flex;"><span>                                           data_args<span style="color:#5bc4bf">=</span>data_args)
+</span></span></code></pre></div><p><code>make_surpervised_data_module()</code>方法在<code>LLaVA/llava/train/train.py</code>的第776行</p>
+<div class="highlight"><pre tabindex="0" style="color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#815ba4">def</span> <span style="color:#06b6ef">make_supervised_data_module</span>(tokenizer: transformers<span style="color:#5bc4bf">.</span>PreTrainedTokenizer,
+</span></span><span style="display:flex;"><span>                                data_args) <span style="color:#5bc4bf">-&gt;</span> Dict:
+</span></span><span style="display:flex;"><span>    <span style="color:#48b685">&#34;&#34;&#34;Make dataset and collator for supervised fine-tuning.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    train_dataset <span style="color:#5bc4bf">=</span> LazySupervisedDataset(tokenizer<span style="color:#5bc4bf">=</span>tokenizer,
+</span></span><span style="display:flex;"><span>                                data_path<span style="color:#5bc4bf">=</span>data_args<span style="color:#5bc4bf">.</span>data_path,
+</span></span><span style="display:flex;"><span>                                data_args<span style="color:#5bc4bf">=</span>data_args)
+</span></span><span style="display:flex;"><span>    data_collator <span style="color:#5bc4bf">=</span> DataCollatorForSupervisedDataset(tokenizer<span style="color:#5bc4bf">=</span>tokenizer)
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">return</span> dict(train_dataset<span style="color:#5bc4bf">=</span>train_dataset,
+</span></span><span style="display:flex;"><span>                eval_dataset<span style="color:#5bc4bf">=</span><span style="color:#815ba4">None</span>,
+</span></span><span style="display:flex;"><span>                data_collator<span style="color:#5bc4bf">=</span>data_collator)
+</span></span></code></pre></div><p>这里分别数据集和整理器，我们一一来看</p>
+<h2 id="dataset">dataset<a hidden class="anchor" aria-hidden="true" href="#dataset">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#815ba4">class</span> <span style="color:#fec418">LazySupervisedDataset</span>(Dataset):
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> __init__(self, data_path: str,
+</span></span><span style="display:flex;"><span>                 tokenizer: transformers<span style="color:#5bc4bf">.</span>PreTrainedTokenizer,
+</span></span><span style="display:flex;"><span>                 data_args: DataArguments):<span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> __len__(self):<span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#5bc4bf">@property</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> <span style="color:#06b6ef">lengths</span>(self):<span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#5bc4bf">@property</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> <span style="color:#06b6ef">modality_lengths</span>(self):<span style="color:#5bc4bf">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#815ba4">def</span> __getitem__(self, i) <span style="color:#5bc4bf">-&gt;</span> Dict[str, torch<span style="color:#5bc4bf">.</span>Tensor]:<span style="color:#5bc4bf">...</span>
+</span></span></code></pre></div><p>首先作为一个<code>Dataset</code>类，老三样一定少不了。<code>__init__()</code>就是一些初始化，这里也可以看到LLaVA训练过程中用到的是json格式的数据。<code>__len__()</code>就是返回数据的长度。</p>
+<p>关键在于这个<code>__getitem__()</code>，它负责从data_list中按照data_sampler采样，得到样本序号，取出数据并进行处理，以得到模型需要的输入。可以看到稍后返回的是一个字典样式的数据。</p>
+<ul>
+<li>首先判断当前数据项<code>sources[0]</code>中是否包含<code>image</code></li>
+<li>
+<h2 id="读取图片并对图片进行预处理">读取图片并对图片进行预处理<a hidden class="anchor" aria-hidden="true" href="#读取图片并对图片进行预处理">#</a></h2>
+</li>
+</ul>
 
 
   </div>
