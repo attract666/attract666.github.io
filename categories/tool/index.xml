@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tool on JiaHe&#39;s Blog</title>
+    <link>https://attract666.github.io/categories/tool/</link>
+    <description>Recent content in Tool on JiaHe&#39;s Blog</description>
+    <generator>Hugo -- 0.134.0</generator>
+    <language>zh</language>
+    <lastBuildDate>Fri, 06 Dec 2024 17:16:13 +0800</lastBuildDate>
+    <atom:link href="https://attract666.github.io/categories/tool/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>如何使用VSCode优雅地调试PyTorch多卡程序</title>
+      <link>https://attract666.github.io/posts/vscode_debug/</link>
+      <pubDate>Fri, 06 Dec 2024 17:16:13 +0800</pubDate>
+      <guid>https://attract666.github.io/posts/vscode_debug/</guid>
+      <description>&lt;p&gt;在使用VSCode调试PyTorch多卡程序时，我们经常会发现启动脚本的参数很多，因此配置&lt;code&gt;~/.vscode/launch.json&lt;/code&gt;时体验不佳。如果你也遇到了上面的问题，可以考虑本文的方法，以更优雅的方式调试PyTorch多卡程序。本文以调试LLaVA的训练代码为例。&lt;/p&gt;
+&lt;h1 id=&#34;安装-debugpy&#34;&gt;安装 debugpy&lt;/h1&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;pip install debugpy
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;写配置&#34;&gt;写配置&lt;/h1&gt;
+&lt;p&gt;首先需要配置的还是&lt;code&gt;~/.vscode/launch.json&lt;/code&gt;，但与将参数列表填入&lt;code&gt;launch.json&lt;/code&gt;文件的&lt;code&gt;args&lt;/code&gt;列表不同。本文的方法无需在每次调试时都更改&lt;code&gt;args&lt;/code&gt;列表，只需更改你原始的脚本文件。&lt;/p&gt;
+&lt;p&gt;我们只需在&lt;code&gt;launch.json&lt;/code&gt;文件添加一个新的配置，配置如下：&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;{
+    &amp;#34;name&amp;#34;: &amp;#34;sh_file_debug&amp;#34;,
+    &amp;#34;type&amp;#34;: &amp;#34;debugpy&amp;#34;,
+    &amp;#34;request&amp;#34;: &amp;#34;attach&amp;#34;,
+    &amp;#34;justMyCode&amp;#34;: false,
+    &amp;#34;connect&amp;#34;: {
+        &amp;#34;host&amp;#34;: &amp;#34;localhost&amp;#34;,
+        &amp;#34;port&amp;#34;: 5678
+    }
+}
+&lt;/code&gt;&lt;/pr</description>
+    </item>
+  </channel>
+</rss>

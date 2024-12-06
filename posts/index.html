@@ -209,6 +209,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">如何使用VSCode优雅地调试PyTorch多卡程序
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>在使用VSCode调试PyTorch多卡程序时，我们经常会发现启动脚本的参数很多，因此配置~/.vscode/launch.json时体验不佳。如果你也遇到了上面的问题，可以考虑本文的方法，以更优雅的方式调试PyTorch多卡程序。本文以调试LLaVA的训练代码为例。
+安装 debugpy pip install debugpy 写配置 首先需要配置的还是~/.vscode/launch.json，但与将参数列表填入launch.json文件的args列表不同。本文的方法无需在每次调试时都更改args列表，只需更改你原始的脚本文件。
+我们只需在launch.json文件添加一个新的配置，配置如下：
+{ &#34;name&#34;: &#34;sh_file_debug&#34;, &#34;type&#34;: &#34;debugpy&#34;, &#34;request&#34;: &#34;attach&#34;, &#34;justMyCode&#34;: false, &#34;connect&#34;: { &#34;host&#34;: &#34;localhost&#34;, &#34;port&#34;: 5678 } } ...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-06 17:16:13 +0800 CST'>十二月 6, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to 如何使用VSCode优雅地调试PyTorch多卡程序" href="https://attract666.github.io/posts/vscode_debug/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">从零开始学LLaVA 04
     </h2>
   </header>
