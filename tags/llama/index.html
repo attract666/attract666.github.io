@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Categories | JiaHe&#39;s Blog</title>
+<title>LLama | JiaHe&#39;s Blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="https://attract666.github.io/categories/">
+<link rel="canonical" href="https://attract666.github.io/tags/llama/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://attract666.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://attract666.github.io/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://attract666.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://attract666.github.io/categories/index.xml">
-<link rel="alternate" hreflang="zh" href="https://attract666.github.io/categories/">
+<link rel="alternate" type="application/rss+xml" href="https://attract666.github.io/tags/llama/index.xml">
+<link rel="alternate" hreflang="zh" href="https://attract666.github.io/tags/llama/">
 <noscript>
     <style>
         #theme-toggle,
@@ -99,13 +99,13 @@
     }
 </style>
 
-<meta property="og:title" content="Categories" />
+<meta property="og:title" content="LLama" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://attract666.github.io/categories/" />
+<meta property="og:url" content="https://attract666.github.io/tags/llama/" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Categories"/>
+<meta name="twitter:title" content="LLama"/>
 <meta name="twitter:description" content=""/>
 
 </head>
@@ -162,7 +162,7 @@
             </li>
             <li>
                 <a href="https://attract666.github.io/categories/" title="Categories">
-                    <span class="active">Categories</span>
+                    <span>Categories</span>
                 </a>
             </li>
             <li>
@@ -178,129 +178,29 @@
         </ul>
     </nav>
 </header>
-<main class="main">
-<div class="container">
-  <h1 class="title">All categories</h1>
-  <div class="categories-grid">
+<main class="main"> 
+<header class="page-header">
+  <h1>
     
-    <div class="category-card">
-      <h2 class="category-title">
-        <a href="/categories/cv">cv</a>
-        <span class="post-count">5</span>
-      </h2>
-      <ul class="category-posts">
-        
-        <li><a href="https://attract666.github.io/posts/llava_04/">从零开始学LLaVA 04</a></li>
-        
-        <li><a href="https://attract666.github.io/posts/llava_03/">从零开始学LLaVA 03</a></li>
-        
-        <li><a href="https://attract666.github.io/posts/llava_02/">从零开始学LLaVA 02</a></li>
-        
-        <li><a href="https://attract666.github.io/posts/llava_01/">从零开始学LLaVA 01</a></li>
-        
-        <li><a href="https://attract666.github.io/posts/ddpm/">Diffusion Models</a></li>
-        
-      </ul>
-      
-    </div>
+      <h1>LLama</h1>
     
-    <div class="category-card">
-      <h2 class="category-title">
-        <a href="/categories/nlp">nlp</a>
-        <span class="post-count">1</span>
-      </h2>
-      <ul class="category-posts">
-        
-        <li><a href="https://attract666.github.io/posts/attetion_code/">手撕Multihead Attention</a></li>
-        
-      </ul>
-      
-    </div>
-    
-    <div class="category-card">
-      <h2 class="category-title">
-        <a href="/categories/tool">tool</a>
-        <span class="post-count">1</span>
-      </h2>
-      <ul class="category-posts">
-        
-        <li><a href="https://attract666.github.io/posts/vscode_debug/">如何使用VSCode优雅地调试PyTorch多卡程序</a></li>
-        
-      </ul>
-      
-    </div>
-    
+  </h1>
+</header>
+
+
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">手撕Multihead Attention
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>为了方便讲解，我们先对文本进行tokenize和embedding。我们仅在这一步使用了除torch以外的库
+text = &#34;This is your first step to understanding LLM&#34; kwargs = {&#34;device_map&#34;: &#34;cuda:3&#34;} tokenizer = AutoTokenizer.from_pretrained(&#34;llama3/Meta-Llama-3-8B&#34;, use_fast=False) model = AutoModelForCausalLM.from_pretrained(&#34;llama3/Meta-Llama-3-8B&#34;, **kwargs) inputs = tokenizer(text, return_tensors=&#34;pt&#34;) inputs = {key: value.to(kwargs[&#34;device_map&#34;]) for key, value in inputs.items()} inputs = model.get_input_embeddings()(inputs[&#34;input_ids&#34;]) ...</p>
   </div>
-</div>
-
-<style>
-  .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-
-  .title {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-
-  .category-card {
-    background-color: #f7f7f7;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-
-  .category-title {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-    position: relative;
-    display: inline-block;
-  }
-
-  .post-count {
-    font-size: 0.6em;
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    color: #888;  
-  }
-
-  .category-posts {
-    list-style: none;
-    padding: 0;
-  }
-
-  .category-posts li {
-    margin-bottom: 10px;
-  }
-
-  .category-posts a {
-    text-decoration: none;
-    color: #007acc;
-  }
-
-  .more-link {
-    display: block;
-    margin-top: 10px;
-    text-align: right;
-    color: #007acc;
-    text-decoration: none;
-  }
-
-  .more-link:hover {
-    text-decoration: underline;
-  }
-</style>
-
+  <footer class="entry-footer"><span title='2024-12-22 19:21:37 +0800 CST'>十二月 22, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to 手撕Multihead Attention" href="https://attract666.github.io/posts/attetion_code/"></a>
+</article>
     </main>
     
 <footer class="footer">

@@ -209,6 +209,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">手撕Multihead Attention
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>为了方便讲解，我们先对文本进行tokenize和embedding。我们仅在这一步使用了除torch以外的库
+text = &#34;This is your first step to understanding LLM&#34; kwargs = {&#34;device_map&#34;: &#34;cuda:3&#34;} tokenizer = AutoTokenizer.from_pretrained(&#34;llama3/Meta-Llama-3-8B&#34;, use_fast=False) model = AutoModelForCausalLM.from_pretrained(&#34;llama3/Meta-Llama-3-8B&#34;, **kwargs) inputs = tokenizer(text, return_tensors=&#34;pt&#34;) inputs = {key: value.to(kwargs[&#34;device_map&#34;]) for key, value in inputs.items()} inputs = model.get_input_embeddings()(inputs[&#34;input_ids&#34;]) ...</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-12-22 19:21:37 +0800 CST'>十二月 22, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to 手撕Multihead Attention" href="https://attract666.github.io/posts/attetion_code/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">如何使用VSCode优雅地调试PyTorch多卡程序
     </h2>
   </header>
