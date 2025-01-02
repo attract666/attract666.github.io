@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>从零开始学LLaVA 02 | JiaHe&#39;s Blog</title>
 <meta name="keywords" content="vision-language-models, LLaVA">
 <meta name="description" content="LLaVA-1.5悟道
@@ -38,16 +38,16 @@ Instruction-following Data.(Image source:LLaVA v1.5)
 LLaVA-NEXT
 与LLaVA-1.5相比，主要有以下提升：">
 <meta name="author" content="">
-<link rel="canonical" href="https://attract666.github.io/posts/llava_02/">
+<link rel="canonical" href="http://localhost:1313/posts/llava_02/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://attract666.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://attract666.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://attract666.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://attract666.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://attract666.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="https://attract666.github.io/posts/llava_02/">
+<link rel="alternate" hreflang="zh" href="http://localhost:1313/posts/llava_02/">
 <noscript>
     <style>
         #theme-toggle,
@@ -86,7 +86,7 @@ LLaVA-NEXT
     </style>
 </noscript>
 <script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         MathJax.Hub.Config({
             tex2jax: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -127,125 +127,7 @@ LLaVA-NEXT
     }
 </style>
 
-<meta property="og:title" content="从零开始学LLaVA 02" />
-<meta property="og:description" content="LLaVA-1.5悟道
-LLaVA-1.5在LLaVA的基础上做了一小部分修改。模型上把之前的线性层换成了MLP，visual encoder从ViT-L-14换成了ViT-L-14-336px，数据集进行了扩充（Visual Instruction Tuning从158K涨到了665K）
-论文贡献
-论文主要贡献：
 
-验证了LLaVA架构的高效性：使用最少的计算量和数据达到了更优的性能
-简单修改了LLaVA的架构
-在prompt中明确回复格式以平衡模型的长短回复
-分析了分辨率、数据规模和LLM大小对性能的影响
-
-网络架构
-整体架构上没有太大的改变，如下图所示：
-
-LLaVA v1.5.(Image source:LLaVA v1.5)
-很重要的一点，是作者使用了AnyRes策略，来拓展视觉的分辨率（因为CLIP支持的最大分辨率是336px）
-
-LLaVA v1.5 HD.(Image source:LLaVA v1.5)
-AnyRes策略的具体步骤：
-
-将高分辨率图像切分成块，每块的大小取决于visual encoder能处理的分辨率大小。visual encoder单独处理每一块
-将高分辨图像resize成visual encoder可以处理的大小进行编码
-将上面两步的结果拼接起来一起作为视觉特征
-
-在LLM中，模型的幻觉归因于训练数据集中的错误或幻觉。作者认为输入分辨率不足以让模型识别数据中的所有细节，模型就会产生幻觉。
-数据集规模
-
-Instruction-following Data.(Image source:LLaVA v1.5)
-
-LLaVA-NEXT
-与LLaVA-1.5相比，主要有以下提升：" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://attract666.github.io/posts/llava_02/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-11-01T18:21:23+08:00" />
-<meta property="article:modified_time" content="2024-11-01T18:21:23+08:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="从零开始学LLaVA 02"/>
-<meta name="twitter:description" content="LLaVA-1.5悟道
-LLaVA-1.5在LLaVA的基础上做了一小部分修改。模型上把之前的线性层换成了MLP，visual encoder从ViT-L-14换成了ViT-L-14-336px，数据集进行了扩充（Visual Instruction Tuning从158K涨到了665K）
-论文贡献
-论文主要贡献：
-
-验证了LLaVA架构的高效性：使用最少的计算量和数据达到了更优的性能
-简单修改了LLaVA的架构
-在prompt中明确回复格式以平衡模型的长短回复
-分析了分辨率、数据规模和LLM大小对性能的影响
-
-网络架构
-整体架构上没有太大的改变，如下图所示：
-
-LLaVA v1.5.(Image source:LLaVA v1.5)
-很重要的一点，是作者使用了AnyRes策略，来拓展视觉的分辨率（因为CLIP支持的最大分辨率是336px）
-
-LLaVA v1.5 HD.(Image source:LLaVA v1.5)
-AnyRes策略的具体步骤：
-
-将高分辨率图像切分成块，每块的大小取决于visual encoder能处理的分辨率大小。visual encoder单独处理每一块
-将高分辨图像resize成visual encoder可以处理的大小进行编码
-将上面两步的结果拼接起来一起作为视觉特征
-
-在LLM中，模型的幻觉归因于训练数据集中的错误或幻觉。作者认为输入分辨率不足以让模型识别数据中的所有细节，模型就会产生幻觉。
-数据集规模
-
-Instruction-following Data.(Image source:LLaVA v1.5)
-
-LLaVA-NEXT
-与LLaVA-1.5相比，主要有以下提升："/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://attract666.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "从零开始学LLaVA 02",
-      "item": "https://attract666.github.io/posts/llava_02/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "从零开始学LLaVA 02",
-  "name": "从零开始学LLaVA 02",
-  "description": "LLaVA-1.5悟道 LLaVA-1.5在LLaVA的基础上做了一小部分修改。模型上把之前的线性层换成了MLP，visual encoder从ViT-L-14换成了ViT-L-14-336px，数据集进行了扩充（Visual Instruction Tuning从158K涨到了665K）\n论文贡献 论文主要贡献：\n验证了LLaVA架构的高效性：使用最少的计算量和数据达到了更优的性能 简单修改了LLaVA的架构 在prompt中明确回复格式以平衡模型的长短回复 分析了分辨率、数据规模和LLM大小对性能的影响 网络架构 整体架构上没有太大的改变，如下图所示：\nLLaVA v1.5.(Image source:LLaVA v1.5) 很重要的一点，是作者使用了AnyRes策略，来拓展视觉的分辨率（因为CLIP支持的最大分辨率是336px）\nLLaVA v1.5 HD.(Image source:LLaVA v1.5) AnyRes策略的具体步骤：\n将高分辨率图像切分成块，每块的大小取决于visual encoder能处理的分辨率大小。visual encoder单独处理每一块 将高分辨图像resize成visual encoder可以处理的大小进行编码 将上面两步的结果拼接起来一起作为视觉特征 在LLM中，模型的幻觉归因于训练数据集中的错误或幻觉。作者认为输入分辨率不足以让模型识别数据中的所有细节，模型就会产生幻觉。\n数据集规模 Instruction-following Data.(Image source:LLaVA v1.5) LLaVA-NEXT 与LLaVA-1.5相比，主要有以下提升：\n",
-  "keywords": [
-    "vision-language-models", "LLaVA"
-  ],
-  "articleBody": "LLaVA-1.5悟道 LLaVA-1.5在LLaVA的基础上做了一小部分修改。模型上把之前的线性层换成了MLP，visual encoder从ViT-L-14换成了ViT-L-14-336px，数据集进行了扩充（Visual Instruction Tuning从158K涨到了665K）\n论文贡献 论文主要贡献：\n验证了LLaVA架构的高效性：使用最少的计算量和数据达到了更优的性能 简单修改了LLaVA的架构 在prompt中明确回复格式以平衡模型的长短回复 分析了分辨率、数据规模和LLM大小对性能的影响 网络架构 整体架构上没有太大的改变，如下图所示：\nLLaVA v1.5.(Image source:LLaVA v1.5) 很重要的一点，是作者使用了AnyRes策略，来拓展视觉的分辨率（因为CLIP支持的最大分辨率是336px）\nLLaVA v1.5 HD.(Image source:LLaVA v1.5) AnyRes策略的具体步骤：\n将高分辨率图像切分成块，每块的大小取决于visual encoder能处理的分辨率大小。visual encoder单独处理每一块 将高分辨图像resize成visual encoder可以处理的大小进行编码 将上面两步的结果拼接起来一起作为视觉特征 在LLM中，模型的幻觉归因于训练数据集中的错误或幻觉。作者认为输入分辨率不足以让模型识别数据中的所有细节，模型就会产生幻觉。\n数据集规模 Instruction-following Data.(Image source:LLaVA v1.5) LLaVA-NEXT 与LLaVA-1.5相比，主要有以下提升：\n将输入图像分辨率提高 4 倍，使得它能够捕捉更多的视觉细节。它支持 3 种不同比例的分辨率，分别是 672x672、336x1344、1344x336 改变视觉指令微调数据的比例，实现更好的视觉推理和 OCR 能力 更好的视觉对话，适用于更多场景，涵盖不同应用 使用 SGLang 实现高效部署和推理 构造多模态数据 常言道：“工欲善其事，必先利其器。”LLaVA这篇论文的另一个核心贡献就是在于将图像文本对转换成了多模态instruction-following数据。LLaVA构造了三种多模态instruction-following数据：\n对话（Conversation） 细节描述（Detailed description） 复杂推理（Complex reasoning） Conversation构造 构造的思路如下：\n给出一个system prompt，要求纯文本大模型根据图片的描述生成多轮对话 提供几个示例，便于纯文本大模型理解以及生成类似的多轮对话 将上面的内容输入给纯文本大模型，纯文本大模型返回多轮对话 system prompt和示例的内容可以见LLaVA/playground/data/prompts，在LLaVA论文中也给出了构造数据的示例代码：\nSample Codes.(Image source:LLaVA) 我这里由于没有gpt4的api，所以决定用llama3来代替，使用了vllm框架\n具体的代码实现如下：\n# 先启动服务 # python3 -m vllm.entrypoints.openai.api_server --model ./Meta-Llama-3-8B-Instruct --dtype auto --api-key 123456 from openai import OpenAI openai_api_key = \"123456\" # Same as --api-key in the deployment command openai_api_base = \"http://localhost:8000/v1\" client = OpenAI(api_key=openai_api_key, base_url=openai_api_base) model = './Meta-Llama-3-8B-Instruct' SYSTEM_CONTENT = \"\"\" You are an AI visual assistant, and you are seeing a single image. What you see are provided with five sentences, describing the same image you are looking at. Answer all questions as you are seeing the image. Design a conversation between you and a person asking about this photo. The answers should be in a tone that a visual AI assistant is seeing the image and answering the question. Ask diverse questions and give corresponding answers. Include questions asking about the visual content of the image, including the object types, counting the objects, object actions, object locations, relative positions between objects, etc. Only include questions that have definite answers: (1) one can see the content in the image that the question asks about and can answer confidently; (2) one can determine confidently from the image that it is not in the image. Do not ask any question that cannot be answered confidently. Also include complex questions that are relevant to the content in the image, for example, asking about background knowledge of the objects in the image, asking to discuss about events happening in the image, etc. Again, do not ask about uncertain details. Provide detailed answers when answering complex questions. For example, give detailed examples or reasoning steps to make the content more convincing and well-organized. You can include multiple paragraphs if necessary. \"\"\" SAMPLE_CONTENT_1 = \"\"\" There is a movie theater that displays the show times above the doors. A red fire hydrant is deep in the snow. The fire hydrant is in the snow near a recently plowed sidewalk. This city has had a very hard winter with snow. A hotel for dogs in the snow in winter.\"\"\" SAMPLE_RESPONSE_1 = \"\"\" Question: What color is the fire hydrant in the image? === Answer: The fire hydrant in the image is red. === Question: Is the fire hydrant fully covered by snow or partially visible? === Answer: The fire hydrant is partially visible, with a significant portion of it covered by the deep snow. === Question: What is the condition of the sidewalk near the fire hydrant? === Answer: The sidewalk near the fire hydrant has been recently plowed, so it is relatively clear of snow compared to the surrounding area. === Question: What does the image suggest about the winter season in the city? === Answer: The image suggests that the winter season in the city has been quite harsh and challenging. The significant snow accumulation seen in the image indicates that the city has experienced heavy snowfall, which can lead to various difficulties and disruptions for its residents. For instance, the deep snow covering the fire hydrant could potentially hinder its accessibility in case of emergencies, which poses safety concerns. The recently plowed sidewalk implies that the city's maintenance crews have been actively working to keep the walkways clear and safe for pedestrians, but the sheer amount of snowfall might make it difficult to keep up with the continuous snow removal efforts. Furthermore, such extreme winter conditions can impact transportation, leading to traffic issues, delays in public transit, and increased risks of accidents due to slippery roads. It can also cause problems for businesses and schools, as people might face challenges commuting to work or attending classes. Additionally, the heavy snow can put extra strain on infrastructure, such as roofs and power lines, increasing the likelihood of structural damage or power outages. In conclusion, the image of the red fire hydrant deep in the snow and the recently plowed sidewalk suggest that the city has faced a particularly severe winter season, with substantial snowfall that has likely caused various challenges and disruptions for its residents and infrastructure. \"\"\" SAMPLE_CONTENT_2 = \"\"\" A man is skiing in the open snow covered hills A skier is making his way into the snow. A skier on the foothills of a huge mountain range. A skier looks at mountains while standing near a trail sign. a single person skiing by an area with a lot of bushes \"\"\" SAMPLE_RESPONSE_2 = \"\"\" Question: What is the skier doing? === Answer: The skier is skiing in the snow-covered hills, making his way through the snow and enjoying the beautiful mountain scenery. They are also standing near a trail sign, which indicates their location on the mountain. === Question: Are there any other people or skiers visible in the image? === Answer: No, there is only a single person skiing in the image, and they are surrounded by an area with a lot of bushes. === Question: What kind of skiing is the person doing? Cross-country or downhill? === Answer: Based on what I can see in the photo, it is not possible to definitively determine whether the skier is doing cross-country or downhill skiing. However, given the presence of a trail sign and the fact that they are skiing in the foothills, it is more likely that the skier is engaged in cross-country skiing. Downhill skiing typically takes place on more steep slopes and involves ski lifts, whereas cross-country skiing often occurs on relatively flatter terrain with marked trails. === Question: Can you explain cross-country and downhill skiing a bit more? === Answer: Cross-country skiing and downhill skiing are two distinct types of skiing, each with its own techniques, equipment, and terrain preferences. 1. Cross-Country Skiing: Also known as Nordic skiing, cross-country skiing involves traversing relatively flat terrain or gentle slopes using skis and poles. It is a popular recreational and competitive sport that focuses on endurance, balance, and aerobic fitness. Cross-country skiers use their own locomotion to move across snow-covered terrain, rather than relying on ski lifts or other forms of assistance. There are two main techniques in cross-country skiing: - Classic: This technique involves skiing in parallel tracks, using a forward-and-backward gliding motion while keeping the skis parallel to each other. The skier uses their poles to propel themselves forward. - Skate skiing: This technique is similar to ice skating, where the skier pushes off one ski at an angle and glides on the other. It requires a smooth, groomed surface and is typically faster than the classic technique. Cross-country ski equipment consists of lightweight skis, boots, bindings, and poles. The boots are more flexible than those used in downhill skiing, allowing for better ankle movement and control. 2. Downhill Skiing: Also known as alpine skiing, downhill skiing involves descending slopes at high speeds using skis and poles for balance and control. This sport is more focused on speed, technique, and navigating challenging terrain, including steep slopes, moguls, and even jumps. Downhill skiing can be further categorized into several disciplines, such as slalom, giant slalom, super-G, and downhill racing. Each discipline has its own set of rules, courses, and ski equipment. Downhill ski equipment includes heavier and stiffer skis, boots, bindings, and poles than those used in cross-country skiing. The boots are more rigid to provide better support and control during high-speed descents and sharp turns. In summary, cross-country skiing is an endurance-based sport that involves traveling across flat or gently sloping terrain, while downhill skiing is focused on speed and technique as skiers navigate steeper slopes and challenging terrain. Both sports require specialized equipment and techniques, but they offer different experiences and challenges to participants. \"\"\" messages = [ { 'role': 'system', 'content': SYSTEM_CONTENT, } ] fewshot_samples = [ { 'context': SAMPLE_CONTENT_1, 'response': SAMPLE_RESPONSE_1, }, { 'context': SAMPLE_CONTENT_2, 'response': SAMPLE_RESPONSE_2, } ] for sample in fewshot_samples: messages.append({'role': 'user', 'content': sample['context']}) messages.append({'role': 'assistant', 'content': sample['response']}) query = \"\"\" A group of people standing outside of a black vehicle with various luggage. Luggage surrounds a vehicle in an underground parking area People try to fit all of their luggage in an SUV. The sport utility vehicle is parked in the public garage, being packed for a trip Some people with luggage near a van that is transporting it. \"\"\" messages.append({\"role\":\"user\", \"content\": query}) response = client.chat.completions.create(model=model, messages=messages).choices[0].message.content print(response) 使用Llama3-8B-Instruct生成的问答数据如下所示：\nQuestion: What type of vehicle is being packed with luggage? === Answer: The vehicles being packed with luggage are a black SUV (sport utility vehicle) and a van. === Question: Where is the luggage being packed into the vehicle(s)? === Answer: The luggage is being packed into the vehicles in an underground parking area, as well as in a public garage. === Question: How many people are trying to fit their luggage into the vehicle? === Answer: It appears that there is a group of people trying to fit their luggage into the SUV, but the exact number is not clear from the image. === Question: What is the purpose of the people packing their luggage into the vehicle(s)? === Answer: Based on the context of the image, it appears that the people are packing their luggage into the vehicles in preparation for a trip. The luggage and the vehicles suggest that they are likely going on a vacation or a long journey, and the underground parking area and public garage suggest that they are preparing to leave from a city or urban area. === Question: Can you explain the importance of underground parking and public garages in urban areas? === Answer: Yes, certainly! Underground parking and public garages play a crucial role in urban areas, especially in cities with limited street parking and high population density. These structures provide a convenient and secure way for residents and visitors to park their vehicles, reducing the need for on-street parking and minimizing the visual impact of parked cars on the urban landscape. Underground parking garages, in particular, offer a range of benefits, including: * Protection from the elements: Cars are shielded from inclement weather, reducing the risk of damage and making it easier to maintain the vehicles. * Security: Underground parking garages often have controlled access, surveillance cameras, and secure entry/exit points, providing a safer environment for parked vehicles and their occupants. * Convenience: Underground parking garages are often located near public transportation hubs, commercial centers, and residential areas, making it easier for people to park and access their destinations. * Urban planning: Underground parking garages can help to reduce the visual impact of parking on urban streets, freeing up surface areas for other uses and helping to create more pedestrian-friendly and aesthetically pleasing public spaces. In the context of the image, the underground parking area and public garage suggest that the people are preparing to leave from a city or urban area, and the presence of luggage and vehicles confirms that they are embarking on a trip. Detailed description构造 构造的方式与上面基本相同，只是此处使用到了论文提到的锚框\nfrom openai import OpenAI openai_api_key = \"123456\" # Same as --api-key in the deployment command openai_api_base = \"http://localhost:8000/v1\" client = OpenAI(api_key=openai_api_key, base_url=openai_api_base) model = './Meta-Llama-3-8B-Instruct' system_content_path = 'LLaVA/playground/data/prompts/detail_description/system_message.txt' sample_content_0_path = 'LLaVA/playground/data/prompts/detail_description/000_caps.txt' sample_response_0_path = 'LLaVA/playground/data/prompts/detail_description/000_conv.txt' sample_content_1_path = 'LLaVA/playground/data/prompts/detail_description/001_caps.txt' sample_response_1_path = 'LLaVA/playground/data/prompts/detail_description/001_conv.txt' sample_content_2_path = 'LLaVA/playground/data/prompts/detail_description/002_caps.txt' sample_response_2_path = 'LLaVA/playground/data/prompts/detail_description/002_conv.txt' with open(system_content_path, 'r') as f: SYSTEM_CONTENT = f.read() with open(sample_content_0_path, 'r') as f: SAMPLE_CONTENT_0 = f.read() with open(sample_response_0_path, 'r') as f: SAMPLE_RESPONSE_0 = f.read() with open(sample_content_1_path, 'r') as f: SAMPLE_CONTENT_1 = f.read() with open(sample_response_1_path, 'r') as f: SAMPLE_RESPONSE_1 = f.read() with open(sample_content_2_path, 'r') as f: SAMPLE_CONTENT_2 = f.read() with open(sample_response_2_path, 'r') as f: SAMPLE_RESPONSE_2 = f.read() message = [ { 'role': 'system', 'content': SYSTEM_CONTENT, } ] fewshot_samples = [ { 'context': SAMPLE_CONTENT_0, 'response': SAMPLE_RESPONSE_0, }, { 'context': SAMPLE_CONTENT_1, 'response': SAMPLE_RESPONSE_1, }, { 'context': SAMPLE_CONTENT_2, 'response': SAMPLE_RESPONSE_2, } ] for sample in fewshot_samples: message.append({'role': 'user', 'content': sample['context']}) message.append({'role': 'assistant', 'content': sample['response']}) query = \"\"\" A group of people standing outside of a black vehicle with various luggage. Luggage surrounds a vehicle in an underground parking area People try to fit all of their luggage in an SUV. The sport utility vehicle is parked in the public garage, being packed for a trip Some people with luggage near a van that is transporting it. person: [0.681, 0.242, 0.774, 0.694] person: [0.63, 0.222, 0.686, 0.516] person: [0.444, 0.233, 0.487, 0.34] backpack: [0.384, 0.696, 0.485, 0.914] backpack: [0.755, 0.413, 0.846, 0.692] suitcase: [0.758, 0.413, 0.845, 0.69] suitcase: [0.1, 0.497, 0.173, 0.579] bicycle: [0.282, 0.363, 0.327, 0.442] car: [0.786, 0.25, 0.848, 0.322] car: [0.783, 0.27, 0.827, 0.335] car: [0.86, 0.254, 0.891, 0.3] car: [0.261, 0.101, 0.787, 0.626] \"\"\" message.append({'role': 'user', 'content': query}) response = client.chat.completions.create(model=model, messages=message).choices[0].message.content print(response) Llama3-8B-Instruct生成的数据如下：\nThis image shows a group of people standing outside a black vehicle, likely an SUV, in an underground parking area. The vehicle is being packed for a trip, with various luggage items scattered around it. There are multiple backpacks and suitcases, with one suitcase sitting near the front of the vehicle and another leaning against the side. The people in the image are attempting to fit all of their luggage into the SUV, with one person standing close to the left side of the vehicle, another near the middle, and a third person on the right side. A bicycle can be seen parked nearby, possibly belonging to one of the individuals. The parking area is dimly lit, with the only light source coming from the fluorescent lights above. The walls of the garage are made of concrete, and there is a chair or bench in the background. Complex reasonging构造 这部分的构造和Detailed description的代码完全相同，我们直接展示Llama3-8B-Instruct生成的结果：\nQuestion: What might be the purpose of this group of people and their luggage? === Answer: Based on the image, it appears that this group of people is preparing for a trip. The various luggage, including suitcases, backpacks, and possibly even a bicycle, suggests that they are packing for a journey. The fact that they are surrounded by luggage and trying to fit everything into an SUV or van also implies that they are getting ready to depart. The presence of a public garage, with multiple vehicles parked, further supports this conclusion. It is likely that this group is planning a trip, possibly a family vacation or a business trip, and they are busy packing and preparing for their departure. 处理数据 我们已经可以通过Llama3来根据query生成对应的response，但这种格式并不适合大批量训练，我们需要将response整理成训练格式\nLLaVA的训练格式可以通过huggingface上开源的LLaVA-Instruct-150K看到，所有样本以列表的形式保存在一个json文件中，其中每个样本是一个字典，包含三个字段：\nid：全局唯一的字符串 image：图片的路径 conversations：上面的对话 代码的实现如下：\nimport os image_path = \"path/to/123456.jpg\" image_path = os.path.basename(image_path) id = os.path.splitext(image_path)[0] conversations = [] response_lines = response.split(\"===\") for line in response_lines: line = line.strip() if line.startswith(\"Question:\"): question = line.replace(\"Question:\", \"\").strip() conversations.append({\"from\": \"human\", \"value\": question}) elif line.startswith(\"Answer:\"): answer = line.replace(\"Answer:\", \"\").strip() conversations.append({\"from\": \"gpt\", \"value\": answer}) conversation_data = { \"id\": id, \"image\": image_path, \"conversations\": conversations } import json new_json = f\"/path/to/conversation.json\" with open(new_json, \"w\") as f: json.dump([conversation_data], f, indent=4) 构造完成过后的数据如下所示：\n[ { \"id\": \"123456\", \"image\": \"123456.jpg\", \"conversations\": [ { \"from\": \"human\", \"value\": \"What type of vehicle is being packed with luggage?\" }, { \"from\": \"gpt\", \"value\": \"The vehicle being packed with luggage appears to be a sport utility vehicle (SUV).\" }, { \"from\": \"human\", \"value\": \"Where is the SUV being packed with luggage?\" }, { \"from\": \"gpt\", \"value\": \"The SUV is being packed with luggage in a public garage, likely an underground parking area.\" }, { \"from\": \"human\", \"value\": \"Are all the people shown in the image packing the luggage into the SUV?\" }, { \"from\": \"gpt\", \"value\": \"No, it appears that there are multiple people trying to fit all of their luggage into the SUV, suggesting that there may be a group of travelers preparing for a trip.\" }, { \"from\": \"human\", \"value\": \"Can you describe the scene and the people's actions?\" }, { \"from\": \"gpt\", \"value\": \"The scene depicts a chaotic and busy atmosphere, with multiple people attempting to pack and fit their luggage into the SUV. The luggage surrounds the vehicle, and some people are trying to squeeze more bags into the already-packed vehicle. It appears that the group is in a rush to prepare for a trip and is working together to get everything loaded.\\n\\nThe people in the image are likely a group of travelers, possibly a family or friends, who are preparing for a trip. They are all working together to fit their luggage into the SUV, which suggests a sense of teamwork and cooperation. The scene is quite busy and potentially stressful, as the group is trying to pack a large amount of luggage into a relatively small vehicle.\\n\\nOverall, the image conveys a sense of chaos and busyness, but also a sense of camaraderie and teamwork as the group works together to prepare for their trip.\" } ] } ] 参考 [1] Paper:Improved Baselines with Visual Instruction Tuning(https://arxiv.org/abs/2310.03744)\n[2] Blog:LLaVA-NeXT(https://llava-vl.github.io/blog/2024-01-30-llava-next/)\n[3] Zhihu:HelloWorld-构造多模态数据(https://zhuanlan.zhihu.com/p/696831022)\n[4] Zhihu:HelloWorld-LLaVA1.5论文解读(https://zhuanlan.zhihu.com/p/696402890)\n",
-  "wordCount" : "2804",
-  "inLanguage": "zh",
-  "datePublished": "2024-11-01T18:21:23+08:00",
-  "dateModified": "2024-11-01T18:21:23+08:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://attract666.github.io/posts/llava_02/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "JiaHe's Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://attract666.github.io/favicon.ico"
-    }
-  }
-}
-</script>
 </head>
 
 <body class="" id="top">
@@ -263,7 +145,7 @@ LLaVA-NEXT
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://attract666.github.io/" accesskey="h" title="JiaHe&#39;s Blog (Alt + H)">JiaHe&#39;s Blog</a>
+            <a href="http://localhost:1313/" accesskey="h" title="JiaHe&#39;s Blog (Alt + H)">JiaHe&#39;s Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -289,27 +171,27 @@ LLaVA-NEXT
         </div>
         <ul id="menu">
             <li>
-                <a href="https://attract666.github.io/posts/" title="All posts">
+                <a href="http://localhost:1313/posts/" title="All posts">
                     <span>All posts</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/archives/" title="Archives">
+                <a href="http://localhost:1313/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/categories/" title="Categories">
+                <a href="http://localhost:1313/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
@@ -857,15 +739,15 @@ Based on the image, it appears that this group of people is preparing for a trip
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://attract666.github.io/tags/vision-language-models/">Vision-Language-Models</a></li>
-      <li><a href="https://attract666.github.io/tags/llava/">LLaVA</a></li>
+      <li><a href="http://localhost:1313/tags/vision-language-models/">Vision-Language-Models</a></li>
+      <li><a href="http://localhost:1313/tags/llava/">LLaVA</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://attract666.github.io/">JiaHe&#39;s Blog</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">JiaHe&#39;s Blog</a></span> · 
 
     <span>
         Powered by

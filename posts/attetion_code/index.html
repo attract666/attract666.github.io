@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>手撕Multihead Attention | JiaHe&#39;s Blog</title>
 <meta name="keywords" content="vision-language-models, LLaVA, LLama">
 <meta name="description" content="为了方便讲解，我们先对文本进行tokenize和embedding。我们仅在这一步使用了除torch以外的库
@@ -18,16 +18,16 @@ inputs = {key: value.to(kwargs[&#34;device_map&#34;]) for key, value in inputs.i
 inputs = model.get_input_embeddings()(inputs[&#34;input_ids&#34;])
 ">
 <meta name="author" content="">
-<link rel="canonical" href="https://attract666.github.io/posts/attetion_code/">
+<link rel="canonical" href="http://localhost:1313/posts/attetion_code/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://attract666.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://attract666.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://attract666.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://attract666.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://attract666.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="https://attract666.github.io/posts/attetion_code/">
+<link rel="alternate" hreflang="zh" href="http://localhost:1313/posts/attetion_code/">
 <noscript>
     <style>
         #theme-toggle,
@@ -66,7 +66,7 @@ inputs = model.get_input_embeddings()(inputs[&#34;input_ids&#34;])
     </style>
 </noscript>
 <script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         MathJax.Hub.Config({
             tex2jax: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -107,85 +107,7 @@ inputs = model.get_input_embeddings()(inputs[&#34;input_ids&#34;])
     }
 </style>
 
-<meta property="og:title" content="手撕Multihead Attention" />
-<meta property="og:description" content="为了方便讲解，我们先对文本进行tokenize和embedding。我们仅在这一步使用了除torch以外的库
-text = &#34;This is your first step to understanding LLM&#34;
-kwargs = {&#34;device_map&#34;: &#34;cuda:3&#34;}
-tokenizer = AutoTokenizer.from_pretrained(&#34;llama3/Meta-Llama-3-8B&#34;, use_fast=False)
-model = AutoModelForCausalLM.from_pretrained(&#34;llama3/Meta-Llama-3-8B&#34;, **kwargs)
 
-inputs = tokenizer(text, return_tensors=&#34;pt&#34;)
-inputs = {key: value.to(kwargs[&#34;device_map&#34;]) for key, value in inputs.items()}
-inputs = model.get_input_embeddings()(inputs[&#34;input_ids&#34;])
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://attract666.github.io/posts/attetion_code/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-12-22T19:21:37+08:00" />
-<meta property="article:modified_time" content="2024-12-22T19:21:37+08:00" />
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="手撕Multihead Attention"/>
-<meta name="twitter:description" content="为了方便讲解，我们先对文本进行tokenize和embedding。我们仅在这一步使用了除torch以外的库
-text = &#34;This is your first step to understanding LLM&#34;
-kwargs = {&#34;device_map&#34;: &#34;cuda:3&#34;}
-tokenizer = AutoTokenizer.from_pretrained(&#34;llama3/Meta-Llama-3-8B&#34;, use_fast=False)
-model = AutoModelForCausalLM.from_pretrained(&#34;llama3/Meta-Llama-3-8B&#34;, **kwargs)
-
-inputs = tokenizer(text, return_tensors=&#34;pt&#34;)
-inputs = {key: value.to(kwargs[&#34;device_map&#34;]) for key, value in inputs.items()}
-inputs = model.get_input_embeddings()(inputs[&#34;input_ids&#34;])
-"/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://attract666.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "手撕Multihead Attention",
-      "item": "https://attract666.github.io/posts/attetion_code/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "手撕Multihead Attention",
-  "name": "手撕Multihead Attention",
-  "description": "为了方便讲解，我们先对文本进行tokenize和embedding。我们仅在这一步使用了除torch以外的库\ntext = \u0026#34;This is your first step to understanding LLM\u0026#34; kwargs = {\u0026#34;device_map\u0026#34;: \u0026#34;cuda:3\u0026#34;} tokenizer = AutoTokenizer.from_pretrained(\u0026#34;llama3/Meta-Llama-3-8B\u0026#34;, use_fast=False) model = AutoModelForCausalLM.from_pretrained(\u0026#34;llama3/Meta-Llama-3-8B\u0026#34;, **kwargs) inputs = tokenizer(text, return_tensors=\u0026#34;pt\u0026#34;) inputs = {key: value.to(kwargs[\u0026#34;device_map\u0026#34;]) for key, value in inputs.items()} inputs = model.get_input_embeddings()(inputs[\u0026#34;input_ids\u0026#34;]) ",
-  "keywords": [
-    "vision-language-models", "LLaVA", "LLama"
-  ],
-  "articleBody": "为了方便讲解，我们先对文本进行tokenize和embedding。我们仅在这一步使用了除torch以外的库\ntext = \"This is your first step to understanding LLM\" kwargs = {\"device_map\": \"cuda:3\"} tokenizer = AutoTokenizer.from_pretrained(\"llama3/Meta-Llama-3-8B\", use_fast=False) model = AutoModelForCausalLM.from_pretrained(\"llama3/Meta-Llama-3-8B\", **kwargs) inputs = tokenizer(text, return_tensors=\"pt\") inputs = {key: value.to(kwargs[\"device_map\"]) for key, value in inputs.items()} inputs = model.get_input_embeddings()(inputs[\"input_ids\"]) tensor([[[-1.4305e-04, 1.0777e-04, -1.9646e-04, ..., 2.0218e-04, 1.4842e-05, 3.0136e-04], [ 1.7090e-03, -2.4261e-03, 1.0452e-03, ..., 5.9814e-03, 2.9602e-03, -2.4414e-03], [-2.9144e-03, 1.5335e-03, -2.4605e-04, ..., 9.7046e-03, 4.2114e-03, 7.9956e-03], ..., [ 1.6968e-02, -1.1749e-03, -4.4556e-03, ..., 7.4463e-03, -1.6785e-03, 1.2878e-02], [-9.9487e-03, 2.3651e-03, -2.1057e-03, ..., 8.2397e-03, -3.9978e-03, -3.4637e-03], [-8.3923e-05, 1.3428e-03, -3.6011e-03, ..., 3.7384e-03, -1.3184e-02, -3.7537e-03]]], device='cuda:3', grad_fn=\u003cEmbeddingBackward0\u003e) # shape: [1, 10, 4096] # 因为包含开始和结束token 所以第二个维度是10 自注意力机制关注输入的不同区域 不包含可训练权重的自注意力机制 按照惯例，未经归一化的注意力权重被称为“注意力分数”，经过归一化的注意力分数被称为“注意力权重” 这一步我们的目标是获得输入序列的上下文向量 上下文向量相当于输入序列的变体，它不仅包含了输入序列特定元素的信息，还包含了当任务相关的所有其他输入元素的信息 让我们先以第4个元素为例（即your对应的embedding），计算它对应的上下文向量，后面我们会推广这个方法来计算所有的上下文向量\n第一步：计算注意力分数，通过查询$x^{(4)}$与所有其他输入token之间的点积来实现： query = embeddings[0, 3, :] device = embeddings.device # 创建一个空的张量来存储注意力分数，其形状与输入序列的批次大小相同 attn_scores_4 = torch.empty(embeddings.shape[1], device=device) for i, x_i in enumerate(embeddings[0]): attn_scores_4[i] = torch.dot(x_i, query) print(attn_scores_4) # tensor([0.0052, 0.0204, 0.0254, 0.1827, 0.0237, 0.0168, 0.0257, 0.0229, 0.0092, # 0.0067], device='cuda:3', grad_fn=) 第二步：归一化注意力分数。在实际应用中，使用softmax进行归一化更为常见 attn_weights_4 = torch.softmax(attn_scores_4, dim=0) print(f\"Attention weights: {attn_weights_4}\") print(f\"Sum: {attn_weights_4.sum()}\") # Attention weights: tensor([0.0971, 0.0985, 0.0990, 0.1159, 0.0989, 0.0982, 0.0991, 0.0988, 0.0974, # 0.0972], device='cuda:3', grad_fn=) # Sum: 1.0 第三步：将输入序列与注意力权重相乘，并加起来，得到上下文向量 query = embeddings[0, 3, :] context_vec_4 = torch.zeros(query.shape, device=device) for i, x_i in enumerate(embeddings[0]): context_vec_4 += x_i * attn_weights_4[i] print(context_vec_4) print(context_vec_4.shape) # tensor([ 0.0001, -0.0021, -0.0020, ..., 0.0031, -0.0035, 0.0007], # device='cuda:3', grad_fn=) # torch.Size([4096]) # shape : 10 * (10, 4096) 在上面的过程中，我们计算了第4个元素的上下文向量，接下来我们将其推广到整个输入序列\nb = embeddings.shape[0] seq_length = embeddings.shape[1] emb_size = embeddings.shape[2] # 创建空的注意力分数矩阵 attn_scores = torch.empty(b, seq_length, seq_length, device=device) attn_scores = torch.bmm(embeddings, embeddings.transpose(1, 2)) print(attn_scores.shape) # 归一化注意力分数矩阵 attn_weights = torch.softmax(attn_scores, dim=-1) print(f\"Sum :{attn_weights.sum(dim=-1)}\") # 获得上下文向量 all_context_vec = torch.bmm(attn_weights, embeddings) print(all_context_vec.shape) # torch.Size([1, 10, 10]) # Sum :tensor([[1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, 1.0000, # 1.0000]], device='cuda:3', grad_fn=) # torch.Size([1, 10, 4096]) 使用可训练权重实现自注意力机制 这种注意力机制也被称为“缩放点积注意力” 与上一节相同，我们需要注意力权重，但不同的在于这个注意力权重在模型训练期间可以更新，以便学习“good”上下文 在实现自注意力机制之前，我们首先引入三个训练权重矩阵$W_q$、$W_k$和$W_v$，这三个矩阵将embedding的特定元素向量投影到三个向量： query：$q^{(i)} = W_q \\cdot x^{(i)}$ key： $k^{(i)} = W_k \\cdot x^{(i)}$ value：$v^{(i)} = W_v \\cdot x^{(i)}$ 输入维度与输出维度可以相同也可以不同，这里我们假设它们不同 x_4 = embeddings[0, 3, :] d_in = embeddings.shape[2] # 4096 d_out = 2048 下面我们将初始化三个权重矩阵；请注意，我们会设置requires_grad=False以减少输出的混乱，但在实际训练过程中requires_grad应设置为True，以便更新这些矩阵 torch.manual_seed(42) W_q = torch.nn.Parameter(torch.rand(b, d_in, d_out), requires_grad=False) W_k = torch.nn.Parameter(torch.rand(b, d_in, d_out), requires_grad=False) W_v = torch.nn.Parameter(torch.rand(b, d_in, d_out), requires_grad=False) 接下来分别计算三个向量 query_4 = x_4 @ W_q key_4 = x_4 @ W_k value_4 = x_4 @ W_v print(query_4) print(query_4.shape) # tensor([0.3062, 0.2997, 0.4767, ..., 0.4066, 0.5410, 0.4954], device='cuda:3', # grad_fn=) # torch.Size([2048]) 我们将所有token的从4096维度映射到了2048维度 keys = embeddings[0] @ W_k values = embeddings[0] @ W_v print(keys.shape) print(values.shape) # torch.Size([10, 2048]) # torch.Size([10, 2048]) 接下来，我通过计算query和每个key向量之间的点积来计算注意力分数，会得到10个注意力分数 attn_scores_4 = query_4 @ keys.T print(attn_scores_4) print(attn_scores_4.shape) # tensor([ 58.8918, 166.3115, 81.8653, 339.3221, 96.8350, 457.5436, -6.2441, # 56.3547, 162.6453, 406.4980], device='cuda:3', # grad_fn=) # torch.Size([10]) 下一步是归一化注意力分数，但与之前不同的是，之前使用softmax归一化注意力分数。我们现在通过除以key和query的纬度的平方根来缩放注意力分数 这里通过除以key的维度的平方根，来防止过大的点积，导致softmax梯度过小 d_k = keys.shape[1] # 2048 attn_weights_4 = torch.softmax(attn_scores_4 / d_k**0.5, dim=-1) print(attn_weights_4) print(attn_weights_4.shape) # tensor([1.0662e-04, 1.1447e-03, 1.7713e-04, 5.2362e-02, 2.4658e-04, 7.1375e-01, # 2.5278e-05, 1.0080e-04, 1.0556e-03, 2.3104e-01], device='cuda:3', # grad_fn=) # torch.Size([10]) 获得上下文向量 context_vec_4 = attn_weights_4 @ values print(context_vec_4) print(context_vec_4.shape) # tensor([0.5827, 0.6454, 0.4521, ..., 0.4937, 0.3820, 0.3779], device='cuda:3', # grad_fn=) # torch.Size([2048]) 实现一个SelfAttention类 最后让我们整合一下，就可以得到一个紧凑的SelfAttention类\nimport torch.nn as nn import torch class SelfAttention(nn.Module): def __init__(self, d_in, d_out, qkv_bias=False): super().__init__() self.d_out = d_out self.W_query = nn.Linear(d_in, d_out, bias=qkv_bias) self.W_key = nn.Linear(d_in, d_out, bias=qkv_bias) self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias) def forward(self, x): keys = self.W_key(x) queries = self.W_query(x) values = self.W_value(x) attn_scores = queries @ keys.transpose(1, 2) attn_weights = torch.softmax(attn_scores / keys.shape[-1]**0.5, dim=-1) context_vec = attn_weights @ values return context_vec 遮蔽下文信息的注意力机制 使用因果注意力掩码 在本节，我们将前文的自注意力机制转化为因果自注意力机制\n核心在于：模型对序列中某个位置的预测只依赖于前面位置的已知输出，而不依赖于未来的位置\n我们先试用上面的自注意力类来获得注意力权重。值得注意的是，我们的自注意力使用nn.Linear来初始化权重矩阵的，nn.Linea自带一种优选的权重初始化方案，这有助于实现更稳定的模型训练。\ntorch.manual_seed(1024) device = embeddings.device d_in = embeddings.shape[2] d_out = 2048 selfattention = SelfAttention(d_in, d_out, device=device) querys = selfattention.W_query(embeddings) keys = selfattention.W_key(embeddings) attn_scores = querys @ keys.transpose(1, 2) attn_weights = torch.softmax(attn_scores / keys.shape[-1]**0.5, dim=-1) # print(attn_weights) print(attn_weights.shape) # tensor([[[0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000]]], device='cuda:3', grad_fn=) # torch.Size([1, 10, 10]) 屏蔽未来的注意力权重最简单的方法是通过PyTorch的tril函数创建一个掩码，主对角线（包括对角线本身）以下的元素设置为1，主对角线以上的元素设置为0： block_size = attn_scores.shape[-1] mask_simple = torch.tril(torch.ones(block_size, block_size)).to(device) print(mask_simple) # tensor([[1., 0., 0., 0., 0., 0., 0., 0., 0., 0.], # [1., 1., 0., 0., 0., 0., 0., 0., 0., 0.], # [1., 1., 1., 0., 0., 0., 0., 0., 0., 0.], # [1., 1., 1., 1., 0., 0., 0., 0., 0., 0.], # [1., 1., 1., 1., 1., 0., 0., 0., 0., 0.], # [1., 1., 1., 1., 1., 1., 0., 0., 0., 0.], # [1., 1., 1., 1., 1., 1., 1., 0., 0., 0.], # [1., 1., 1., 1., 1., 1., 1., 1., 0., 0.], # [1., 1., 1., 1., 1., 1., 1., 1., 1., 0.], # [1., 1., 1., 1., 1., 1., 1., 1., 1., 1.]], device='cuda:3') 然后我们将注意力权重与掩码矩阵相乘（此处是对应元素相乘），将主对角线以上的权重归零： mask_simple = attn_weights*mask_simple print(mask_simple) # tensor([[[0.1000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.1000, 0.1000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.1000, 0.1000, 0.1000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.0000, # 0.0000, 0.0000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.0000, 0.0000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.0000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000]]], device='cuda:3', grad_fn=) 然而，如果我们像这样在softmax之后进行掩码，它会破坏softmax创建的概率分布，简单来说就是我们输出的总和不在为1 因此，为了确保输出的值总和为1，我们对注意力分数进行掩码，用负无穷大来掩盖对角线以上的部分 mask = torch.triu(torch.ones(block_size, block_size), diagonal=1).to(device) masked = attn_scores.masked_fill(mask.bool(), -torch.inf) attn_weights = torch.softmax(masked / keys.shape[-1]**0.5, dim=-1) print(attn_weights) # tensor([[[1.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.5000, 0.5000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.3333, 0.3333, 0.3333, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.2500, 0.2500, 0.2500, 0.2500, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.2000, 0.2000, 0.2000, 0.2000, 0.2000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.1667, 0.1667, 0.1667, 0.1667, 0.1667, 0.1667, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.1429, 0.1429, 0.1429, 0.1429, 0.1429, 0.1429, 0.1429, 0.0000, # 0.0000, 0.0000], # [0.1250, 0.1250, 0.1250, 0.1250, 0.1250, 0.1250, 0.1250, 0.1250, # 0.0000, 0.0000], # [0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, 0.1111, # 0.1111, 0.0000], # [0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, 0.1000, # 0.1000, 0.1000]]], device='cuda:3', grad_fn=) 通过dropout来实现额外注意力权重的掩码 此外，我还可以在训练阶段使用dropout来减少过拟合 dropout可以应用在下面多个地方： 计算注意力权重后 将注意力权重与values相乘后 我们在此处演示更为常见的情况，在计算注意力权重之后dropout，并使用p=0.2，那么未被屏蔽的元素会以x / (1 - p)进行缩放 dropout只在训练阶段使用，在推理阶段是不使用的 torch.manual_seed(1024) dropout = torch.nn.Dropout(p=0.2) print(dropout(attn_weights)) # tensor([[[0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.6250, 0.6250, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.4167, 0.4167, 0.4167, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.3125, 0.3125, 0.3125, 0.3125, 0.0000, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.0000, 0.2500, 0.2500, 0.2500, 0.2500, 0.0000, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.2083, 0.0000, 0.2083, 0.2083, 0.2083, 0.2083, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.1786, 0.1786, 0.0000, 0.1786, 0.1786, 0.1786, 0.0000, 0.0000, # 0.0000, 0.0000], # [0.1563, 0.1562, 0.1563, 0.1562, 0.1563, 0.1562, 0.1563, 0.0000, # 0.0000, 0.0000], # [0.1389, 0.1389, 0.1389, 0.1389, 0.1389, 0.0000, 0.0000, 0.0000, # 0.1389, 0.0000], # [0.0000, 0.1250, 0.1250, 0.1250, 0.1250, 0.0000, 0.1250, 0.1250, # 0.0000, 0.1250]]], device='cuda:3', grad_fn=) 实现一个CausalAttention类 最后，让我们来整合一下上面所有的内容，就可以得到带有dropout的因果自注意力类\nimport torch.nn as nn import torch class CausalAttention(nn.Module): def __init__(self, d_in, d_out, block_size, dropout, qkv_bias=False, device=None): super().__init__() self.d_out = d_out self.device = device self.W_query = nn.Linear(d_in, d_out, bias=qkv_bias).to(device) self.W_key = nn.Linear(d_in, d_out, bias=qkv_bias).to(device) self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias).to(device) self.dropout = nn.Dropout(dropout).to(device) self.register_buffer('mask', torch.triu(torch.ones(block_size, block_size), diagonal=1).to(device)) def forward(self, x): b, seq_length, d_in = x.shape keys = self.W_key(x) queries = self.W_query(x) values = self.W_value(x) attn_scores = queries @ keys.transpose(1, 2) # _ ops are in-place attn_scores.masked_fill_(self.mask.bool()[:seq_length, :seq_length], -torch.inf) attn_weights = torch.softmax(attn_scores / keys.shape[-1]**0.5, dim=-1) attn_weights = self.dropout(attn_weights) context_vec = attn_weights @ values return context_vec 让我们来测试一下\ntorch.manual_seed(1024) b, seq_length, hidden_size = embeddings.shape device = embeddings.device causalattention = CausalAttention(d_in=hidden_size, d_out=hidden_size, block_size=seq_length, dropout=0.2, device=device) output = causalattention(embeddings) print(output) print(output.shape) # tensor([[[ 0.0000e+00, 0.0000e+00, 0.0000e+00, ..., 0.0000e+00, # 0.0000e+00, 0.0000e+00], # [-3.4140e-03, -3.2753e-03, -6.7516e-04, ..., -2.5813e-05, # -9.6949e-04, -6.0929e-03], # [-2.6352e-03, -2.6163e-03, -3.5899e-04, ..., -2.7544e-03, # -6.0539e-04, -2.1978e-03], # ..., # [-3.7001e-03, -5.4613e-04, 1.4258e-04, ..., -3.8889e-04, # -3.4689e-03, -1.3611e-03], # [-2.9000e-03, -1.6623e-03, 1.5887e-04, ..., 3.9370e-04, # -1.9343e-03, 1.0009e-04], # [-1.3459e-04, -7.6909e-04, -4.2374e-05, ..., 4.8359e-04, # -2.5928e-03, 1.2988e-03]]], device='cuda:3', # grad_fn=) # torch.Size([1, 10, 4096]) 将单头拓展到多头 直接将多个单头注意力层堆积起来 我们可以简单地将多个单头注意力层堆积在一起实现多头注意力层 多头注意力机制的主要思想是使用不同的、已学习的权重矩阵，并行运行注意力机制。这使得模型能够在不同位置的不同表示子空间中联合关注信息 import torch.nn as nn import torch class MultiHeadAttentionWrapper(nn.Module): def __init__(self, d_in, d_out, block_size, dropout, num_heads, qkv_bias=False, device=None): super().__init__() self.heads = nn.ModuleList([CausalAttention(d_in, d_out, block_size, dropout, qkv_bias, device) for _ in range(num_heads)]) def forward(self, x): return torch.cat([head(x) for head in self.heads], dim=-1) 简单测试一下 torch.manual_seed(1024) b, seq_length, hidden_size = embeddings.shape device = embeddings.device mha = MultiHeadAttentionWrapper(d_in=hidden_size, d_out=hidden_size, block_size=seq_length, dropout=0.2, num_heads=12, device=device) context_vec = mha(embeddings) print(context_vec) print(context_vec.shape) # tensor([[[ 0.0000e+00, 0.0000e+00, 0.0000e+00, ..., -6.3230e-03, # -4.0065e-03, 2.3815e-03], # [-3.4140e-03, -3.2753e-03, -6.7516e-04, ..., -2.9023e-03, # 9.8894e-04, 7.2249e-04], # [-2.6352e-03, -2.6163e-03, -3.5899e-04, ..., -1.9348e-03, # 6.5939e-04, 4.8163e-04], # ..., # [-3.7001e-03, -5.4613e-04, 1.4258e-04, ..., -4.5610e-04, # 1.7907e-03, -1.7851e-03], # [-2.9000e-03, -1.6623e-03, 1.5887e-04, ..., -4.9142e-04, # 1.5937e-03, -2.5343e-03], # [-1.3459e-04, -7.6909e-04, -4.2374e-05, ..., -5.9090e-04, # 6.2077e-04, -1.3590e-03]]], device='cuda:3', grad_fn=) # torch.Size([1, 10, 49152]) 我们使用了相同的d_in和d_out，并且使用了12个头，所以最终的维度会是4096 * 12 = 49152 通过权重分割实现多头注意力 尽管上述多头注意力的实现是最直观且功能完整的（将CausalAttention实现封装在内），但我们也可以编写一个独立类来实现相同的功能 对于这个独立的MultiHeadAttention类，我们不会将单个注意力头连接在一起。相反，我们创建单个W_query、W_key和W_value权重矩阵，然后将它们拆分为每个注意力头的独立矩阵 import torch.nn as nn import torch class MultiHeadAttention(nn.Module): def __init__(self, d_in, d_out, block_size, dropout, num_heads, qkv_bias=False, device=None): super().__init__() assert d_out % num_heads == 0, \"d_out should be divisible by num_heads\" self.d_out = d_out self.num_heads = num_heads self.head_dim = d_out // num_heads self.W_query = nn.Linear(d_in, d_out, bias=qkv_bias).to(device) self.W_key = nn.Linear(d_in, d_out, bias=qkv_bias).to(device) self.W_value = nn.Linear(d_in, d_out, bias=qkv_bias).to(device) self.output_proj = nn.Linear(d_out, d_out).to(device) self.dropout = nn.Dropout(dropout) self.register_buffer(\"mask\", torch.triu(torch.ones(block_size, block_size), diagonal=1).to(device)) def forward(self, x): b, seq_length, d_in = x.shape # shape : (b, seq_length, d_out) keys = self.W_key(x) queries = self.W_query(x) values = self.W_value(x) # shape : (b, seq_length, num_heads, head_dim) keys = keys.view(b, seq_length, self.num_heads, self.head_dim) queries = queries.view(b, seq_length, self.num_heads, self.head_dim) values = values.view(b, seq_length, self.num_heads, self.head_dim) # shape : (b, num_heads, seq_length, head_dim) keys = keys.transpose(1, 2) queries = queries.transpose(1, 2) values = values.transpose(1, 2) attn_scores = queries @ keys.transpose(2, 3) mask_bool = self.mask.bool()[:seq_length, :seq_length] mask_unsqueeze = mask_bool.unsqueeze(0).unsqueeze(0) attn_scores.masked_fill_(mask_unsqueeze, -torch.inf) attn_weights = torch.softmax(attn_scores / keys.shape[-1]**0.5, dim=-1) attn_weights = self.dropout(attn_weights) # shape : (b, seq_length, num_heads, head_dim) context_vec = (attn_weights @ values).transpose(1, 2) # view require the tensor to be contiguous context_vec = context_vec.contiguous().view(b, seq_length, self.d_out) context_vec = self.output_proj(context_vec) return context_vec 测试一下 torch.manual_seed(1024) b, seq_length, hidden_size = embeddings.shape device = embeddings.device mha = MultiHeadAttention(d_in=hidden_size, d_out=hidden_size*12, block_size=seq_length, dropout=0.2, num_heads=12, device=device) context_vec = mha(embeddings) print(context_vec) print(context_vec.shape) # tensor([[[-1.7976e-03, -7.1362e-03, 3.0706e-04, ..., 5.2778e-03, # -3.9758e-04, -3.7783e-03], # [-2.2841e-04, -6.1624e-03, 1.7655e-03, ..., 4.7084e-03, # -3.8035e-03, -4.4949e-03], # [-9.7516e-04, -5.9961e-03, -6.8417e-04, ..., 4.7274e-03, # -4.7388e-04, -4.6040e-03], # ..., # [-1.9826e-03, -3.5002e-03, -9.4147e-04, ..., 3.3272e-03, # -8.4172e-04, -3.7638e-03], # [-1.6038e-03, -3.2562e-03, -8.1033e-04, ..., 4.3648e-03, # -2.4421e-04, -4.4432e-03], # [-2.4065e-03, -3.8717e-03, -4.4748e-04, ..., 3.1679e-03, # 5.7510e-05, -3.3277e-03]]], device='cuda:3', # grad_fn=) # torch.Size([1, 10, 49152]) 以上内容实际上是MultiHeadAttentionWrapper更高效版本 在上面的实现中，我们添加了一个投影层，这不是必须的，在LLM中只是一种标准惯例（最新的研究表明，它可以被移除而不会影响建模性能） 我们可以简单计算一下参数量 def count_parameters(model): return sum(p.numel() for p in model.parameters() if p.requires_grad) print(count_parameters(mha)) print(3*12*4096*4096 + 4096*12*12*4096 + 4096*12) # 3019948032 # 3019948032 第一项是三个权重矩阵的参数（d_in $\\cdot$ d_out），第二项是投影层的权重（d_out $\\cdot$ d_out），第三项是投影层的bias（d_out） ",
-  "wordCount" : "1834",
-  "inLanguage": "zh",
-  "datePublished": "2024-12-22T19:21:37+08:00",
-  "dateModified": "2024-12-22T19:21:37+08:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://attract666.github.io/posts/attetion_code/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "JiaHe's Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://attract666.github.io/favicon.ico"
-    }
-  }
-}
-</script>
 </head>
 
 <body class="" id="top">
@@ -203,7 +125,7 @@ inputs = model.get_input_embeddings()(inputs[&#34;input_ids&#34;])
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://attract666.github.io/" accesskey="h" title="JiaHe&#39;s Blog (Alt + H)">JiaHe&#39;s Blog</a>
+            <a href="http://localhost:1313/" accesskey="h" title="JiaHe&#39;s Blog (Alt + H)">JiaHe&#39;s Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -229,27 +151,27 @@ inputs = model.get_input_embeddings()(inputs[&#34;input_ids&#34;])
         </div>
         <ul id="menu">
             <li>
-                <a href="https://attract666.github.io/posts/" title="All posts">
+                <a href="http://localhost:1313/posts/" title="All posts">
                     <span>All posts</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/archives/" title="Archives">
+                <a href="http://localhost:1313/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/categories/" title="Categories">
+                <a href="http://localhost:1313/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
@@ -968,16 +890,16 @@ inputs = model.get_input_embeddings()(inputs[&#34;input_ids&#34;])
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://attract666.github.io/tags/vision-language-models/">Vision-Language-Models</a></li>
-      <li><a href="https://attract666.github.io/tags/llava/">LLaVA</a></li>
-      <li><a href="https://attract666.github.io/tags/llama/">LLama</a></li>
+      <li><a href="http://localhost:1313/tags/vision-language-models/">Vision-Language-Models</a></li>
+      <li><a href="http://localhost:1313/tags/llava/">LLaVA</a></li>
+      <li><a href="http://localhost:1313/tags/llama/">LLama</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://attract666.github.io/">JiaHe&#39;s Blog</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">JiaHe&#39;s Blog</a></span> · 
 
     <span>
         Powered by

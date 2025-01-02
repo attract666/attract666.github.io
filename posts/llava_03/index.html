@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh" dir="auto">
 
-<head><meta charset="utf-8">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <title>从零开始学LLaVA 03 | JiaHe&#39;s Blog</title>
 <meta name="keywords" content="vision-language-models, LLaVA">
 <meta name="description" content="本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。
@@ -18,16 +18,16 @@ model = LlavaLlamaForCausalLM.from_pretrained(
                 **bnb_model_from_pretrained_args)
 ">
 <meta name="author" content="">
-<link rel="canonical" href="https://attract666.github.io/posts/llava_03/">
+<link rel="canonical" href="http://localhost:1313/posts/llava_03/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://attract666.github.io/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://attract666.github.io/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://attract666.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://attract666.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="https://attract666.github.io/safari-pinned-tab.svg">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="https://attract666.github.io/posts/llava_03/">
+<link rel="alternate" hreflang="zh" href="http://localhost:1313/posts/llava_03/">
 <noscript>
     <style>
         #theme-toggle,
@@ -66,7 +66,7 @@ model = LlavaLlamaForCausalLM.from_pretrained(
     </style>
 </noscript>
 <script type="text/javascript" async
-    src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
         MathJax.Hub.Config({
             tex2jax: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
@@ -107,85 +107,7 @@ model = LlavaLlamaForCausalLM.from_pretrained(
     }
 </style>
 
-<meta property="og:title" content="从零开始学LLaVA 03" />
-<meta property="og:description" content="本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。
-模型部分
-在LLaVA/llava/train/train.py的第827行会出现初始化模型的代码
-model = LlavaLlamaForCausalLM.from_pretrained(
-                model_args.model_name_or_path,
-                cache_dir=training_args.cache_dir,
-                attn_implementation=attn_implementation,
-                torch_dtype=(torch.bfloat16 if training_args.bf16 else None),
-                **bnb_model_from_pretrained_args)
-" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://attract666.github.io/posts/llava_03/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2024-12-02T11:27:27+08:00" />
-<meta property="article:modified_time" content="2024-12-02T11:27:27+08:00" />
 
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="从零开始学LLaVA 03"/>
-<meta name="twitter:description" content="本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。
-模型部分
-在LLaVA/llava/train/train.py的第827行会出现初始化模型的代码
-model = LlavaLlamaForCausalLM.from_pretrained(
-                model_args.model_name_or_path,
-                cache_dir=training_args.cache_dir,
-                attn_implementation=attn_implementation,
-                torch_dtype=(torch.bfloat16 if training_args.bf16 else None),
-                **bnb_model_from_pretrained_args)
-"/>
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://attract666.github.io/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "从零开始学LLaVA 03",
-      "item": "https://attract666.github.io/posts/llava_03/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "从零开始学LLaVA 03",
-  "name": "从零开始学LLaVA 03",
-  "description": "本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。\n模型部分 在LLaVA/llava/train/train.py的第827行会出现初始化模型的代码\nmodel = LlavaLlamaForCausalLM.from_pretrained( model_args.model_name_or_path, cache_dir=training_args.cache_dir, attn_implementation=attn_implementation, torch_dtype=(torch.bfloat16 if training_args.bf16 else None), **bnb_model_from_pretrained_args) ",
-  "keywords": [
-    "vision-language-models", "LLaVA"
-  ],
-  "articleBody": "本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在LLaVA/scripts/v1_5/pretrain.sh，视觉指令微调启动的脚本在LLaVA/scripts/v1_5/finetune.sh。两个脚本文件执行的都是LLaVA/llava/train/train_mem.py，在LLaVA/llava/train目录下还有一个train.py，这个才是真正的总体路口，不同点在于是否使用flash_attention_2。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。\n模型部分 在LLaVA/llava/train/train.py的第827行会出现初始化模型的代码\nmodel = LlavaLlamaForCausalLM.from_pretrained( model_args.model_name_or_path, cache_dir=training_args.cache_dir, attn_implementation=attn_implementation, torch_dtype=(torch.bfloat16 if training_args.bf16 else None), **bnb_model_from_pretrained_args) 根据模型路径加载模型。LlavaLlamaForCausalLM类在我们介绍推理时也曾遇见过，当时我们是直接分析它的generate()方法，现在让我们再详细分析下这个类。\n首先，LlavaLlamaForCausalLM继承了LlamaForCausalLM和LlavaMetaForCausalLM两个类。其中LlamaForCausalLM就是transformers中的实现，而LlavaMetaForCausalLM就是我们之前在推理过程中分析的那个。成员变量中包括了用于处理输入提取特征的model和用于预测输出token的lm_head。由于输入中添加了图像，所以重写了LlamaForCausalLM中的forward()和generate()方法 其中用于输入提取的特征提取器是LLavaLlamaModel的实例。LlavaLlamaModel是一个抽象的组合类，继承了LlavaMetaModel和LlamaModel。组合文本和图像在进入llm之前的特征处理过程。LlavaMetaModel控制vision branch功能函数来完成细节的图像特征提取，而LlamaModel就是正常的LLM的通用功能 总的说来LlavaLlamaForCausalLM用于负责总体逻辑统筹，具体的文本侧和视觉侧则交给LlamaModel和LlavaMetaModel 其中比较关键的在于需要自己实现的LlavaMetaModel和LlavaMetaForCausalLM LlavaMetaForCausalLM 这个是我们的老朋友了，在第二章的推理部分我们也分析过它的prepare_inputs_labels_for_multimodal()方法。\nclass LlavaMetaForCausalLM(ABC): @abstractmethod def get_model(self):... def get_vision_tower(self):... def encode_images(self, images):... def prepare_inputs_labels_for_multimodal( self, input_ids, position_ids, attention_mask, past_key_values, labels, images, image_size=None):... def initialize_vision_tokenizer(self, model_args, tokenizer):... 首先第一个方法是get_model()，这是一个抽象方法，子类实现了该抽象方法才能被实例化，基类不能实例化。所以可以在LlavaLlamaForCausalLM类中可以看到重新实现了get_model()，就是返回模型。\n之后是get_vision_tower()，也很简单，返回model的visual encoder。\nencode_images()就是提取图像特征，这里的图像特征是经过visual encoder和投影层之后的特征。\nprepare_inputs_labels_for_multimodal()由于之前介绍过推理时的逻辑，所以这里暂时不展开说，在后面的前向传播时，我们会重新看到它作为训练时的逻辑。\n最后一个方法是initialize_vision_tokenizer()，主要用于初始化视觉模型的tokenizer。\nLlavaMetaModel class LlavaMetaModel: def __init__(self, config):... def get_vision_tower(self):... def initialize_vision_modules(self, model_args, fsdp=None):... 先看初始化__init__()很简单，就是构建visual encoder和projector，值得注意的是，在训练时我们的脚本文件是没有显式指定参数mm_vision_tower的，所以visual encoder和projecto并不是在一开始就初始化好的，而是在LLaVA/llava/train/train.py的第911行通过调用第三个方法进行构建的。\nget_vision_tower()就是返回visual encoder。\ninitialize_vision_modules()才是训练阶段真正构建visual encoder和projector的地方。在这里才添加了参数mm_vision_tower。这里的参数mm_vision_select_layer是-1也就是默认选择最后一层，当然在官方提供的脚本文件中是指定为-2了。\n具体的visual encoder和projector的实现对应于LLaVA/llava/model/multimodal_encoder/builder.py和LLaVA/llava/model/multimodal_projector/builder.py中，对应于其中调用的类。如果想要更换LLaVA的visual encoder和projector可以去对应builder.py文件下import对应的class以及实例化，并在相应的文件夹下实现对应的class\n数据部分 在LLaVA/llava/train/train.py的第959行会出现关于数据集调用的语句\ndata_module = make_surpervised_data_module(tokenizer=tokenizer, data_args=data_args) make_surpervised_data_module()方法在LLaVA/llava/train/train.py的第776行\ndef make_supervised_data_module(tokenizer: transformers.PreTrainedTokenizer, data_args) -\u003e Dict: \"\"\"Make dataset and collator for supervised fine-tuning.\"\"\" train_dataset = LazySupervisedDataset(tokenizer=tokenizer, data_path=data_args.data_path, data_args=data_args) data_collator = DataCollatorForSupervisedDataset(tokenizer=tokenizer) return dict(train_dataset=train_dataset, eval_dataset=None, data_collator=data_collator) 这里分别数据集和整理器，我们一一来看\ndataset class LazySupervisedDataset(Dataset): def __init__(self, data_path: str, tokenizer: transformers.PreTrainedTokenizer, data_args: DataArguments):... def __len__(self):... @property def lengths(self):... @property def modality_lengths(self):... def __getitem__(self, i) -\u003e Dict[str, torch.Tensor]:... 首先作为一个Dataset类，老三样一定少不了。__init__()就是一些初始化，这里也可以看到LLaVA训练过程中用到的是json格式的数据。__len__()就是返回数据的长度。\n关键在于这个__getitem__()，它负责从data_list中按照data_sampler采样，得到样本序号，取出数据并进行处理，以得到模型需要的输入。可以看到稍后返回的是一个字典样式的数据。\n首先判断当前数据项sources[0]中是否包含image 读取图片并对图片进行预处理，判断image_aspect_ratio是什么方式 pad方式，会对图片根据最长边填充为正方形，具体的方法在expand2square()。pad的值为每个channel预处理操作对应的mean，会保证原始的图像内容放置在正中心。这样保持了图像的长宽比例不变（1:1），这样不会导致图像在某一维度上的失真或变形 通过preprocess_multimodal对文本进行预处理，判断is_multimodal 遍历每一个样本的conversation，如果一次对话（即conversation中的一个字典{from, value}条目）中的value有token，就把token插入到新的行前，如果使用图像开始结束token，则添加图像开始结束token 通过preprocess()进一步将conversations list 转化为一段以正常文本形式展现的完整对话，图像仍为占位符形式，该过程借助conversation_lib 将conversations list 添加模板 对conversations进行tokenize，这个就是input_ids 获取targets，只需用上述input_ids进行clone（next-token prediction常规操作） 当我们需要更换LLaVA的LLM时，主要就是要更改这里的preprocess_xxx模板\n剩余的两个方法均被@property装饰，其中lengths用来统计数据集中每个样本的长度（如果包含图像则+128）。modality_lengths用来统计每个样本长度（不包含图像token的长度），不同之处在于返回的信息会区分是否存在图像，为正则样本包含图像，为负样本不包含图像。\ndata_collator @dataclass class DataCollatorForSupervisedDataset(object): tokenizer: transformers.PreTraineTokenizer def __call__(self, instances: Sequence[Dict]) -\u003e Dict[str, torch.Tensor]:... 其输入instances为上述Dataset定义的若干个dict输出组成的Sequence。从每个dict中取出对应的input_ids和label，同时pad到相同长度，最后组合成一个batch的形式，图像也会放入batch中。\n前向传播 Pretrain时的loss计算 了解LLaVA的loss是如何计算的前提，是要了解LLaVA的labels对哪些内容进行mask了。在接下来的部分，我们会更改LLaVA提供的原始Pretrain脚本中的默认conversation模板，因为如果使用原始脚本中的Plain提供的信息太少了，它不提供system模板。我们将使用conv_vicuna_v1作为conversation模板，对应的处理函数在LLaVA/llava/train/train.py的414行preprocess_v1()。\nconv_vicuna_v1对应的conversation模板如下：\nconv_vicuna_v1 = Conversation( system=\"A chat between a curious user and an artificial intelligence assistant. \" \"The assistant gives helpful, detailed, and polite answers to the user's questions.\", roles=(\"USER\", \"ASSISTANT\"), version=\"v1\", messages=(), offset=0, sep_style=SeparatorStyle.TWO, sep=\" \", sep2=\"\", ) 首先，假设我们的sources是如下格式的：\n[{'from': 'human', 'value': '\\nGive a brief description of the image.'}, {'from': 'gpt', 'value': 'floor plan app floorplugged house and home'}] 先会对sources使用模板，会得到如下格式：\n[\"A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. USER: \\nGive a brief description of the image. ASSISTANT: floor plan app floorplugged house and home\"] 注意只有一次对话结束后，才会插入sep2=，system prompt与对话之间使用sep连接。\n接下来对sources进行tokenize\ntensor([[ 1, 319, 13563, 1546, 263, 12758, 1404, 322, 385, 23116, 21082, 20255, 29889, 450, 20255, 4076, 8444, 29892, 13173, 29892, 322, 1248, 568, 6089, 304, 278, 1404, 29915, 29879, 5155, 29889, 3148, 1001, 29901, 29871, -200, 29871, 13, 29954, 573, 263, 11473, 6139, 310, 278, 1967, 29889, 319, 1799, 9047, 13566, 29901, 11904, 3814, 623, 11904, 572, 688, 3192, 3699, 322, 3271, 2]]) 其中-200就是token的位置，targets就是inputs_ids直接clone得到的\nmask后的targets为：\ntensor([ -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, -100, 11904, 3814, 623, 11904, 572, 688, 3192, 3699, 322, 3271, 2]) 从上面的过程中，我们可以看到在PreTrain过程中mask掉的部分system prompt、Instruction和pad部分。\n在实际计算loss时，会调用transformers.Trainer的compute_loss()方法，也就意味着如果你需要更改计算loss的方式，需要在LLaVATrainer中重写compute_loss方法。\n而原始的compute_loss()方法，最后会在transformers.LlamaForCausalLM的forward()中进行计算，具体的代码为：\nloss = None if labels is not None: # Shift so that tokens \u003c n predict n shift_logits = logits[..., :-1, :].contiguous() shift_labels = labels[..., 1:].contiguous() # Flatten the tokens loss_fct = CrossEntropyLoss() shift_logits = shift_logits.view(-1, self.config.vocab_size) shift_labels = shift_labels.view(-1) # Enable model parallelism shift_labels = shift_labels.to(shift_logits.device) loss = loss_fct(shift_logits, shift_labels) 参考 [1] Github:LLaVA(https://github.com/haotian-liu/LLaVA)\n[2] Huggingface:Trainer(https://huggingface.co/docs/transformers/main_classes/trainer)\n",
-  "wordCount" : "463",
-  "inLanguage": "zh",
-  "datePublished": "2024-12-02T11:27:27+08:00",
-  "dateModified": "2024-12-02T11:27:27+08:00",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://attract666.github.io/posts/llava_03/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "JiaHe's Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://attract666.github.io/favicon.ico"
-    }
-  }
-}
-</script>
 </head>
 
 <body class="" id="top">
@@ -203,7 +125,7 @@ model = LlavaLlamaForCausalLM.from_pretrained(
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://attract666.github.io/" accesskey="h" title="JiaHe&#39;s Blog (Alt + H)">JiaHe&#39;s Blog</a>
+            <a href="http://localhost:1313/" accesskey="h" title="JiaHe&#39;s Blog (Alt + H)">JiaHe&#39;s Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -229,27 +151,27 @@ model = LlavaLlamaForCausalLM.from_pretrained(
         </div>
         <ul id="menu">
             <li>
-                <a href="https://attract666.github.io/posts/" title="All posts">
+                <a href="http://localhost:1313/posts/" title="All posts">
                     <span>All posts</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/archives/" title="Archives">
+                <a href="http://localhost:1313/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/categories/" title="Categories">
+                <a href="http://localhost:1313/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/tags/" title="Tags">
+                <a href="http://localhost:1313/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="https://attract666.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
@@ -539,15 +461,15 @@ model = LlavaLlamaForCausalLM.from_pretrained(
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://attract666.github.io/tags/vision-language-models/">Vision-Language-Models</a></li>
-      <li><a href="https://attract666.github.io/tags/llava/">LLaVA</a></li>
+      <li><a href="http://localhost:1313/tags/vision-language-models/">Vision-Language-Models</a></li>
+      <li><a href="http://localhost:1313/tags/llava/">LLaVA</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2024 <a href="https://attract666.github.io/">JiaHe&#39;s Blog</a></span> · 
+        <span>&copy; 2025 <a href="http://localhost:1313/">JiaHe&#39;s Blog</a></span> · 
 
     <span>
         Powered by

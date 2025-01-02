@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>LLama on JiaHe&#39;s Blog</title>
-    <link>https://attract666.github.io/tags/llama/</link>
+    <link>http://localhost:1313/tags/llama/</link>
     <description>Recent content in LLama on JiaHe&#39;s Blog</description>
     <generator>Hugo -- 0.134.0</generator>
     <language>zh</language>
     <lastBuildDate>Sun, 22 Dec 2024 19:21:37 +0800</lastBuildDate>
-    <atom:link href="https://attract666.github.io/tags/llama/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/llama/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>手撕Multihead Attention</title>
-      <link>https://attract666.github.io/posts/attetion_code/</link>
+      <link>http://localhost:1313/posts/attetion_code/</link>
       <pubDate>Sun, 22 Dec 2024 19:21:37 +0800</pubDate>
-      <guid>https://attract666.github.io/posts/attetion_code/</guid>
+      <guid>http://localhost:1313/posts/attetion_code/</guid>
       <description>&lt;p&gt;为了方便讲解，我们先对文本进行tokenize和embedding。我们仅在这一步使用了除torch以外的库&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;text &lt;span style=&#34;color:#5bc4bf&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#48b685&#34;&gt;&amp;#34;This is your first step to understanding LLM&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kwargs &lt;span style=&#34;color:#5bc4bf&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#48b685&#34;&gt;&amp;#34;device_map&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#48b685&#34;&gt;&amp;#34;cuda:3&amp;#34;&lt;/span&gt;}

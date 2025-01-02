@@ -2,73 +2,73 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://attract666.github.io/categories/</loc>
+    <loc>http://localhost:1313/categories/</loc>
     <lastmod>2024-12-22T19:21:37+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2024-12-22T19:21:37+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/tags/llama/</loc>
+    <loc>http://localhost:1313/tags/llama/</loc>
     <lastmod>2024-12-22T19:21:37+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/tags/llava/</loc>
+    <loc>http://localhost:1313/tags/llava/</loc>
     <lastmod>2024-12-22T19:21:37+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/categories/nlp/</loc>
+    <loc>http://localhost:1313/categories/nlp/</loc>
     <lastmod>2024-12-22T19:21:37+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-12-22T19:21:37+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/tags/</loc>
+    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2024-12-22T19:21:37+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/tags/vision-language-models/</loc>
+    <loc>http://localhost:1313/tags/vision-language-models/</loc>
     <lastmod>2024-12-22T19:21:37+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/posts/attetion_code/</loc>
+    <loc>http://localhost:1313/posts/attetion_code/</loc>
     <lastmod>2024-12-22T19:21:37+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/tags/debug/</loc>
+    <loc>http://localhost:1313/tags/debug/</loc>
     <lastmod>2024-12-06T17:16:13+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/categories/tool/</loc>
+    <loc>http://localhost:1313/categories/tool/</loc>
     <lastmod>2024-12-06T17:16:13+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/posts/vscode_debug/</loc>
+    <loc>http://localhost:1313/posts/vscode_debug/</loc>
     <lastmod>2024-12-06T17:16:13+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/categories/cv/</loc>
+    <loc>http://localhost:1313/categories/cv/</loc>
     <lastmod>2024-12-05T14:49:36+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/posts/llava_04/</loc>
+    <loc>http://localhost:1313/posts/llava_04/</loc>
     <lastmod>2024-12-05T14:49:36+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/posts/llava_03/</loc>
+    <loc>http://localhost:1313/posts/llava_03/</loc>
     <lastmod>2024-12-02T11:27:27+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/posts/llava_02/</loc>
+    <loc>http://localhost:1313/posts/llava_02/</loc>
     <lastmod>2024-11-01T18:21:23+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/posts/llava_01/</loc>
+    <loc>http://localhost:1313/posts/llava_01/</loc>
     <lastmod>2024-10-23T19:09:20+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/posts/ddpm/</loc>
+    <loc>http://localhost:1313/posts/ddpm/</loc>
     <lastmod>2024-09-09T15:58:57+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/tags/generative-model/</loc>
+    <loc>http://localhost:1313/tags/generative-model/</loc>
     <lastmod>2024-09-09T15:58:57+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/tags/image-generation/</loc>
+    <loc>http://localhost:1313/tags/image-generation/</loc>
     <lastmod>2024-09-09T15:58:57+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/tags/vae/</loc>
+    <loc>http://localhost:1313/tags/vae/</loc>
     <lastmod>2024-09-09T15:58:57+08:00</lastmod>
   </url><url>
-    <loc>https://attract666.github.io/archives/</loc>
+    <loc>http://localhost:1313/archives/</loc>
   </url><url>
-    <loc>https://attract666.github.io/search/</loc>
+    <loc>http://localhost:1313/search/</loc>
   </url><url>
-    <loc>https://attract666.github.io/about/</loc>
+    <loc>http://localhost:1313/about/</loc>
   </url>
 </urlset>
