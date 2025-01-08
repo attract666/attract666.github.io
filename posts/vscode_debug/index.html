@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>如何使用VSCode优雅地调试PyTorch多卡程序 | JiaHe&#39;s Blog</title>
 <meta name="keywords" content="debug">
 <meta name="description" content="在使用VSCode调试PyTorch多卡程序时，我们经常会发现启动脚本的参数很多，因此配置~/.vscode/launch.json时体验不佳。如果你也遇到了上面的问题，可以考虑本文的方法，以更优雅的方式调试PyTorch多卡程序。本文以调试LLaVA的训练代码为例。
@@ -25,16 +25,16 @@ pip install debugpy
 }
 ">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/vscode_debug/">
+<link rel="canonical" href="https://attract666.github.io/posts/vscode_debug/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://attract666.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://attract666.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://attract666.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://attract666.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://attract666.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="http://localhost:1313/posts/vscode_debug/">
+<link rel="alternate" hreflang="zh" href="https://attract666.github.io/posts/vscode_debug/">
 <noscript>
     <style>
         #theme-toggle,
@@ -114,7 +114,99 @@ pip install debugpy
     }
 </style>
 
+<meta property="og:title" content="如何使用VSCode优雅地调试PyTorch多卡程序" />
+<meta property="og:description" content="在使用VSCode调试PyTorch多卡程序时，我们经常会发现启动脚本的参数很多，因此配置~/.vscode/launch.json时体验不佳。如果你也遇到了上面的问题，可以考虑本文的方法，以更优雅的方式调试PyTorch多卡程序。本文以调试LLaVA的训练代码为例。
+安装 debugpy
+pip install debugpy
+写配置
+首先需要配置的还是~/.vscode/launch.json，但与将参数列表填入launch.json文件的args列表不同。本文的方法无需在每次调试时都更改args列表，只需更改你原始的脚本文件。
+我们只需在launch.json文件添加一个新的配置，配置如下：
+{
+    &#34;name&#34;: &#34;sh_file_debug&#34;,
+    &#34;type&#34;: &#34;debugpy&#34;,
+    &#34;request&#34;: &#34;attach&#34;,
+    &#34;justMyCode&#34;: false,
+    &#34;connect&#34;: {
+        &#34;host&#34;: &#34;localhost&#34;,
+        &#34;port&#34;: 5678
+    }
+}
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://attract666.github.io/posts/vscode_debug/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-12-06T17:16:13+08:00" />
+<meta property="article:modified_time" content="2024-12-06T17:16:13+08:00" />
 
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="如何使用VSCode优雅地调试PyTorch多卡程序"/>
+<meta name="twitter:description" content="在使用VSCode调试PyTorch多卡程序时，我们经常会发现启动脚本的参数很多，因此配置~/.vscode/launch.json时体验不佳。如果你也遇到了上面的问题，可以考虑本文的方法，以更优雅的方式调试PyTorch多卡程序。本文以调试LLaVA的训练代码为例。
+安装 debugpy
+pip install debugpy
+写配置
+首先需要配置的还是~/.vscode/launch.json，但与将参数列表填入launch.json文件的args列表不同。本文的方法无需在每次调试时都更改args列表，只需更改你原始的脚本文件。
+我们只需在launch.json文件添加一个新的配置，配置如下：
+{
+    &#34;name&#34;: &#34;sh_file_debug&#34;,
+    &#34;type&#34;: &#34;debugpy&#34;,
+    &#34;request&#34;: &#34;attach&#34;,
+    &#34;justMyCode&#34;: false,
+    &#34;connect&#34;: {
+        &#34;host&#34;: &#34;localhost&#34;,
+        &#34;port&#34;: 5678
+    }
+}
+"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://attract666.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "如何使用VSCode优雅地调试PyTorch多卡程序",
+      "item": "https://attract666.github.io/posts/vscode_debug/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "如何使用VSCode优雅地调试PyTorch多卡程序",
+  "name": "如何使用VSCode优雅地调试PyTorch多卡程序",
+  "description": "在使用VSCode调试PyTorch多卡程序时，我们经常会发现启动脚本的参数很多，因此配置~/.vscode/launch.json时体验不佳。如果你也遇到了上面的问题，可以考虑本文的方法，以更优雅的方式调试PyTorch多卡程序。本文以调试LLaVA的训练代码为例。\n安装 debugpy pip install debugpy 写配置 首先需要配置的还是~/.vscode/launch.json，但与将参数列表填入launch.json文件的args列表不同。本文的方法无需在每次调试时都更改args列表，只需更改你原始的脚本文件。\n我们只需在launch.json文件添加一个新的配置，配置如下：\n{ \u0026#34;name\u0026#34;: \u0026#34;sh_file_debug\u0026#34;, \u0026#34;type\u0026#34;: \u0026#34;debugpy\u0026#34;, \u0026#34;request\u0026#34;: \u0026#34;attach\u0026#34;, \u0026#34;justMyCode\u0026#34;: false, \u0026#34;connect\u0026#34;: { \u0026#34;host\u0026#34;: \u0026#34;localhost\u0026#34;, \u0026#34;port\u0026#34;: 5678 } } ",
+  "keywords": [
+    "debug"
+  ],
+  "articleBody": "在使用VSCode调试PyTorch多卡程序时，我们经常会发现启动脚本的参数很多，因此配置~/.vscode/launch.json时体验不佳。如果你也遇到了上面的问题，可以考虑本文的方法，以更优雅的方式调试PyTorch多卡程序。本文以调试LLaVA的训练代码为例。\n安装 debugpy pip install debugpy 写配置 首先需要配置的还是~/.vscode/launch.json，但与将参数列表填入launch.json文件的args列表不同。本文的方法无需在每次调试时都更改args列表，只需更改你原始的脚本文件。\n我们只需在launch.json文件添加一个新的配置，配置如下：\n{ \"name\": \"sh_file_debug\", \"type\": \"debugpy\", \"request\": \"attach\", \"justMyCode\": false, \"connect\": { \"host\": \"localhost\", \"port\": 5678 } } 下一步在我们要运行的脚本文件待执行的文件中添加部分代码即可，下图是LLaVA的预训练脚本：\nLLaVA pertrain.sh 可以看到我们待执行的文件是llava/train/train_mem.py，之后我们进入这个文件，在这个文件的最前面添加如下代码：\nimport debugpy try: debugpy.listen((\"localhost\", 5678)) print(\"Waiting for debugger attach\") debugpy.wait_for_client() debugpy.breakpoint() except Exception as e: pass 需要注意端口号需要保持一致，这里使用的是vscode默认的远程调试端口号，下面展示了添加完成后的trian_mem.py\n添加配置后的train_mem.py 至此，所有的配置都已经完成了。\nDebug 接下来，我们可以进行Debug，步骤也很简单：\n在想要调试的地方，打上断点，例如我想看LazySupervisedDataset的__getitem__()的步骤，我在697行打下了断点 之后我们在服务器上正常运行原始的脚本文件，等待片刻后，会看到打印出了Waiting for debugger attach 看到打印出的结果后，需要来到VScode的调试页面，运行我们刚刚配置的sh_file_debug 此时可以看到我们的VScode运行停止在train_mem.py，这是因为，我们在上面调用了debugpy.breakpoint()，如果不喜欢可以注释掉。 接下来就与正常debug相同，按下F5就行，可以看到停在了我们刚刚打上断点的第697行，在左侧的调试页面也可以看到数据的信息 在不需要调试时，记住要将待执行文件中的debug代码注释掉！\n在不需要调试时，记住要将待执行文件中的debug代码注释掉！\n在不需要调试时，记住要将待执行文件中的debug代码注释掉！\n",
+  "wordCount" : "62",
+  "inLanguage": "zh",
+  "datePublished": "2024-12-06T17:16:13+08:00",
+  "dateModified": "2024-12-06T17:16:13+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://attract666.github.io/posts/vscode_debug/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "JiaHe's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://attract666.github.io/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -132,7 +224,7 @@ pip install debugpy
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="JiaHe&#39;s Blog (Alt + H)">JiaHe&#39;s Blog</a>
+            <a href="https://attract666.github.io/" accesskey="h" title="JiaHe&#39;s Blog (Alt + H)">JiaHe&#39;s Blog</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -158,27 +250,27 @@ pip install debugpy
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="All posts">
+                <a href="https://attract666.github.io/posts/" title="All posts">
                     <span>All posts</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="Archives">
+                <a href="https://attract666.github.io/archives/" title="Archives">
                     <span>Archives</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/categories/" title="Categories">
+                <a href="https://attract666.github.io/categories/" title="Categories">
                     <span>Categories</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://attract666.github.io/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/search/" title="Search (Alt &#43; /)" accesskey=/>
+                <a href="https://attract666.github.io/search/" title="Search (Alt &#43; /)" accesskey=/>
                     <span>Search</span>
                 </a>
             </li>
@@ -351,14 +443,14 @@ pip install debugpy
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/debug/">Debug</a></li>
+      <li><a href="https://attract666.github.io/tags/debug/">Debug</a></li>
     </ul>
   </footer>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">JiaHe&#39;s Blog</a></span> · 
+        <span>&copy; 2025 <a href="https://attract666.github.io/">JiaHe&#39;s Blog</a></span> · 
 
     <span>
         Powered by

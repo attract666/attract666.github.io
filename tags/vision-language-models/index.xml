@@ -2,17 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Vision-Language-Models on JiaHe&#39;s Blog</title>
-    <link>http://localhost:1313/tags/vision-language-models/</link>
+    <link>https://attract666.github.io/tags/vision-language-models/</link>
     <description>Recent content in Vision-Language-Models on JiaHe&#39;s Blog</description>
     <generator>Hugo -- 0.134.0</generator>
     <language>zh</language>
-    <lastBuildDate>Sun, 22 Dec 2024 19:21:37 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/vision-language-models/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 08 Jan 2025 16:24:34 +0800</lastBuildDate>
+    <atom:link href="https://attract666.github.io/tags/vision-language-models/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>transformers的generate方法</title>
+      <link>https://attract666.github.io/posts/generate/</link>
+      <pubDate>Wed, 08 Jan 2025 16:24:34 +0800</pubDate>
+      <guid>https://attract666.github.io/posts/generate/</guid>
+      <description></description>
+    </item>
     <item>
       <title>手撕Multihead Attention</title>
-      <link>http://localhost:1313/posts/attetion_code/</link>
+      <link>https://attract666.github.io/posts/attetion_code/</link>
       <pubDate>Sun, 22 Dec 2024 19:21:37 +0800</pubDate>
-      <guid>http://localhost:1313/posts/attetion_code/</guid>
+      <guid>https://attract666.github.io/posts/attetion_code/</guid>
       <description>&lt;p&gt;为了方便讲解，我们先对文本进行tokenize和embedding。我们仅在这一步使用了除torch以外的库&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#2f1e2e;background-color:#e7e9db;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;text &lt;span style=&#34;color:#5bc4bf&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#48b685&#34;&gt;&amp;#34;This is your first step to understanding LLM&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;kwargs &lt;span style=&#34;color:#5bc4bf&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#48b685&#34;&gt;&amp;#34;device_map&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#48b685&#34;&gt;&amp;#34;cuda:3&amp;#34;&lt;/span&gt;}
@@ -26,16 +33,16 @@
     </item>
     <item>
       <title>从零开始学LLaVA 04</title>
-      <link>http://localhost:1313/posts/llava_04/</link>
+      <link>https://attract666.github.io/posts/llava_04/</link>
       <pubDate>Thu, 05 Dec 2024 14:49:36 +0800</pubDate>
-      <guid>http://localhost:1313/posts/llava_04/</guid>
+      <guid>https://attract666.github.io/posts/llava_04/</guid>
       <description>&lt;p&gt;本文参考&lt;a href=&#34;https://github.com/haotian-liu/LLaVA?tab=readme-ov-file#train&#34;&gt;官方教程&lt;/a&gt;介绍如何训练LLaVA v1.5 多模态模型。值得注意的是本文将使用LLama3-8B-Instruct代替LLaVA v1.5中的Vicuna。如果还不熟悉LLaVA，请先阅读前面三篇文章：&lt;a href=&#34;https://attract666.github.io/posts/llava_01/&#34;&gt;从零开始学LLaVA 01&lt;/a&gt;，&lt;a href=&#34;https://attract666.github.io/posts/llava_02/&#34;&gt;从零开始学LLaVA 02&lt;/a&gt;和&lt;a href=&#34;https://attract666.github.io/posts/llava_03/&#34;&gt;从零开始学LLaVA 03&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>从零开始学LLaVA 03</title>
-      <link>http://localhost:1313/posts/llava_03/</link>
+      <link>https://attract666.github.io/posts/llava_03/</link>
       <pubDate>Mon, 02 Dec 2024 11:27:27 +0800</pubDate>
-      <guid>http://localhost:1313/posts/llava_03/</guid>
+      <guid>https://attract666.github.io/posts/llava_03/</guid>
       <description>&lt;p&gt;本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在&lt;code&gt;LLaVA/scripts/v1_5/pretrain.sh&lt;/code&gt;，视觉指令微调启动的脚本在&lt;code&gt;LLaVA/scripts/v1_5/finetune.sh&lt;/code&gt;。两个脚本文件执行的都是&lt;code&gt;LLaVA/llava/train/train_mem.py&lt;/code&gt;，在&lt;code&gt;LLaVA/llava/train&lt;/code&gt;目录下还有一个&lt;code&gt;train.py&lt;/code&gt;，这个才是真正的总体路口，不同点在于是否使用&lt;code&gt;flash_attention_2&lt;/code&gt;。阅读的建议是先找到总体思路，在对照各个部分的代码段分块理解。&lt;/p&gt;
 &lt;h1 id=&#34;模型部分&#34;&gt;模型部分&lt;/h1&gt;
 &lt;p&gt;在&lt;code&gt;LLaVA/llava/train/train.py&lt;/code&gt;的第827行会出现初始化模型的代码&lt;/p&gt;
@@ -49,9 +56,9 @@
     </item>
     <item>
       <title>从零开始学LLaVA 02</title>
-      <link>http://localhost:1313/posts/llava_02/</link>
+      <link>https://attract666.github.io/posts/llava_02/</link>
       <pubDate>Fri, 01 Nov 2024 18:21:23 +0800</pubDate>
-      <guid>http://localhost:1313/posts/llava_02/</guid>
+      <guid>https://attract666.github.io/posts/llava_02/</guid>
       <description>&lt;h1 id=&#34;llava-15悟道&#34;&gt;LLaVA-1.5悟道&lt;/h1&gt;
 &lt;p&gt;LLaVA-1.5在LLaVA的基础上做了一小部分修改。模型上把之前的线性层换成了MLP，visual encoder从ViT-L-14换成了ViT-L-14-336px，数据集进行了扩充（Visual Instruction Tuning从158K涨到了665K）&lt;/p&gt;
 &lt;h2 id=&#34;论文贡献&#34;&gt;论文贡献&lt;/h2&gt;
@@ -64,10 +71,10 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;网络架构&#34;&gt;网络架构&lt;/h2&gt;
 &lt;p&gt;整体架构上没有太大的改变，如下图所示：&lt;/p&gt;
-&lt;center&gt;&lt;img src=&#34;http://localhost:1313/img/LLaVA_02/LLaVA-1.5.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/LLaVA_02/LLaVA-1.5.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
 &lt;center&gt;LLaVA v1.5.(Image source:&lt;a href=&#34;https://arxiv.org/abs/2310.03744&#34;&gt;LLaVA v1.5&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;
 &lt;p&gt;很重要的一点，是作者使用了AnyRes策略，来拓展视觉的分辨率（因为CLIP支持的最大分辨率是336px）&lt;/p&gt;
-&lt;center&gt;&lt;img src=&#34;http://localhost:1313/img/LLaVA_02/AnyRes.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/LLaVA_02/AnyRes.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
 &lt;center&gt;LLaVA v1.5 HD.(Image source:&lt;a href=&#34;https://arxiv.org/abs/2310.03744&#34;&gt;LLaVA v1.5&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;
 &lt;p&gt;AnyRes策略的具体步骤：&lt;/p&gt;
 &lt;ul&gt;
@@ -77,7 +84,7 @@
 &lt;/ul&gt;
 &lt;p&gt;在LLM中，模型的幻觉归因于训练数据集中的错误或幻觉。作者认为输入分辨率不足以让模型识别数据中的所有细节，模型就会产生幻觉。&lt;/p&gt;
 &lt;h2 id=&#34;数据集规模&#34;&gt;数据集规模&lt;/h2&gt;
-&lt;center&gt;&lt;img src=&#34;http://localhost:1313/img/LLaVA_02/Instruction data.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/LLaVA_02/Instruction data.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
 &lt;center&gt;Instruction-following Data.(Image source:&lt;a href=&#34;https://arxiv.org/abs/2310.03744&#34;&gt;LLaVA v1.5&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;llava-next&#34;&gt;LLaVA-NEXT&lt;/h1&gt;
@@ -85,9 +92,9 @@
     </item>
     <item>
       <title>从零开始学LLaVA 01</title>
-      <link>http://localhost:1313/posts/llava_01/</link>
+      <link>https://attract666.github.io/posts/llava_01/</link>
       <pubDate>Wed, 23 Oct 2024 19:09:20 +0800</pubDate>
-      <guid>http://localhost:1313/posts/llava_01/</guid>
+      <guid>https://attract666.github.io/posts/llava_01/</guid>
       <description>&lt;h1 id=&#34;从llava-10论文开始&#34;&gt;从LLaVA-1.0论文开始&lt;/h1&gt;
 &lt;p&gt;LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)&lt;/p&gt;
 &lt;p&gt;Paper link: &lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;&lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;https://arxiv.org/abs/2304.08485&lt;/a&gt;&lt;/a&gt;&lt;/p&gt;
@@ -99,15 +106,15 @@
 &lt;/ul&gt;
 &lt;h2 id=&#34;网络架构&#34;&gt;网络架构&lt;/h2&gt;
 &lt;p&gt;结构上vision encoder使用的是CLIP-L/14（&lt;strong&gt;使用倒数第二层得到的特征，实验证明效果会更好，作者分析认为是因为最后一层聚焦图像的全局信息，倒数第二层更关注局部特征&lt;/strong&gt;）进行编码，之后使用一个投影层（&lt;strong&gt;全连接层&lt;/strong&gt;）对齐到word embedding，输入的文本经过embedding模型得到word embedding，两个embedding拼接后一起输入给llama。&lt;/p&gt;
-&lt;center&gt;&lt;img src=&#34;http://localhost:1313/img/LLaVA_01/LLaVA.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/LLaVA_01/LLaVA.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
 &lt;center&gt;LLaVA Architecture.(Image source:&lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;LLaVA&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;
 &lt;h2 id=&#34;数据集构成及数据收集细节&#34;&gt;数据集构成及数据收集细节&lt;/h2&gt;
 &lt;p&gt;训练分为两个阶段，第一个阶段只更新投影层，使用的是一个简单视觉问答的数据集（CC3M中过滤出595K）；第二个阶段训练llama和投影层，数据集使用的是COCO数据集（158K）和ScienceQA微调出了两个版本。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;预训练数据集（CC3M过滤）&lt;/strong&gt;：使用Spacy（NLP库）为CC3M上的每个caption提取名词短语，并计算每个唯一名词短语的频率。忽略掉频率小于3的名词短语，对于频率大于100的名词短语随机选择一个数量为100的子集。最终产生595K个图像-文本对。&lt;/p&gt;
-&lt;center&gt;&lt;img src=&#34;http://localhost:1313/img/LLaVA_01/cc3m_filtered.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/LLaVA_01/cc3m_filtered.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
 &lt;center&gt;CC3M Filtered.(Image source:&lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;LLaVA&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;
 &lt;p&gt;将图像文本对采用简单的指令构造，用下图所示的问题提示GPT-4，生成对应的答案。&lt;/p&gt;
-&lt;center&gt;&lt;img src=&#34;http://localhost:1313/img/LLaVA_01/cc3m_prompt.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
+&lt;center&gt;&lt;img src=&#34;https://attract666.github.io/img/LLaVA_01/cc3m_prompt.png&#34; width=&#34;70%&#34; title=&#34;&#34;&gt;&lt;/center&gt;
 &lt;center&gt;CC3M image description.(Image source:&lt;a href=&#34;https://arxiv.org/abs/2304.08485&#34;&gt;LLaVA&lt;/a&gt;)&lt;/center&gt;&lt;br/&gt;
 &lt;p&gt;指令格式如下：&lt;/p&gt;</description>
     </item>
