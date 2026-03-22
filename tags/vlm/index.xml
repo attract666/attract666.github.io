@@ -1,0 +1,41 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>VLM - 标签 - Jiahe&#39;s Blog</title>
+        <link>https://attract666.github.io/tags/vlm/</link>
+        <description>VLM - 标签 - Jiahe&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 22 Mar 2026 02:00:00 &#43;0800</lastBuildDate><atom:link href="https://attract666.github.io/tags/vlm/" rel="self" type="application/rss+xml" /><item>
+    <title>从零开始学LLaVA-03</title>
+    <link>https://attract666.github.io/posts/llava_03/</link>
+    <pubDate>Sun, 22 Mar 2026 02:00:00 &#43;0800</pubDate><author>
+        <name>Jiahe</name>
+    </author><guid>https://attract666.github.io/posts/llava_03/</guid>
+    <description><![CDATA[<p>本文将详细介绍与LLaVA v1.5训练相关的代码。LLaVA训练包括两个阶段，分别是特征对齐和视觉指令微调。特征对齐启动的脚本在<code>LLaVA/scripts/v1_5/pretrain.sh</code>，视觉指令微调启动的脚本在<code>LLaVA/scripts/v1_5/finetune.sh</code>。两个脚本文件执行的都是<code>LLaVA/llava/train/train_mem.py</code>，在<code>LLaVA/llava/train</code>目录下还有一个<code>train.py</code>，这个才是真正的总体路口，不同点在于是否使用<code>flash_attention_2</code>。阅读的建议是先找到总体思路，再对照各个部分的代码段分块理解。</p>]]></description>
+</item><item>
+    <title>从零开始学LLaVA-02</title>
+    <link>https://attract666.github.io/posts/llava_02/</link>
+    <pubDate>Sun, 22 Mar 2026 01:00:00 &#43;0800</pubDate><author>
+        <name>Jiahe</name>
+    </author><guid>https://attract666.github.io/posts/llava_02/</guid>
+    <description><![CDATA[<h2 id="llava-15悟道" class="headerLink">
+    <a href="#llava-15%e6%82%9f%e9%81%93" class="header-mark"></a>LLaVA-1.5悟道</h2><p>LLaVA-1.5在LLaVA的基础上做了一小部分修改。模型上把之前的线性层换成了MLP，visual encoder从ViT-L-14换成了ViT-L-14-336px，数据集进行了扩充（Visual Instruction Tuning从158K涨到了665K）</p>
+<h3 id="论文贡献" class="headerLink">
+    <a href="#%e8%ae%ba%e6%96%87%e8%b4%a1%e7%8c%ae" class="header-mark"></a>论文贡献</h3><p>论文主要贡献：</p>]]></description>
+</item><item>
+    <title>从零开始学LLaVA-01</title>
+    <link>https://attract666.github.io/posts/llava_01/</link>
+    <pubDate>Sun, 22 Mar 2026 00:00:00 &#43;0800</pubDate><author>
+        <name>Jiahe</name>
+    </author><guid>https://attract666.github.io/posts/llava_01/</guid>
+    <description><![CDATA[<h2 id="从llava-10论文开始" class="headerLink">
+    <a href="#%e4%bb%8ellava-10%e8%ae%ba%e6%96%87%e5%bc%80%e5%a7%8b" class="header-mark"></a>从LLaVA-1.0论文开始</h2><p>LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)</p>
+<p>Paper link: <a href="https://arxiv.org/abs/2304.08485" target="_blank" rel="noopener noreferrer"></a><a href="https://arxiv.org/abs/2304.08485" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2304.08485</a></p>
+<p>Github: <a href="https://github.com/haotian-liu/LLaVA" target="_blank" rel="noopener noreferrer"></a><a href="https://github.com/haotian-liu/LLaVA" target="_blank" rel="noopener noreferrer">https://github.com/haotian-liu/LLaVA</a></p>
+<h3 id="论文亮点" class="headerLink">
+    <a href="#%e8%ae%ba%e6%96%87%e4%ba%ae%e7%82%b9" class="header-mark"></a>论文亮点</h3><ul>
+<li>多模态 instruction-following 数据：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类</li>
+<li>多模态大模型：使用CLIP-L/14作为视觉编码器，大模型使用Vicuna（llama-13B），以及使用全连接层作为投影层，将视觉tokens映射到LLM的word embedding space</li>
+</ul>
+<h3 id="网络架构" class="headerLink">
+    <a href="#%e7%bd%91%e7%bb%9c%e6%9e%b6%e6%9e%84" class="header-mark"></a>网络架构</h3><p>结构上vision encoder使用的是CLIP-L/14（<strong>使用倒数第二层得到的特征，实验证明效果会更好，作者分析认为是因为最后一层聚焦图像的全局信息，倒数第二层更关注局部特征</strong>）进行编码，之后使用一个投影层（<strong>全连接层</strong>）对齐到word embedding，输入的文本经过embedding模型得到word embedding，两个embedding拼接后一起输入给llama。</p>]]></description>
+</item></channel>
+</rss>
