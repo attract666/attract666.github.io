@@ -1,14 +1,1 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Debug - 标签 - Jiahe&#39;s Blog</title>
-        <link>https://attract666.github.io/tags/debug/</link>
-        <description>Debug - 标签 - Jiahe&#39;s Blog</description>
-        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 22 Mar 2026 03:00:00 &#43;0800</lastBuildDate><atom:link href="https://attract666.github.io/tags/debug/" rel="self" type="application/rss+xml" /><item>
-    <title>VSCode 调试 PyTorch 多卡程序</title>
-    <link>https://attract666.github.io/posts/vscode_debug/</link>
-    <pubDate>Sun, 22 Mar 2026 03:00:00 &#43;0800</pubDate><author>
-        <name>Jiahe</name>
-    </author><guid>https://attract666.github.io/posts/vscode_debug/</guid>
-    <description><![CDATA[<p>在使用VSCode调试PyTorch多卡程序时，我们经常会发现启动脚本的参数很多，因此配置<code>~/.vscode/launch.json</code>时体验不佳。如果你也遇到了上面的问题，可以考虑本文的方法，以更优雅的方式调试PyTorch多卡程序。本文以调试LLaVA的训练代码为例。</p>]]></description>
-</item></channel>
-</rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Debug - 标签 - Jiahe's Blog</title><link>https://attract666.github.io/tags/debug/</link><description>Debug - 标签 - Jiahe's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 02 Jun 2024 15:00:00 +0800</lastBuildDate><atom:link href="https://attract666.github.io/tags/debug/" rel="self" type="application/rss+xml"/><item><title>VSCode 调试 PyTorch 多卡程序</title><link>https://attract666.github.io/posts/vscode_debug/</link><pubDate>Sun, 02 Jun 2024 15:00:00 +0800</pubDate><author><name>Jiahe</name></author><guid>https://attract666.github.io/posts/vscode_debug/</guid><description>&lt;p>在使用VSCode调试PyTorch多卡程序时，我们经常会发现启动脚本的参数很多，因此配置&lt;code>~/.vscode/launch.json&lt;/code>时体验不佳。如果你也遇到了上面的问题，可以考虑本文的方法，以更优雅的方式调试PyTorch多卡程序。本文以调试LLaVA的训练代码为例。&lt;/p></description></item></channel></rss>
