@@ -1,0 +1,7 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>GSPO - 标签 - Jiahe's Blog</title><link>https://attract666.github.io/tags/gspo/</link><description>GSPO - 标签 - Jiahe's Blog</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 27 Mar 2026 16:00:00 +0800</lastBuildDate><atom:link href="https://attract666.github.io/tags/gspo/" rel="self" type="application/rss+xml"/><item><title>从PPO到GSPO</title><link>https://attract666.github.io/posts/ppo2gspo/</link><pubDate>Fri, 27 Mar 2026 16:00:00 +0800</pubDate><author><name>Jiahe</name></author><guid>https://attract666.github.io/posts/ppo2gspo/</guid><description><![CDATA[<p>在梳理LLM中常用的RL算法，我们先来了解几个概念。</p>
+<p>所有的强化学习算法都是建立在得到一个最大的期望奖励的基础上，主要分为下面两大类：</p>
+<ul>
+<li>on-policy：训练数据由需要训练的策略本身通过与环境的互动产生，用自己产生的数据来进行训练</li>
+<li>off-policy：训练数据提前收集好，策略直接通过这些数据进行学习</li>
+</ul>
+<p>在PPO算法中，主要有4个model：</p>]]></description></item></channel></rss>
