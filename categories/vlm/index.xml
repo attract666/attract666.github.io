@@ -4,8 +4,8 @@
 <h3 id="论文贡献" class="headerLink">
     <a href="#%e8%ae%ba%e6%96%87%e8%b4%a1%e7%8c%ae" class="header-mark"></a>论文贡献</h3><p>论文主要贡献：</p>]]></description></item><item><title>从零开始学LLaVA-01</title><link>https://attract666.github.io/posts/llava_01/</link><pubDate>Thu, 16 May 2024 14:00:00 +0800</pubDate><author><name>Jiahe</name></author><guid>https://attract666.github.io/posts/llava_01/</guid><description><![CDATA[<h2 id="从llava-10论文开始" class="headerLink">
     <a href="#%e4%bb%8ellava-10%e8%ae%ba%e6%96%87%e5%bc%80%e5%a7%8b" class="header-mark"></a>从LLaVA-1.0论文开始</h2><p>LLaVA: Visual Instruction Tuning(NeurIPS 2023 Oral)</p>
-<p>Paper link: <a href="https://arxiv.org/abs/2304.08485" target="_blank" rel="noopener noreferrer"></a><a href="https://arxiv.org/abs/2304.08485" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2304.08485</a></p>
-<p>Github: <a href="https://github.com/haotian-liu/LLaVA" target="_blank" rel="noopener noreferrer"></a><a href="https://github.com/haotian-liu/LLaVA" target="_blank" rel="noopener noreferrer">https://github.com/haotian-liu/LLaVA</a></p>
+<p>Paper link: <a href="https://arxiv.org/abs/2304.08485" target="_blank" rel="noopener noreferrer">https://arxiv.org/abs/2304.08485</a></p>
+<p>Github: <a href="https://github.com/haotian-liu/LLaVA" target="_blank" rel="noopener noreferrer">https://github.com/haotian-liu/LLaVA</a></p>
 <h3 id="论文亮点" class="headerLink">
     <a href="#%e8%ae%ba%e6%96%87%e4%ba%ae%e7%82%b9" class="header-mark"></a>论文亮点</h3><ul>
 <li>多模态 instruction-following 数据：使用GPT4-text-only将图像-文本对转换成适当的instruction-following格式，主要有对话（Conversation）、细节描述（Detailed description）和复杂推理（Complex reasoning）三类</li>
